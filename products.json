@@ -1,0 +1,56 @@
+[
+    {
+        "type":"cc",
+        "id": 1,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"cc",
+        "id": 2,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"cc",
+        "id": 3,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"cc",
+        "id": 6,
+        "name": "goneBiscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"m",
+        "id": 4,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"t",
+        "id": 5,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    }
+]

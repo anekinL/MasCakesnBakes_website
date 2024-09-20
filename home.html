@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+        <title>Ma's Bakes'n Cakes</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body class="">
+        <div style="display: flex; flex-direction:column;">
+            <div style="background-color: #FCE2E6; height: 10vh; display:flex;">
+                <a class="logo" href="#"><img src="images/Ma_logo.png" alt="logo" style="max-height: 10vh;"></a>
+                <div class="logo-title-wrapper">
+                    <h1 class="logo-title">Title</h1>
+                </div>
+            </div>
+
+            <header>
+                <nav>
+                    <ul class="nav_links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Cakes</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </nav>
+                <a class="cta" href="#">Contact</a>
+                <p class="menu cta">Menu</p>
+                <div class="container">
+                    <div class="icon-cart" id="yeye" onclick="showCart();">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/>
+                        </svg>
+                        <span>0</span>  
+                    </div>
+                <div>
+            </header>
+        </div>
+
+        <main>
+            <section class="container2">
+                <div class="slider-wrapper">
+                    <div class="slider">
+                        <img id="slide1" src="images/Lotus1.jpg">
+                        <img id="slide2" src="images/mangocake1.jpg">
+                        <img id="slide3" src="images/straw1.jpg">
+                    </div>
+                    <div class="slider-nav">
+                        <a href="#slide1"></a>
+                        <a href="#slide2"></a>
+                        <a href="#slide3"></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dainty-wrapper">
+                <div class="dainty-subwrapper1">
+                    <div class="dainty-main-item">
+                        <div class="dainty-item-name-wrapper">
+                            <h3 class="dainty-item-name">Item 1</h3>
+                        </div>
+                        <img src="images/Tiramisu1.jpg">
+                    </div>
+                    <div class="dainty-main-item">
+                        <div class="dainty-item-name-wrapper">
+                            <h3 class="dainty-item-name">Item 2</h3>
+                        </div>
+                        <img src="images/Lotus1.jpg">
+                    </div>
+                    <div class="dainty-main-item">
+                        <div class="dainty-item-name-wrapper">
+                            <h3 class="dainty-item-name">Item 3</h3>
+                        </div>
+                        <img src="images/straw1.jpg">
+                    </div>
+                </div>
+
+                <!-- <hr style="border-top: 3px solid #ffffff;"> -->
+                <div class="cheesecake-title">
+                    <div class="title-wrapper">
+                        <h2>Cheesecakes</h2>
+                    </div>
+                </div>
+
+                <div class="dainty-subwrapper2" id="cc_wrapper">
+                    <section class="showcase-item">
+                        <div class="multi-item-container" id="item1">
+                            <div class="main_item_container">
+                                
+                                <img class="section1" id="default_img1" src="images/Tiramisu1.jpg" style="width: 100%;">
+                                <!-- Expanded image -->
+                                <img class="section1" id="expandedImg1" style="width:100%">
+
+                            </div>
+                            <!-- The grid: three rows-->
+                            <div class="dainty-wrapper-container">
+                                <div class="main_item_column">
+                                    <div class="main_item_row">
+                                        <img src="images/Tiramisu1.jpg" alt="itemPic1" onclick="myFunction(this);">
+                                    </div>
+                                    <div class="main_item_row" id="middle_item_row">
+                                        <img src="images/straw1.jpg" alt="itemPic2"  onclick="myFunction(this);">
+                                    </div>
+                                    <div class="main_item_row">
+                                        <img src="images/mangocake1.jpg" alt="itemPic3" onclick="myFunction(this);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>Name Product</h2>
+                        <div class="price">20$</div>
+                        <button class="addCart">Add To Cart</button>
+                    </section>
+
+
+                    <section class="multi-item-container" id="item2">
+                        <div class="main_item_container">
+                            
+                            <img class="section1" id="default_img2" src="images/Tiramisu1.jpg" style="width: 100%;">
+                            <!-- Expanded image -->
+                            <img class="section1" id="expandedImg2" style="width:100%">
+
+                        </div>
+                        <!-- The grid: three rows-->
+                        <div class="dainty-wrapper-container">
+                            <div class="main_item_column">
+                                <div class="main_item_row">
+                                    <img src="images/Tiramisu1.jpg" alt="itemPic1" onclick="myFunction(this);">
+                                </div>
+                                <div class="main_item_row" id="middle_item_row">
+                                    <img src="images/straw1.jpg" alt="itemPic2" onclick="myFunction(this);">
+                                </div>
+                                <div class="main_item_row">
+                                    <img src="images/mangocake1.jpg" alt="itemPic3" onclick="myFunction(this);">
+                                </div>
+                            </div>
+                        </div>
+                    </section>  
+
+                    <section class="multi-item-container" id="item3">
+                        <div class="main_item_container" style="background-color:blue;">
+                            
+                            <img class="section1" id="default_img3" src="images/Tiramisu1.jpg" style="width: 100%;">
+                            <!-- Expanded image -->
+                            <img class="section1" id="expandedImg3" style="width:100%">
+
+                        </div>
+                        <!-- The grid: three rows-->
+                        <div class="dainty-wrapper-container" style="background-color:red;">
+                            <div class="main_item_column">
+                                <div class="main_item_row">
+                                    <img src="images/Tiramisu1.jpg" alt="itemPic1" onclick="myFunction(this);">
+                                </div>
+                                <div class="main_item_row" id="middle_item_row">
+                                    <img src="images/straw1.jpg" alt="itemPic2" onclick="myFunction(this);">
+                                </div>
+                                <div class="main_item_row">
+                                    <img src="images/mangocake1.jpg" alt="itemPic3" onclick="myFunction(this);">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="cheesecake-title">
+                    <div class="title-wrapper">
+                        <h2>Mousse</h2>
+                    </div>
+                </div>
+
+                <section class="dainty-subwrapper2" id="m_wrapper">
+
+                </section>
+
+                <div class="cheesecake-title">
+                    <div class="title-wrapper">
+                        <h2>Tiramisu</h2>
+                    </div>
+                </div>
+
+                <section class="dainty-subwrapper2" id="t_wrapper">
+
+                </section>
+                
+            </section>
+        </main>
+        
+        <div class="cart-tab">
+            
+            <h1>Shopping Cart</h1>
+
+            <div class="cart-list">
+                <div class="item">
+                    <div class="item-image">
+                        <img src="images/Tiramisu1.jpg" alt="itemPic1">
+                    </div>
+                    <div class="item-name">
+                        item 1
+                    </div>
+                    <div class="item-price">
+                        $20.00
+                    </div>
+                    <div class="item-quantity">
+                        <span class="minus"><</span>
+                        <span>1</span>
+                        <span class="plus">></span>
+                        <button class="removebtn">Remove</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="btn">
+                <button class="close" onclick="showCart()">Close</button>
+                <button class="checkOut">Check Out</button>
+            </div>
+        </div>
+
+        <span class="fileType" id="home"></span>
+        
+        <script src="home.js"></script>
+    </body>
+</html>
