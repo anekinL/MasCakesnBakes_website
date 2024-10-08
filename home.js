@@ -79,9 +79,10 @@ const addItemsToHTML = () => {
                 </div>
                 <h2>${element.name}</h2>
                 <div class="price">${element.price}$</div>
-             
-                <button class="addCart">Add To Cart</button>
-        
+                <div class="cartbtn_container">
+                    <button class="addCart">Add To Cart</button>
+                </div>
+
             `;
             switch (element.type) {
                 case 'cc':
@@ -102,7 +103,7 @@ const addItemsToHTML = () => {
 subwrapper.addEventListener('click', (event) => {
     let clickPosition = event.target;
     if (clickPosition.classList.contains('addCart')) {
-        addToCart(clickPosition.parentElement.dataset.id);
+        addToCart(clickPosition.parentElement.parentElement.dataset.id);
     }
 })
 

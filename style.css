@@ -12,11 +12,11 @@ html {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 0.85fr 1fr 30px;
     align-items: center;
-    background-color: white;
-    margin: 2vh;
+    background-color: #fdfbd6;
+    padding: 2vh;
     transition: .5s;
 }
 
@@ -31,12 +31,26 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+.titlebar_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
 .logo {
     margin-right: auto;
 }
 
 .logo-title-wrapper {
     align-self: center;
+    max-width: fit-content;
+}
+
+.logo-title{
+    border-style: solid;
+    border-left: 0px;
+    border-right: 0px;
 }
 
 .nav_links {
@@ -123,8 +137,17 @@ body {
     overflow: hidden;
     margin: 0 auto;
 }
+
+.slider_cover {
+    height: 38vw;
+    width: 100%;
+    background-color: #000000;
+    z-index: 1;
+    position: absolute;
+    opacity: 40%;
+}
   
-.slider {
+.slider{
     display: flex;
     aspect-ratio: 16/9;
     overflow-x: auto;
@@ -132,12 +155,13 @@ body {
     scroll-behavior: smooth;
     border-radius: 0.5rem;
 }
+
   
 .slider::-webkit-scrollbar {
     display: none;
 }
   
-.slider img {
+.slider img{
     flex: 1 0 100%;
     scroll-snap-align: start;
     object-fit: cover;
@@ -228,6 +252,7 @@ body {
     justify-content: center;
     margin: 5vw;
     margin-top: 0vw;
+    margin-bottom: 0px;
     grid-template-rows: auto;
     grid-auto-rows: 0px;
     overflow: hidden;
@@ -339,6 +364,22 @@ body {
     cursor: pointer;
 }
 
+.morebtn {
+    align-self: center;
+    font-size: large;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;
+    height: fit-content;
+    background-color: #d5e7b8;
+    text-decoration: none;
+    color: #000000;
+}
+
+.morebtn:hover {
+    opacity: 70%;
+}
+
 /* ===============================Cart tab==================================*/
 
 .cart-tab{
@@ -430,4 +471,34 @@ body.showCart main{
 
 body.showCart header{
     transform: translateX(-45vh);
+}
+
+/* =================================Footer================================= */
+
+footer {
+    background-color: #fdfadcd8
+}
+
+footer a {
+    color: #d8d6c5;
+    text-decoration: none;
+    opacity: 70%;
+}
+
+footer h1 {
+    color: #a3a293;
+}
+
+.contact_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh;
+}
+
+.social_icons img{
+    margin: 5px;
+    width: 50px;
 }

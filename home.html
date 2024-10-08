@@ -11,24 +11,21 @@
     </head>
 
     <body class="">
-        <div style="display: flex; flex-direction:column;">
-            <div style="background-color: #FCE2E6; height: 10vh; display:flex;">
-                <a class="logo" href="#"><img src="images/Ma_logo.png" alt="logo" style="max-height: 10vh;"></a>
-                <div class="logo-title-wrapper">
-                    <h1 class="logo-title">Title</h1>
-                </div>
-            </div>
+        <div class="titlebar_container">
 
             <header>
                 <nav>
                     <ul class="nav_links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Cakes</a></li>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="products.html">Cakes</a></li>
                         <li><a href="#">About Us</a></li>
                     </ul>
                 </nav>
-                <a class="cta" href="#">Contact</a>
-                <p class="menu cta">Menu</p>
+                <div>
+                <div class="logo-title-wrapper">
+                    <h1 class="logo-title">Ma's Cakes</h1>
+                </div>
+                </div>
                 <div class="container">
                     <div class="icon-cart" id="yeye" onclick="showCart();">
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24">
@@ -43,6 +40,9 @@
         <main>
             <section class="container2">
                 <div class="slider-wrapper">
+                    <div class="slider_cover">
+                        <img src="images/Ma_logo_transparent.png" alt="Logo" style="height: 38vw;">
+                    </div>
                     <div class="slider">
                         <img id="slide1" src="images/Lotus1.jpg">
                         <img id="slide2" src="images/mangocake1.jpg">
@@ -57,6 +57,11 @@
             </section>
 
             <section class="dainty-wrapper">
+                <div class="cheesecake-title">
+                    <div class="title-wrapper" style="margin-bottom: 0px;">
+                        <h2>Top Sellers</h2>
+                    </div>
+                </div>
                 <div class="dainty-subwrapper1">
                     <div class="dainty-main-item">
                         <div class="dainty-item-name-wrapper">
@@ -164,7 +169,10 @@
                         </div>
                     </section>
                 </div>
-
+                
+                <a class="morebtn" href="products.html"><- Show More -></a>
+                <div style="height: 5vh;"></div>
+                    
                 <div class="cheesecake-title">
                     <div class="title-wrapper">
                         <h2>Mousse</h2>
@@ -175,6 +183,9 @@
 
                 </section>
 
+                <a class="morebtn" href="products.html"><- Show More -></a>
+                <div style="height: 5vh;"></div>
+
                 <div class="cheesecake-title">
                     <div class="title-wrapper">
                         <h2>Tiramisu</h2>
@@ -184,6 +195,10 @@
                 <section class="dainty-subwrapper2" id="t_wrapper">
 
                 </section>
+
+                <div style="height: 3vh;"></div>
+                <a class="morebtn" href="products.html"><- Show More -></a>
+                <div style="height: 5vh;"></div>
                 
             </section>
         </main>
@@ -222,4 +237,18 @@
         
         <script src="home.js"></script>
     </body>
+    
+    <footer id="footer">
+        <div class="contact_info">
+            <h1>Contact Information</h1>
+            <p>Phone: 123-123-1234</p>
+            <p>Email: info@example.com</p>
+            <div class="social_icons">
+                <a href="#"><img src="images/facebook.png" alt="facebook"></a>
+                <a href="#"><img src="images/instagram.png" alt="instagram"></a>
+                <a href="#"><img src="images/messenger.png" alt="messenger"></a>
+            </div>
+        </div>
+        <a href="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons">Instagram logo icons created by riajulislam - Flaticon</a>
+    </footer>
 </html>

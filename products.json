@@ -1,7 +1,7 @@
 [
     {
         "type":"cc",
-        "id": 1,
+        "id": 100000,
         "name": "Biscoff Cheesecake",
         "price": 20,
         "a_image": "images/Tiramisu1.jpg",
@@ -10,7 +10,7 @@
     },
     {
         "type":"cc",
-        "id": 2,
+        "id": 200000,
         "name": "Biscoff Cheesecake",
         "price": 20,
         "a_image": "images/Tiramisu1.jpg",
@@ -19,7 +19,7 @@
     },
     {
         "type":"cc",
-        "id": 3,
+        "id": 300000,
         "name": "Biscoff Cheesecake",
         "price": 20,
         "a_image": "images/Tiramisu1.jpg",
@@ -28,7 +28,7 @@
     },
     {
         "type":"cc",
-        "id": 6,
+        "id": 400000,
         "name": "goneBiscoff Cheesecake",
         "price": 20,
         "a_image": "images/Tiramisu1.jpg",
@@ -37,7 +37,34 @@
     },
     {
         "type":"m",
-        "id": 4,
+        "id": 101000,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"m",
+        "id": 102000,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"m",
+        "id": 103000,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"m",
+        "id": 104000,
         "name": "Biscoff Cheesecake",
         "price": 20,
         "a_image": "images/Tiramisu1.jpg",
@@ -46,7 +73,25 @@
     },
     {
         "type":"t",
-        "id": 5,
+        "id": 100010,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"t",
+        "id": 100020,
+        "name": "Biscoff Cheesecake",
+        "price": 20,
+        "a_image": "images/Tiramisu1.jpg",
+        "b_image": "images/straw1.jpg",
+        "c_image": "images/mangocake1.jpg"
+    },
+    {
+        "type":"t",
+        "id": 100030,
         "name": "Biscoff Cheesecake",
         "price": 20,
         "a_image": "images/Tiramisu1.jpg",

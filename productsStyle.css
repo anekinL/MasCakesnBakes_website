@@ -12,11 +12,11 @@ html {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 0.85fr 1fr 30px;
     align-items: center;
-    background-color: white;
-    margin: 2vh;
+    background-color: #fdfbd6;
+    padding: 2vh;
     transition: .5s;
 }
 
@@ -37,6 +37,13 @@ body {
 
 .logo-title-wrapper {
     align-self: center;
+    max-width: fit-content;
+}
+
+.logo-title{
+    border-style: solid;
+    border-left: 0px;
+    border-right: 0px;
 }
 
 .nav_links {
@@ -122,6 +129,7 @@ body {
     max-height: 38vw;
     overflow: hidden;
     margin: 0 auto;
+    background-attachment: fixed;
 }
   
 .slider {
@@ -435,4 +443,34 @@ body.showCart main{
 
 body.showCart header{
     transform: translateX(-45vh);
+}
+
+/* =================================Footer================================= */
+
+footer {
+    background-color: #fdfadcd8
+}
+
+footer a {
+    color: #d8d6c5;
+    text-decoration: none;
+    opacity: 70%;
+}
+
+footer h1 {
+    color: #a3a293;
+}
+
+.contact_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh;
+}
+
+.social_icons img{
+    margin: 5px;
+    width: 50px;
 }
