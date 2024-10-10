@@ -9,7 +9,7 @@ let iconCartCount = document.querySelector(".icon-cart span");
 
 
 function getItemNumber(id) {
-    for (var i = 1; i < 10; i++){
+    for (var i = 1; i < 9999999; i++){
         if (id == "item"+i)
             return i;
     }
@@ -35,6 +35,7 @@ function myFunction(imgs) {
 
 function deleteDefault(idNumber) {
     var default_img = document.getElementById("default_img" + idNumber);
+    console.log(idNumber);
 
     if (default_img.style.display != "none") {
         default_img.style.display = "none";
@@ -78,17 +79,20 @@ const addItemsToHTML = () => {
                     </div>
                 </div>
                 <h2>${element.name}</h2>
-                <div class="price">${element.price}$</div>
+                <div class="price">
+                    <input type="radio" class="cc_option" label="${element.price1}" value="${element.price1}" name=${element.id} id="price1">
+                    <input type="radio" class="cc_option" label="${element.price2}" value="${element.price2}" name=${element.id} id="price2">
+                </div>
                 <div class="cartbtn_container">
                     <button class="addCart">Add To Cart</button>
                 </div>
 
             `;
             switch (element.type) {
-                case 'cc':
+                case 'ccf':
                     subwrapper2HTMLcc.appendChild(newProduct);
                     break;
-                case 'm':
+                case 'cci':
                     subwrapper2HTMLm.appendChild(newProduct);
                     break;
                 case 't':
@@ -103,29 +107,38 @@ const addItemsToHTML = () => {
 subwrapper.addEventListener('click', (event) => {
     let clickPosition = event.target;
     if (clickPosition.classList.contains('addCart')) {
-        addToCart(clickPosition.parentElement.parentElement.dataset.id);
+        const productId = clickPosition.parentElement.parentElement.dataset.id;
+            
+        // Get selected price option
+        let selectedPriceOption = document.querySelector(`input[name="${productId}"]:checked`).value;
+        
+        addToCart(productId, selectedPriceOption);
     }
-})
+});
 
-const addToCart = (productId) => {
-    let cartPos = cart.findIndex(item => item.productId === productId);
-    if (cart.length <= 0){
+const addToCart = (productId, selectedPriceOption) => {
+    let cartPos = cart.findIndex(item => item.productId === productId && item.selectedPrice === selectedPriceOption);
+    
+    if (cart.length <= 0) {
         cart = [{
             productId: productId,
-            quantity: 1
-        }]
+            quantity: 1,
+            selectedPrice: selectedPriceOption
+        }];
     } else if (cartPos < 0) {
         cart.push({
             productId: productId,
-            quantity: 1
-        })
+            quantity: 1,
+            selectedPrice: selectedPriceOption
+        });
     } else {
         cart[cartPos].quantity++;
     }
-    console.log(cart + "yey");
+    
+    console.log("price:" + selectedPriceOption);
     addCartToHTML();
     addCartToMemory();
-}
+};
 
 const addCartToMemory = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -134,15 +147,17 @@ const addCartToMemory = () => {
 const addCartToHTML = () => {
     cartListHTML.innerHTML = '';
     let totalProducts = 0;
+
     if (cart.length > 0) {
         cart.forEach(cartItem => {
             totalProducts += cartItem.quantity;
             let newCartItem = document.createElement("div");
             newCartItem.classList.add('item');
             newCartItem.dataset.productId = cartItem.productId;
-            let positionProduct = products.findIndex((value) => value.id == cartItem.productId);
-            let info = products[positionProduct]
-            cartListHTML.appendChild(newCartItem);
+
+            let positionProduct = products.findIndex(value => value.id == cartItem.productId);
+            let info = products[positionProduct];
+
             newCartItem.innerHTML = `
                 <div class="item-image">
                     <img src="${info.a_image}" alt="itemPic1">
@@ -151,7 +166,7 @@ const addCartToHTML = () => {
                     ${info.name}
                 </div>
                 <div class="item-price">
-                    ${info.price * cartItem.quantity}$
+                    ${getPriceValue(cartItem.selectedPrice) * cartItem.quantity}$
                 </div>
                 <div class="item-quantity">
                     <span class="minus"><</span>
@@ -161,10 +176,11 @@ const addCartToHTML = () => {
                 </div>
             `;
             cartListHTML.appendChild(newCartItem);
-        })
+        });
     }
+
     iconCartCount.innerText = totalProducts;
-}
+};
 
 cartListHTML.addEventListener('click', (event) => {
     let positionClick = event.target;
@@ -185,6 +201,10 @@ cartListHTML.addEventListener('click', (event) => {
         addCartToHTML();
     }
 })
+
+const getPriceValue = (priceString) => {
+    return parseFloat(priceString.split('/')[0]);
+};
 
 const changeQuantityCart = (productId, type) => {
     console.log(productId);
