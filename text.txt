@@ -100,3 +100,10 @@
         "c_image": "images/mangocake1.jpg"
     }
 ]
+
+- get rid of arrows for show more button
+- make the titles more prominent
+    - bigger font, bold, underline darker/bigger etc.
+- make prices say $30 per 6 but (subscript/smaller for the per)
+- try dark grey for text colour
+- change header for cakes 
