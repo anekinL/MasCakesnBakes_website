@@ -29,6 +29,7 @@ main {
 
 body {
     font-family: "Montserrat", sans-serif;
+    color: #313131
 }
 
 .titlebar_container {
@@ -234,14 +235,15 @@ body {
     display:flex;
     background-color: #d5e7b8;
     padding-bottom: 0.2vw;
-    margin-bottom: 2vh;
+    margin-bottom: 3vh;
 }
 
 .cheesecake-title h2 {
     background-color: #fffde7;
-    padding: 2.5vw;
+    padding: 5rem;
     padding-bottom: 0%;
     padding-top: 0%;
+    font-size: 2vw;
 }
 
 .dainty-subwrapper2 {
@@ -328,7 +330,7 @@ body {
 
 .dainty-subwrapper2 .showcase-item h2{
     font-weight: 500;
-    font-size: large;
+    font-size: 1.25em;
     margin: 1vw
 }
 
@@ -344,8 +346,21 @@ body {
     border: 2px solid #97967f;
     padding: 14px 24px;
     border-radius: 6px;
-    display: flex;
+    display: inline-flex;
     align-items:center;
+    font-size: 1em; /* Adjust this for the font size */
+}
+
+.cc_option sub {
+    font-size: 0.75em; /* Adjust this for the subscript size */
+    vertical-align: sub;
+    margin-left: 2px;
+}
+
+.cc_option input[type="radio"] {
+    appearance: none; /* Hides the default radio button */
+    position: absolute; /* Takes the radio button out of flow */
+    opacity: 0; /* Makes it invisible */
 }
 
 .cc_option::before {
@@ -356,22 +371,20 @@ body {
     border-radius: 50%;
     box-sizing: border-box;
     transition: border .2s linear;
+    display: inline-block;
+    margin-right: 8px;
 }
 
-.cc_option::after {
+.cc_option::after{
     content: attr(label);
-    color: #000000;
-    font-size: 1vw;
-    font-weight: 500;
-    margin-left: 8px;
 }
 
-.cc_option:checked {
+.cc_option:has( > input[type="radio"]:checked){
     background-color: #d5e7b8;
     border-color: #d5e7b8;
 }
 
-.cc_option:checked::before {
+.cc_option:has( > input[type="radio"]:checked)::before {
     border: 4px solid #fff;
     background-color: #d5e7b8;
 }
@@ -420,7 +433,6 @@ body {
 .morebtn:hover {
     opacity: 70%;
 }
-
 /* ===============================Cart tab==================================*/
 
 .cart-tab{
@@ -446,7 +458,6 @@ body {
 .cart-tab button{
     background-color: #f3f1d6;
     border: none;
-    font-family: Poppins;
     font-weight: 500;
     cursor: pointer;
 }
@@ -542,4 +553,57 @@ footer h1 {
 .social_icons img{
     margin: 5px;
     width: 50px;
+}
+
+@media screen and (max-width: 500px) {
+
+    .logo-title {
+        font-size:1em;
+    }
+
+    .nav_links li {
+        padding: 0px 15px;
+    }
+
+    .slider-wrapper{
+        max-height: 40vh;
+    }
+
+    .slider_cover{
+        height: 40vh;
+    }
+
+    .slider_cover img{
+        height: 40vw !important;
+        margin-top: 3vh !important;
+    }
+
+    /* main body */
+
+    .dainty-item-name {
+        font-size: 1em;
+    }
+
+    .dainty-main-item {
+        width: 25vw;
+        height: 20vw;
+    }
+
+    #top_seller_3 {
+        display: none;
+    }
+
+    .dainty-subwrapper2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-bottom: 2vh;
+    }
+
+    .dainty-subwrapper2 .showcase-item {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        
+        overflow:hidden ;
+    }
 }

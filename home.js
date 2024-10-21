@@ -80,8 +80,14 @@ const addItemsToHTML = () => {
                 </div>
                 <h2>${element.name}</h2>
                 <div class="price">
-                    <input type="radio" class="cc_option" label="${element.price1}" value="${element.price1}" name=${element.id} id="price1">
-                    <input type="radio" class="cc_option" label="${element.price2}" value="${element.price2}" name=${element.id} id="price2">
+                    <label class="cc_option" for="price1">
+                        <input type="radio" value="${element.price1}" name="${element.id}" id="price1">
+                        ${element.price1.replace("/half a dozen", "<sub>per 6</sub>")}
+                    </label>
+                    <label class="cc_option" for="price2">
+                        <input type="radio" value="${element.price2}" name="${element.id}" id="price2">
+                        ${element.price2.replace("/dozen", "<sub>per 12</sub>")}
+                    </label>
                 </div>
                 <div class="cartbtn_container">
                     <button class="addCart">Add To Cart</button>
