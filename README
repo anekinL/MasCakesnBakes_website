@@ -1,14 +1,14 @@
 This is a website for a baking buisness called MasCakesnBakes. The website is not currently active as of currently so if you wish to view it, please use a live server extension on your IDE. 
 
-The website is created by vanilla HTML, CSS and Javascript with no frameworks. The website includes A Home page, Product page, Cart window, and an About us page each with a Header/Footer.
+The website is created by vanilla **HTML, CSS and Javascript** with no frameworks. The website includes A Home page, Product page, Cart window, and an About us page each with a Header/Footer.
 
 The header includes links to each page, the bakery name and the cart window button with an active item counter. The footer includes general contact information about the bakery and its owner.
 
-The Cart window is implemented with smooth sliding animations, browser memory (so you dont lose the contents of the cart after a page refresh), a visual item counter, price totals and is available to be seen and modifeid on every page. 
+The Cart window is implemented with *smooth sliding animations, browser memory* (so you dont lose the contents of the cart after a page refresh), a visual item counter, price totals and is available to be seen and modifeid on every page. 
 
 The Home Page consists of an image carosel, top sellers and a few items on display, each with radio/add to cart buttons indicating selected price/quantity, as well as a selection of iimages to view the product. Each section contains a showmore button that will elad you to the products page where all the products will be on display.
 
-All product information is managed via JSON library where the information is converted an used into the HTML.
+All product information is managed via **JSON library** where the information is converted an used into the HTML.
 
 Responsive web design has also been implemented so the website looks visually clean and user friendly on all platforms/devices. Use of grid and flexbox were responsible for all layout design. As for the colour palette we chose a soft colour combination for a more delicate and user friendly experience, aiming towards a less aggressive approach. 
 
@@ -16,12 +16,12 @@ The website will be launched with the addition and help of shopify.
 
 QA:
 
-Why did I not use any frameworks?
+***Why did I not use any frameworks?***
 
 As frameworks for frontend web development like Angular, React and Vue(just to name a few) are the most popular and arguably efficient way to create a frontend web application. I wanted to be able to create a fully fleshed out website with the abolsute basics, just to develop my foundation before moving on to the arguably more "advanced" methods of web creation.
 
 
-When will the website launch?
+***When will the website launch?***
 
 The website should be launching very shortly here (as of today Oct 20) we are currently waiting for a few more images of the products and the connection to shopify.
 
