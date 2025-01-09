@@ -260,6 +260,11 @@ body {
     overflow: hidden;
 }
 
+/* Center the item if there's only one child */
+.dainty-subwrapper2 > *:only-child { 
+    grid-column: 2 / 3; /* Place the single item in the center column */
+}
+
 .multi-item-container {
     display: flex;
     flex-direction: row;
@@ -605,5 +610,146 @@ footer h1 {
         align-items: center;
         
         overflow:hidden ;
+    }
+}
+
+/*==============================================CHECKOUT PAGE==================================================
+
+/* Container */
+
+.checkout_body_container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout_container {
+    background-color: #d5e7b8;
+    padding: 20px;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    padding-left: 1.5%;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.checkout_title {
+    text-align: center; 
+    color: #353432;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+/* Form */
+.checkout_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /*added this*/
+    gap: 10px;
+}
+
+.error_txt {
+    flex: 1;
+    color: #d5e7b8;
+    text-align: left;
+    margin: -5px 0px 5px 10px;
+}
+
+form .checkout_row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Input Styling */
+.checkout_input {
+    appearance: none;
+    border: 2px solid #97967f;
+    padding: 14px 24px;
+    border-radius: 6px;
+    font-size: 1em;
+    flex: 1;
+    box-sizing: border-box;
+    width: calc(50% - 10px);
+    margin-bottom: 10px;
+}
+
+.checkout_input.error:not(#customerOccasion):not(#customerMessage) {
+    border-color: red;
+}
+
+.checkout_input.error:focus{
+    outline: none;
+}
+
+.error_txt.error{
+    color: red;
+}
+
+.checkout_row.error .error_txt.email.error{
+    color: red;
+}
+
+/* Textarea Styling */
+#customerMessage {
+    appearance: none;
+    border: 2px solid #97967f;
+    padding: 14px 24px;
+    border-radius: 6px;
+    font-size: 1em;
+    width: calc(100%);
+    height: 12rem;
+    resize: none;
+    box-sizing: border-box;
+    flex: none;
+}
+
+/* Button Styling */
+.checkout_button {
+    background-color: #353432;
+    color: #eee;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    align-self: center;
+}
+
+.checkout_button:hover {
+    background-color: #232322;
+}
+
+.keep-shopping {
+    font-size: 1em;
+    font-weight: bold;
+    color: #353432;
+    cursor: pointer;
+}
+
+.keep-shopping:hover {
+    color: #0088a9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkout_row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .checkout_input {
+        width: 100%;
     }
 }

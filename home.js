@@ -1,5 +1,6 @@
 let products = [];
 let cart = [];
+let totalPrice = 0;
 let subwrapper2HTMLcc = document.getElementById("cc_wrapper");
 let subwrapper2HTMLm = document.getElementById("m_wrapper");
 let subwrapper2HTMLt = document.getElementById("t_wrapper");
@@ -14,6 +15,14 @@ function getItemNumber(id) {
             return i;
     }
     return "error out of range";  //returns 0 if no match found.
+}
+
+function getTotalPrice() {
+    console.log(cart.length);
+    for (let i = 0; i < cart.length; i++) {
+        totalPrice += getPriceValue(cart[i].selectedPrice) * cart[i].quantity;
+    }
+    return totalPrice;
 }
 
 function myFunction(imgs) {
@@ -80,12 +89,12 @@ const addItemsToHTML = () => {
                 </div>
                 <h2>${element.name}</h2>
                 <div class="price">
-                    <label class="cc_option" for="price1">
-                        <input type="radio" value="${element.price1}" name="${element.id}" id="price1">
+                    <label class="cc_option" for="${element.price1}+${element.id}">
+                        <input type="radio" value="${element.price1}" name="${element.id}" id="${element.price1}+${element.id}">
                         ${element.price1.replace("/half a dozen", "<sub>per 6</sub>")}
                     </label>
-                    <label class="cc_option" for="price2">
-                        <input type="radio" value="${element.price2}" name="${element.id}" id="price2">
+                    <label class="cc_option" for="${element.price2}+${element.id}">
+                        <input type="radio" value="${element.price2}" name="${element.id}" id="${element.price2}+${element.id}">
                         ${element.price2.replace("/dozen", "<sub>per 12</sub>")}
                     </label>
                 </div>
@@ -110,6 +119,7 @@ const addItemsToHTML = () => {
     }
 }
 
+console.log(subwrapper);
 subwrapper.addEventListener('click', (event) => {
     let clickPosition = event.target;
     if (clickPosition.classList.contains('addCart')) {
@@ -141,7 +151,8 @@ const addToCart = (productId, selectedPriceOption) => {
         cart[cartPos].quantity++;
     }
     
-    console.log("price:" + selectedPriceOption);
+    
+    console.log("price:" + getPriceValue(selectedPriceOption));
     addCartToHTML();
     addCartToMemory();
 };
@@ -209,7 +220,7 @@ cartListHTML.addEventListener('click', (event) => {
 })
 
 const getPriceValue = (priceString) => {
-    return parseFloat(priceString.split('/')[0]);
+    return parseFloat(priceString.split('/')[0].replace(/[^0-9.]/g, '')); //so this takes the string and replaces all non ints with ""
 };
 
 const changeQuantityCart = (productId, type) => {
@@ -236,6 +247,175 @@ const changeQuantityCart = (productId, type) => {
     addCartToMemory();
     addCartToHTML();
 }
+
+function redirectToPage(url) {
+    window.location.href = url;
+}
+
+function send_customer_datatest(email,phone) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://your-server.com/api/submit_data', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send(JSON.stringify({ email: email, phone: phone }));
+}
+
+function send_customer_data(email,phone) {
+    console.log(email);
+    const recipient = email;
+    const subject = 'Hello';
+    const body = 'This is the body of the email.';
+
+    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+}
+
+function showCheckoutPopup() {
+    // Select the checkout form container
+    const checkoutPopup = document.querySelector(".checkout_body_container");
+    document.getElementById("TotalPriceText").textContent = "Total Price: " + getTotalPrice() + "$";
+    
+    if (checkoutPopup) {
+        // Make the form visible
+        checkoutPopup.style.display = "flex";
+        
+        // Add a click event listener to close the popup when clicking outside the form
+        window.addEventListener("click", function closePopup(event) {
+            if (event.target === checkoutPopup) {
+                checkoutPopup.style.display = "none";
+                window.removeEventListener("click", closePopup); // Remove the event listener
+            }
+        });
+    } else {
+        console.error("Checkout popup element not found!");
+    }
+}
+
+const form = document.querySelector("form");
+const fullName = document.getElementById("customerName");
+const email = document.getElementById("customerEmail");
+const emailList = document.querySelectorAll("#customerEmail");
+const phoneNumber = document.getElementById("customerNumber");
+const occasion = document.getElementById("customerOccasion");
+const message = document.getElementById("customerMessage");
+function sendEmail() {
+
+    const bodyMessage = `Full Name: ${fullName.value}<br> Email: ${email.value}<br> Phone Number: ${phoneNumber.value}<br> Occasion: ${occasion.value}<br> Message: ${message.value}<br>`;
+    let finalMessage = getEachItem(bodyMessage);
+    checkInputs();
+
+    if (!fullName.classList.contains("error") && !email.classList.contains("error") && !phoneNumber.classList.contains("error")) {
+        if (cart.length == 0) {
+            Swal.fire({
+                    title: "Shopping cart is empty!",
+                    text: "The order did not send as your cart is empty",
+                    icon: "error"
+                });
+        } else {
+            Email.send({
+                Host : "smtp25.elasticemail.com",
+                Username : "mascakenbakes@gmail.com",
+                Password : "6ADFC03843F0B3BC8CA46ED380E063DED071",
+                To : 'mascakenbakes@gmail.com',
+                From : "mascakenbakes@gmail.com",
+                Subject : `${fullName.value} Order Information`,
+                Body : finalMessage
+            }).then(
+                message => {
+                    if (message == "OK") {
+                        Swal.fire({
+                            title: "Order Placed",
+                            text: "Thank you for your order!",
+                            icon: "success"
+                        });
+                    }
+                }
+            );
+        }
+    }
+}
+
+form.addEventListener("submit", (event) => { 
+    event.preventDefault();
+});
+
+function checkInputs() {
+    const items  = document.querySelectorAll(".checkout_input");
+
+    for (const item of items) {
+        if (item.value == "") {
+            const itemids = document.querySelectorAll(`#${item.id}`);
+            for (const itemid of itemids) {
+                itemid.classList.add("error");
+                itemid.parentElement.classList.add("error");
+            }
+            
+        }
+
+        if (items[1].value != "") {
+            checkEmail();
+        }
+
+        items[1].addEventListener("keyup", () => {
+            checkEmail();
+        });
+
+        item.addEventListener("keyup", () => {
+            if (item.value != "") {
+                const itemids = document.querySelectorAll(`#${item.id}`);
+                for (const itemid of itemids) {
+                    itemid.classList.remove("error");
+                    itemid.parentElement.classList.remove("error");
+                }
+            } else {
+                const itemids = document.querySelectorAll(`#${item.id}`);
+                for (const itemid of itemids) {
+                    itemid.classList.add("error");
+                    itemid.parentElement.classList.add("error");
+                }
+            }
+        })
+    }
+}
+
+function checkEmail() {
+    const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
+    const errorTxtEmail = document.querySelector(".error_txt.email");
+
+    if (!email.value.match(emailRegex)) {
+        for (const e of emailList) {
+            e.classList.add("error");
+            e.parentElement.classList.add("error");
+
+            if (e.value != "") {
+                errorTxtEmail.innerText = "Enter a valid email address";
+            } else {
+                errorTxtEmail.innerText = "Email can't be blank";
+            }
+        }
+
+    } else {
+        email.classList.remove("error");
+        email.parentElement.classList.remove("error");
+    }
+}
+
+
+function getEachItem(body) {
+    for (let i = 0; i < cart.length; i++) {
+        let positionProduct = products.findIndex(value => value.id == cart[i].productId);
+        let info = products[positionProduct];
+        body += ` ${info.name}: ${cart[i].quantity} ${cart[i].selectedPrice}<br>`;
+    }
+    return body;
+}
+
+
 
 const initApp = () => {
     // get data product

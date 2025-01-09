@@ -182,12 +182,42 @@
             
             <div class="btn">
                 <button class="close" onclick="showCart()">Close</button>
-                <button class="checkOut">Check Out</button>
+                <button class="checkOut" onclick="showCheckoutPopup()">Check Out</button>
             </div>
         </div>
 
-        <span class="fileType" id="home"></span>
+        <div class="checkout_body_container">
+            <div class="checkout_container">
+                <a class="keep-shopping" onclick="document.querySelector('.checkout_body_container').style.display='none';">&larr; Continue Shopping</a>
+                <h1 class="checkout_title" id="TotalPriceText"></h1>
+                <h1 class="checkout_title">Almost done, we just need some contact information</h1>
+                <form class="checkout_form">
+                    <div class="checkout_row">
+                        <input type="text" class="checkout_input" id="customerName" placeholder="Full Name" required>
+                        <input type="email" class="checkout_input" id="customerEmail" placeholder="Email Address" required>
+                    </div>
+                    <div class="checkout_row">
+                        <div class="error_txt" id="customerName">Full Name can't be blank</div>
+                        <div class="error_txt email" id="customerEmail">Email can't be blank</div>
+                    </div>
+                    <div class="checkout_row">
+                        <input type="tel" class="checkout_input" id="customerNumber" placeholder="Phone Number">
+                        <input type="text" class="checkout_input" id="customerOccasion" placeholder="Occasion (optional)">
+                    </div>
+                    <div class="checkout_row">
+                        <div class="error_txt" id="customerNumber">Phone Number can't be blank</div>
+                        <div class="error_txt"></div>
+                    </div>
+                    <textarea class="checkout_input" id="customerMessage" placeholder="Special Request or Message"></textarea>
+                    <button type="submit" class="checkout_button" onclick="sendEmail()">Order</button>
+                </form>
+            </div>
+        </div>
+
+        <!--<span class="fileType" id="home"></span>-->
         
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="home.js"></script>
     </body>
     
