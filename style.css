@@ -28,8 +28,10 @@ main {
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
-    color: #313131
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #313131;
 }
 
 .titlebar_container {
