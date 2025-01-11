@@ -532,6 +532,21 @@ body.showCart header{
     transform: translateX(-45vh);
 }
 
+@media screen and (max-width:1500px) {
+    .cart-tab {
+        width: 70vh;
+        inset:0 -70vh 0 auto;
+    }
+
+    body.showCart main{
+        transform: translateX(-70vh);
+    }
+    
+    body.showCart header{
+        transform: translateX(-70vh);
+    }
+}
+
 /* =================================Footer================================= */
 
 footer {
@@ -745,6 +760,9 @@ form .checkout_row {
 }
 
 /* Responsive Design */
+@media (max-width: 1500px){
+
+}
 @media (max-width: 768px) {
     .checkout_row {
         display: flex;

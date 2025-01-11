@@ -1,105 +1,25 @@
-[
-    {
-        "type":"cc",
-        "id": 100000,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"cc",
-        "id": 200000,
-        "name": "Biscoff Cheesecake",
-        "description": "its cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"cc",
-        "id": 300000,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"cc",
-        "id": 400000,
-        "name": "goneBiscoff Cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"m",
-        "id": 101000,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"m",
-        "id": 102000,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"m",
+{
+        "type": "cci",
         "id": 103000,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
+        "name": "Matcha Cheesecake",
+        "description": "Delightful fusion of high-quality Japan matcha powder blended in our silky-smooth cream cheese filling.",
+        "price1": "$26.50/half a dozen",
+        "price2": "$50.50/dozen",
         "a_image": "images/Tiramisu1.jpg",
         "b_image": "images/straw1.jpg",
         "c_image": "images/mangocake1.jpg"
     },
     {
-        "type":"m",
-        "id": 104000,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"t",
-        "id": 100010,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"t",
-        "id": 100020,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type":"t",
-        "id": 100030,
-        "name": "Biscoff Cheesecake",
-        "price": 20,
+        "type": "t",
+        "id": 100040,
+        "name": "Espresso",
+        "description": "Layers of espresso-soaked ladyfingers and rich mascarpone cream topped with a dusting of high-quality cocoa powder. Perfect balance of sweetness and bitterness!",
+        "price1": "$29.50/half a dozen",
+        "price2": "$57.00/dozen",
         "a_image": "images/Tiramisu1.jpg",
         "b_image": "images/straw1.jpg",
         "c_image": "images/mangocake1.jpg"
     }
-]
 
 <!DOCTYPE html>
 <html>
