@@ -17,9 +17,9 @@
         "description": "Our blueberry compote from juicy blueberries is full of flavor and vibrant colors",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
+        "a_image": "images/blueberry_cc_1_single.jpg",
+        "b_image": "images/blueberry_cc_2_single.jpg",
+        "c_image": "images/blueberry_cc_3_single.jpg"
     },
     {
         "type": "ccf",
@@ -28,9 +28,9 @@
         "description": "Our luscious mango compote is made from ripe mangos, complements the creamy cream cheese filling.",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
+        "a_image": "images/mango_cc_1_single.jpg",
+        "b_image": "images/mango_cc_2_single.jpg",
+        "c_image": "images/mango_cc_3_single.jpg"
     },
     {
         "type": "ccf",
@@ -39,9 +39,9 @@
         "description": "The combination of our cherry compote and creamy cream cheese filling reminiscent the classic New York cheesecake.",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
-        "a_image": "images/cherry_cc_1_duo.jpg",
-        "b_image": "images/cherry_cc_1_trio.jpg",
-        "c_image": "images/mangocake1.jpg"
+        "a_image": "images/cherry_cc_1_single.jpg",
+        "b_image": "images/cherry_cc_1_duo.jpg",
+        "c_image": "images/cherry_cc_1_trio.jpg"
     },
     {
         "type": "cci",
@@ -64,38 +64,5 @@
         "a_image": "images/oreo_cc_2_duo.jpg",
         "b_image": "images/oreo_cc_2.jpg",
         "c_image": "images/oreo_cc_1_duo.jpg"
-    },
-    {
-        "type": "cci",
-        "id": 103000,
-        "name": "Matcha Cheesecake",
-        "description": "Delightful fusion of high-quality Japan matcha powder blended in our silky-smooth cream cheese filling.",
-        "price1": "$26.50/half a dozen",
-        "price2": "$50.50/dozen",
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type": "cci",
-        "id": 999,
-        "name": "Matcha",
-        "description": "Delightful fusion of high-quality Japan matcha powder blended in our silky-smooth cream cheese filling.",
-        "price1": "$26.50/half a dozen",
-        "price2": "$50.50/dozen",
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
-    },
-    {
-        "type": "t",
-        "id": 100040,
-        "name": "Espresso",
-        "description": "Layers of espresso-soaked ladyfingers and rich mascarpone cream topped with a dusting of high-quality cocoa powder. Perfect balance of sweetness and bitterness!",
-        "price1": "$29.50/half a dozen",
-        "price2": "$57.00/dozen",
-        "a_image": "images/Tiramisu1.jpg",
-        "b_image": "images/straw1.jpg",
-        "c_image": "images/mangocake1.jpg"
     }
 ]
