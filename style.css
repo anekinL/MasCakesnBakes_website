@@ -761,7 +761,14 @@ form .checkout_row {
 
 /* Responsive Design */
 @media (max-width: 1500px){
+    .checkout_container {
+        max-height: 90%;
+    }
 
+    #customerMessage {
+        height: 5.5rem;
+        
+    }
 }
 @media (max-width: 768px) {
     .checkout_row {
