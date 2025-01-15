@@ -26,6 +26,11 @@ function getTotalPrice() {
     return totalPrice;
 }
 
+function updateCartPrice() {
+    console.log("price:" + getTotalPrice());
+    document.getElementById("TotalPriceCart").textContent = "Total Price: " + getTotalPrice() + "$"
+}
+
 function myFunction(imgs) {
     //allocate var of parent section
     var item = imgs.parentElement.parentElement.parentElement.parentElement;
@@ -155,8 +160,6 @@ const addToCart = (productId, selectedPriceOption) => {
         cart[cartPos].quantity++;
     }
     
-    
-    console.log("price:" + getPriceValue(selectedPriceOption));
     addCartToHTML();
     addCartToMemory();
 };
@@ -200,7 +203,6 @@ const addCartToHTML = () => {
         });
     }
 
-    document.getElementById("TotalPriceCart").textContent = "Total Price: " + getTotalPrice() + "$"
     iconCartCount.innerText = totalProducts;
 };
 
@@ -216,9 +218,8 @@ cartListHTML.addEventListener('click', (event) => {
     } else if(positionClick.classList.contains('removebtn')) {
         let productId = positionClick.parentElement.parentElement.dataset.productId;
         let positionItemInCart = cart.findIndex((value) => value.productId == productId);
-        console.log(cart)
-        console.log(positionItemInCart)
         cart.splice(positionItemInCart, 1);
+
         addCartToMemory();
         addCartToHTML();
     }
