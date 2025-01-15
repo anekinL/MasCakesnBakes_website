@@ -5,9 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
         <title>Ma's Bakes'n Cakes</title>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -86,14 +84,22 @@
                     </div>
                 </div>
 
-                <!-- <hr style="border-top: 3px solid #ffffff;"> -->
                 <div class="cheesecake-title">
                     <div class="title-wrapper">
-                        <h2>Fruit Cheesecakes</h2>
+                        <h2>6" Cheesecakes</h2>
                     </div>
                 </div>
 
-                <div class="dainty-subwrapper2" id="cc_wrapper">
+                <section class="dainty-subwrapper2" id="cc_6in_wrapper"></section>
+
+                <!-- <hr style="border-top: 3px solid #ffffff;"> -->
+                <div class="cheesecake-title">
+                    <div class="title-wrapper">
+                        <h2>Fruit Cheesecake Mini's</h2>
+                    </div>
+                </div>
+
+                <section class="dainty-subwrapper2" id="cc_wrapper">
                     <section class="showcase-item">
                         <div class="multi-item-container" id="item1">
                             <div class="main_item_container">
@@ -123,14 +129,15 @@
                         </div>
                         <button class="addCart">Add To Cart</button>
                     </section>
-                </div>
+                </section>
                 
                 <a class="morebtn" href="products.html">Show More</a>
+
                 <div style="height: 5vh;"></div>
                     
                 <div class="cheesecake-title">
                     <div class="title-wrapper">
-                        <h2>Specialty Cheesecakes</h2>
+                        <h2>Specialty Cheesecake Mini's</h2>
                     </div>
                 </div>
 
@@ -138,7 +145,9 @@
 
                 </section>
 
-                <a class="morebtn" href="products.html">Show More</a>
+                <div style="padding:2rem;">
+                    <a class="morebtn" href="products.html">Show More</a>
+                </div>
                 <div style="height: 5vh;"></div>
 
                 <div class="cheesecake-title">
@@ -151,7 +160,6 @@
                     <h2>Coming Soon</h2>
                 </section>
 
-                <div style="height: 3vh;"></div>
                 <a class="morebtn" href="products.html">Show More</a>
                 <div style="height: 5vh;"></div>
                 
@@ -181,6 +189,8 @@
                     </div>
                 </div>
             </div>
+
+            <h1 id="TotalPriceCart">Total Price: 0$</h1>
             
             <div class="btn">
                 <button class="close" onclick="showCart()">Close</button>
@@ -193,6 +203,7 @@
                 <a class="keep-shopping" onclick="document.querySelector('.checkout_body_container').style.display='none';">&larr; Continue Shopping</a>
                 <h1 class="checkout_title" id="TotalPriceText"></h1>
                 <h1 class="checkout_title">Almost done, we just need some contact information</h1>
+                <h3 class="checkout_subtitle">Once we review your order we will contact you again, all orders are paid by Cash or E-Transfers</h3>
                 <form class="checkout_form">
                     <div class="checkout_row">
                         <input type="text" class="checkout_input" id="customerName" placeholder="Full Name" required>
@@ -202,9 +213,15 @@
                         <div class="error_txt" id="customerName">Full Name can't be blank</div>
                         <div class="error_txt email" id="customerEmail">Email can't be blank</div>
                     </div>
-                    <div class="checkout_row">
+                    <div class="checkout_row" id="PrefRow">
                         <input type="tel" class="checkout_input" id="customerNumber" placeholder="Phone Number">
-                        <input type="text" class="checkout_input" id="customerOccasion" placeholder="Occasion (optional)">
+                        <div class="pref_contact">
+                            <label for="preferredContact">Preferred Contact:</label>
+                            <select id="preferredContact" name="preferredContact">
+                                <option value="Phone">Phone</option>
+                                <option value="Email">Email</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="checkout_row">
                         <div class="error_txt" id="customerNumber">Phone Number can't be blank</div>

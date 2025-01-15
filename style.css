@@ -28,10 +28,8 @@ main {
 }
 
 body {
-    font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    color: #313131;
+    font-family: "Montserrat", sans-serif;
+    color: #313131
 }
 
 .titlebar_container {
@@ -341,12 +339,22 @@ body {
     margin: 1vw
 }
 
+.dainty-subwrapper2 .showcase-item h3{
+    font-weight: 500;
+    font-size: 1em;
+    margin: 1vw;
+    color: #646464;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+}
+
 .dainty-subwrapper2 .showcase-item .price{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
+
 
 .cc_option {
     appearance: none;
@@ -449,7 +457,7 @@ body {
     position: fixed;
     inset:0 -45vh 0 auto;
     display: grid;
-    grid-template-rows: 70px 1fr 70px;
+    grid-template-rows: 70px 1fr 70px 70px;
     transition: .5s;
 }
 
@@ -532,7 +540,7 @@ body.showCart header{
     transform: translateX(-45vh);
 }
 
-@media screen and (max-width:1500px) {
+@media screen and (max-width:1300px) {
     .cart-tab {
         width: 70vh;
         inset:0 -70vh 0 auto;
@@ -663,8 +671,15 @@ footer h1 {
 .checkout_title {
     text-align: center; 
     color: #353432;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 1.5em;
+}
+
+.checkout_subtitle {
+    text-align: center; 
+    color: #555452;
+    margin-bottom: 20px;
+    font-size: 1em;
 }
 
 /* Form */
@@ -684,6 +699,7 @@ footer h1 {
 
 form .checkout_row {
     display: flex;
+    flex: 1;
     justify-content: space-between;
     gap: 10px;
 }
@@ -746,6 +762,30 @@ form .checkout_row {
 
 .checkout_button:hover {
     background-color: #232322;
+}
+
+.pref_contact {
+    display: flex;
+    flex: 1;
+    text-align: center;
+    align-items: center;
+}
+
+.pref_contact h1 {
+    font-size: 1em;
+}
+
+.pref_contact select {
+    border: 2px solid #97967f;
+    padding: 14px 24px;
+    border-radius: 6px;
+    font-size: 1em;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#PrefRow {
+    gap: 50px;
 }
 
 .keep-shopping {
