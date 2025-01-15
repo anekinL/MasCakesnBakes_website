@@ -1,6 +1,7 @@
 let products = [];
 let cart = [];
 let totalPrice = 0;
+let subwrapper2HTMLcc6in = document.getElementById("cc_6in_wrapper");
 let subwrapper2HTMLcc = document.getElementById("cc_wrapper");
 let subwrapper2HTMLm = document.getElementById("m_wrapper");
 let subwrapper2HTMLt = document.getElementById("t_wrapper");
@@ -88,6 +89,7 @@ const addItemsToHTML = () => {
                     </div>
                 </div>
                 <h2>${element.name}</h2>
+                <h3>${element.description}</h2>
                 <div class="price">
                     <label class="cc_option" for="${element.price1}+${element.id}">
                         <input type="radio" value="${element.price1}" name="${element.id}" id="${element.price1}+${element.id}">
@@ -113,7 +115,9 @@ const addItemsToHTML = () => {
                 case 't':
                     subwrapper2HTMLt.appendChild(newProduct);
                     break;
-
+                case 'cc6in':
+                    subwrapper2HTMLcc6in.appendChild(newProduct);
+                    break;
             }
         });
     }
@@ -196,6 +200,7 @@ const addCartToHTML = () => {
         });
     }
 
+    document.getElementById("TotalPriceCart").textContent = "Total Price: " + getTotalPrice() + "$"
     iconCartCount.innerText = totalProducts;
 };
 
