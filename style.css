@@ -610,16 +610,31 @@ footer h1 {
 
     /* main body */
 
+    .cheesecake-title h2 {
+        font-size: 3.5vh;
+        padding: 2rem;
+        padding-bottom: 0%;
+        padding-top: 1vh;
+    }
+
     .dainty-item-name {
         font-size: 1em;
     }
 
     .dainty-main-item {
-        width: 25vw;
-        height: 20vw;
+        width: 35vw;
+        height: 30vw;
     }
 
-    #top_seller_3 {
+    .dainty-item-name-wrapper {
+        font-size: 2vh;
+    }
+
+    .title-wrapper {
+        padding-bottom: 0.8vw;
+    }
+
+    #top_seller_1{
         display: none;
     }
 
@@ -629,13 +644,6 @@ footer h1 {
         margin-bottom: 2vh;
     }
 
-    .dainty-subwrapper2 .showcase-item {
-        display: grid;
-        justify-content: center;
-        align-items: center;
-        
-        overflow:hidden ;
-    }
 }
 
 /*==============================================CHECKOUT PAGE==================================================

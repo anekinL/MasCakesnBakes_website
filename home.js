@@ -1,6 +1,7 @@
 let products = [];
 let cart = [];
 let totalPrice = 0;
+let changedPrice = true;
 let subwrapper2HTMLcc6in = document.getElementById("cc_6in_wrapper");
 let subwrapper2HTMLcc = document.getElementById("cc_wrapper");
 let subwrapper2HTMLm = document.getElementById("m_wrapper");
@@ -19,7 +20,7 @@ function getItemNumber(id) {
 }
 
 function getTotalPrice() {
-    console.log(cart.length);
+    let totalPrice = 0;
     for (let i = 0; i < cart.length; i++) {
         totalPrice += getPriceValue(cart[i].selectedPrice) * cart[i].quantity;
     }
@@ -27,8 +28,13 @@ function getTotalPrice() {
 }
 
 function updateCartPrice() {
-    console.log("price:" + getTotalPrice());
-    document.getElementById("TotalPriceCart").textContent = "Total Price: " + getTotalPrice() + "$"
+    if (changedPrice) {
+        changedPrice = false;
+        console.log("price:" + getTotalPrice());
+        document.getElementById("TotalPriceCart").textContent = "Total Price: " + getTotalPrice() + "$"
+        console.log("price again:" + getTotalPrice());
+        changedPrice = true;
+    }
 }
 
 function myFunction(imgs) {
@@ -45,12 +51,12 @@ function myFunction(imgs) {
     //imgText.innerHTML = imgs.alt;
     // Show the container element (hidden with CSS)
     //expandImg.parentElement.style.display = "block";
-    console.log(imgs.parentElement.parentElement.parentElement.parentElement);
+    //console.log(imgs.parentElement.parentElement.parentElement.parentElement);
 }
 
 function deleteDefault(idNumber) {
     var default_img = document.getElementById("default_img" + idNumber);
-    console.log(idNumber);
+    //console.log(idNumber);
 
     if (default_img.style.display != "none") {
         default_img.style.display = "none";
@@ -162,6 +168,7 @@ const addToCart = (productId, selectedPriceOption) => {
     
     addCartToHTML();
     addCartToMemory();
+    updateCartPrice()
 };
 
 const addCartToMemory = () => {
@@ -222,6 +229,7 @@ cartListHTML.addEventListener('click', (event) => {
 
         addCartToMemory();
         addCartToHTML();
+        updateCartPrice()
     }
 })
 
@@ -252,6 +260,7 @@ const changeQuantityCart = (productId, type) => {
     console.log("here")
     addCartToMemory();
     addCartToHTML();
+    updateCartPrice()
 }
 
 function redirectToPage(url) {
@@ -421,8 +430,6 @@ function getEachItem(body) {
     return body;
 }
 
-
-
 const initApp = () => {
     // get data product
     fetch('products.json')
@@ -435,6 +442,7 @@ const initApp = () => {
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'));
             addCartToHTML();
+            updateCartPrice()
         }
     })
 }
