@@ -1,6 +1,7 @@
 let products = [];
 let cart = [];
 let totalPrice = 0;
+let currentImageIndex = 0;
 let changedPrice = true;
 let subwrapper2HTMLcc6in = document.getElementById("cc_6in_wrapper");
 let subwrapper2HTMLcc = document.getElementById("cc_wrapper");
@@ -9,7 +10,28 @@ let subwrapper2HTMLt = document.getElementById("t_wrapper");
 let subwrapper = document.querySelector(".dainty-wrapper");
 let cartListHTML = document.querySelector(".cart-list");
 let iconCartCount = document.querySelector(".icon-cart span");
+const slider = document.querySelector('.full_cc_slider');
+const images = document.querySelectorAll('.full_cc_slider img');
 
+
+// Array of images for the product
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length; // Loop to the first image
+    console.log("current:" + currentImageIndex + " images:" + images.length);
+    updateSlider();
+}
+
+function previousImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length; // Loop to the last image
+    updateSlider();
+}
+
+function updateSlider() {
+    const sliderWidth = document.querySelector('.full_cc_slider img').offsetWidth;
+    console.log("sliderWidth:" + sliderWidth);
+    slider.style.transform = `translateX(-${currentImageIndex * sliderWidth}px)`; // Slide to the correct image
+}
 
 function getItemNumber(id) {
     for (var i = 1; i < 9999999; i++){
@@ -68,54 +90,87 @@ function showCart() {
 }
 
 const addItemsToHTML = () => {
-    subwrapper2HTMLcc.innerHTML = "";
+    //subwrapper2HTMLcc.innerHTML = "";
     let name = "";
     if (products.length > 0) {
-        products.forEach(element => {
+        products.forEach(element => { 
             let newProduct = document.createElement("div");
             newProduct.dataset.id = element.id;
             newProduct.classList.add("showcase-item");
-            newProduct.innerHTML = `
-                <div class="multi-item-container" id="item${element.id}">
-                    <div class="main_item_container">
-                        
-                        <img class="section1" id="default_img${element.id}" src="${element.a_image}" style="width: 100%;">
-                        <!-- Expanded image -->
-                        <img class="section1" id="expandedImg${element.id}" style="width:100%">
 
+            if (element.type == "cc6in") {
+                newProduct.innerHTML = `
+                    <div class="full_cc_outer_container" id="${element.id}">
+                            <div class="full_cc_container">
+                                <div class="full_cc_slider-container">
+                                    <div class="full_cc_slider">
+                                        <img src="${element.c_image}" alt="Product Image">
+                                        <img src="${element.b_image}" alt="Product Image">
+                                        <img src="${element.c_image}" alt="Product Image">
+                                    </div>
+                                </div>
+                                <button class="arrow left" onclick="previousImage()">&lt;</button>
+                                <button class="arrow right" onclick="nextImage()">&gt;</button>
+                            </div>
+                        </div>
+                    <h2>${element.name}</h2>
+                    <h3>${element.description}</h2>
+                    <div class="price">
+                        <label class="cc_option" for="${element.price1}+${element.id}">
+                            <input type="radio" value="${element.price1}" name="${element.id}" id="${element.price1}+${element.id}">
+                            ${element.price1.replace("/half a dozen", "<sub>per 6</sub>")}
+                        </label>
+                        <label class="cc_option" for="${element.price2}+${element.id}">
+                            <input type="radio" value="${element.price2}" name="${element.id}" id="${element.price2}+${element.id}">
+                            ${element.price2.replace("/dozen", "<sub>per 12</sub>")}
+                        </label>
                     </div>
-                    <!-- The grid: three rows-->
-                    <div class="dainty-wrapper-container">
-                        <div class="main_item_column">
-                            <div class="main_item_row">
-                                <img src="${element.a_image}" alt="itemPic1" onclick="myFunction(this);">
-                            </div>
-                            <div class="main_item_row" id="middle_item_row">
-                                <img src="${element.b_image}" alt="itemPic2"  onclick="myFunction(this);">
-                            </div>
-                            <div class="main_item_row">
-                                <img src="${element.c_image}" alt="itemPic3" onclick="myFunction(this);">
+                    <div class="cartbtn_container">
+                        <button class="addCart">Add To Cart</button>
+                    </div>
+                `;
+            } else {
+                newProduct.innerHTML = `
+                    <div class="multi-item-container" id="item${element.id}">
+                        <div class="main_item_container">
+                            
+                            <img class="section1" id="default_img${element.id}" src="${element.a_image}" style="width: 100%;">
+                            <!-- Expanded image -->
+                            <img class="section1" id="expandedImg${element.id}" style="width:100%">
+
+                        </div>
+                        <!-- The grid: three rows-->
+                        <div class="dainty-wrapper-container">
+                            <div class="main_item_column">
+                                <div class="main_item_row">
+                                    <img src="${element.a_image}" alt="itemPic1" onclick="myFunction(this);">
+                                </div>
+                                <div class="main_item_row" id="middle_item_row">
+                                    <img src="${element.b_image}" alt="itemPic2"  onclick="myFunction(this);">
+                                </div>
+                                <div class="main_item_row">
+                                    <img src="${element.c_image}" alt="itemPic3" onclick="myFunction(this);">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <h2>${element.name}</h2>
-                <h3>${element.description}</h2>
-                <div class="price">
-                    <label class="cc_option" for="${element.price1}+${element.id}">
-                        <input type="radio" value="${element.price1}" name="${element.id}" id="${element.price1}+${element.id}">
-                        ${element.price1.replace("/half a dozen", "<sub>per 6</sub>")}
-                    </label>
-                    <label class="cc_option" for="${element.price2}+${element.id}">
-                        <input type="radio" value="${element.price2}" name="${element.id}" id="${element.price2}+${element.id}">
-                        ${element.price2.replace("/dozen", "<sub>per 12</sub>")}
-                    </label>
-                </div>
-                <div class="cartbtn_container">
-                    <button class="addCart">Add To Cart</button>
-                </div>
-
-            `;
+                    <h2>${element.name}</h2>
+                    <h3>${element.description}</h2>
+                    <div class="price">
+                        <label class="cc_option" for="${element.price1}+${element.id}">
+                            <input type="radio" value="${element.price1}" name="${element.id}" id="${element.price1}+${element.id}">
+                            ${element.price1.replace("/half a dozen", "<sub>per 6</sub>")}
+                        </label>
+                        <label class="cc_option" for="${element.price2}+${element.id}">
+                            <input type="radio" value="${element.price2}" name="${element.id}" id="${element.price2}+${element.id}">
+                            ${element.price2.replace("/dozen", "<sub>per 12</sub>")}
+                        </label>
+                    </div>
+                    <div class="cartbtn_container">
+                        <button class="addCart">Add To Cart</button>
+                    </div>
+                `;
+            }
             switch (element.type) {
                 case 'ccf':
                     subwrapper2HTMLcc.appendChild(newProduct);
@@ -144,6 +199,11 @@ subwrapper.addEventListener('click', (event) => {
         let selectedPriceOption = document.querySelector(`input[name="${productId}"]:checked`).value;
         
         addToCart(productId, selectedPriceOption);
+
+        Swal.fire({
+            title: "Item Added to Cart!",
+            icon: "success"
+        });
     }
 });
 
