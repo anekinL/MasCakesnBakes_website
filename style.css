@@ -756,7 +756,7 @@ footer h1 {
     text-align: center; 
     color: #555452;
     margin-bottom: 20px;
-    font-size: 1em;
+    font-size: 1.25em;
 }
 
 /* Form */
@@ -861,9 +861,6 @@ form .checkout_row {
     cursor: pointer;
 }
 
-#PrefRow {
-    gap: 50px;
-}
 
 .keep-shopping {
     font-size: 1em;
@@ -880,11 +877,12 @@ form .checkout_row {
 @media (max-width: 1500px){
     .checkout_container {
         max-height: 90%;
+        padding-top: 1.5%;
     }
 
     #customerMessage {
-        height: 5.5rem;
-        
+        height: 4rem;
+        flex: none;
     }
 }
 @media (max-width: 768px) {
