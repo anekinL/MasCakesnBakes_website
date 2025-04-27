@@ -245,12 +245,16 @@ body {
 
 .dainty-subwrapper2 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2vw;
     text-align: center;
     justify-content: center;
-    margin: 8vw;
+    margin: 4vw;
     margin-top: 0vw;
+    margin-bottom: 0px;
+    grid-template-rows: auto;
+    grid-auto-rows: 0px;
+    overflow: hidden;
 }
 
 /* Center the item if there's only one child */
