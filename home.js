@@ -1,7 +1,7 @@
 let products = [];
 let cart = [];
+let sliderDict = {};
 let totalPrice = 0;
-let currentImageIndex = 0;
 let changedPrice = true;
 let subwrapper2HTMLcc6in = document.getElementById("cc_6in_wrapper");
 let subwrapper2HTMLcc = document.getElementById("cc_wrapper");
@@ -10,27 +10,50 @@ let subwrapper2HTMLt = document.getElementById("t_wrapper");
 let subwrapper = document.querySelector(".dainty-wrapper");
 let cartListHTML = document.querySelector(".cart-list");
 let iconCartCount = document.querySelector(".icon-cart span");
-const slider = document.querySelector('.full_cc_slider');
-const images = document.querySelectorAll('.full_cc_slider img');
 
 
 // Array of images for the product
 
-function nextImage() {
-    currentImageIndex = (currentImageIndex + 1) % images.length; // Loop to the first image
-    console.log("current:" + currentImageIndex + " images:" + images.length);
-    updateSlider();
+function getSliderID(button) {
+    sliderID = button.parentElement.parentElement.id;
+    return sliderID;
 }
 
-function previousImage() {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length; // Loop to the last image
-    updateSlider();
+function nextImage(button) {
+    sliderID = getSliderID(button);
+    slider = document.getElementById("slider"+ sliderID);
+
+    if (!sliderDict.hasOwnProperty(sliderID)) { // if key DNE for this slider
+        sliderDict[sliderID] = 0; // Initialize the index for this slider
+    }
+
+    images = slider.querySelectorAll('img'); // Get all images in the slider
+    sliderDict[sliderID] = (sliderDict[sliderID] + 1) % images.length; // Loop to the first image
+    console.log("current:" + sliderDict[sliderID] + " images:" + images.length);
+    updateSlider(slider, sliderID);
 }
 
-function updateSlider() {
-    const sliderWidth = document.querySelector('.full_cc_slider img').offsetWidth;
+function previousImage(button) {
+    sliderID = getSliderID(button);
+    slider = document.getElementById("slider"+ sliderID);
+
+    if (!sliderDict.hasOwnProperty(sliderID)) { // if key DNE for this slider
+        sliderDict[sliderID] = 0; // Initialize the index for this slider
+    }
+
+    images = slider.querySelectorAll('img'); // Get all images in the slider
+    sliderDict[sliderID] = (sliderDict[sliderID] - 1 + images.length) % images.length; // Loop to the last image
+    updateSlider(slider, sliderID);
+}
+
+function updateSlider(slider,sliderID) {
+
+    const sliderWidth = slider.querySelector('img').offsetWidth;
     console.log("sliderWidth:" + sliderWidth);
-    slider.style.transform = `translateX(-${currentImageIndex * sliderWidth}px)`; // Slide to the correct image
+
+    slider.style.transform = `translateX(-${sliderDict[sliderID] * sliderWidth}px)`; // Slide to the correct image
+
+    console.log("sliderWidth and index:" + sliderDict[sliderID] * sliderWidth);
 }
 
 function getItemNumber(id) {
@@ -103,14 +126,14 @@ const addItemsToHTML = () => {
                     <div class="full_cc_outer_container" id="${element.id}">
                             <div class="full_cc_container">
                                 <div class="full_cc_slider-container">
-                                    <div class="full_cc_slider">
-                                        <img src="${element.c_image}" alt="Product Image">
+                                    <div class="full_cc_slider" id="slider${element.id}">
+                                        <img src="${element.a_image}" alt="Product Image">
                                         <img src="${element.b_image}" alt="Product Image">
                                         <img src="${element.c_image}" alt="Product Image">
                                     </div>
                                 </div>
-                                <button class="arrow left" onclick="previousImage()">&lt;</button>
-                                <button class="arrow right" onclick="nextImage()">&gt;</button>
+                                <button class="arrow left" onclick="previousImage(this)">&lt;</button>
+                                <button class="arrow right" onclick="nextImage(this)">&gt;</button>
                             </div>
                         </div>
                     <h2>${element.name}</h2>

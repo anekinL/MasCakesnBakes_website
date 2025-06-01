@@ -80,11 +80,11 @@
         "type": "cc6in",
         "id": 100020,
         "name": "Mango Cheesecake",
-        "description": "Featuring crushed Oreo cookies blended in our silky-smooth cream cheese filling on top a buttery Oreo crust.",
+        "description": "Mango :].",
         "price1": "$26.50/half a dozen",
         "price2": "$50.50/dozen",
-        "a_image": "images/mango_6in_cc_1.jpg",
-        "b_image": "images/oreo_cc_2.jpg",
-        "c_image": "images/oreo_cc_1_duo.jpg"
+        "a_image": "images/mango_6in_cc_3.jpg",
+        "b_image": "images/mango_6in_cc_2.jpg",
+        "c_image": "images/mango_6in_cc_4.jpg"
     }
 ]
