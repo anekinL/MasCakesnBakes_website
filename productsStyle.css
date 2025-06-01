@@ -245,7 +245,7 @@ body {
 
 .dainty-subwrapper2 {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2vw;
     text-align: center;
     justify-content: center;
@@ -287,6 +287,75 @@ body {
     height: 18vw;
     width: 12vw;
     object-fit: cover;
+}
+
+.full_cc_outer_container {
+    background-color: #d5e7b8;
+    aspect-ratio: 1/1;
+    height: fit-content;
+    width: fit-content;
+    padding: 1.8vw;
+    margin: 2vw;
+    margin-bottom: 0;
+}
+
+.full_cc_container {
+    position: relative;
+    border: 0.3rem solid #fffde7;
+}
+
+.full_cc_slider-container {
+    position: relative;
+    width: 21vw; /* Set the width of the slider */
+    height: 21vw; /* Set the height of the slider */
+    overflow: hidden; /* Hide overflow to only show one image at a time */
+}
+
+.full_cc_slider {
+    display: flex; /* Arrange images side by side */
+    transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+    width: calc(21vw * 3); /* Width = number of images * container width */
+    height: 100%;
+}
+
+.full_cc_slider img {
+    position: relative;
+    width: 36vw; /* Match the container width */
+    height: 36vw; /* Match the container height */
+    object-fit: cover; /* Ensure the image fits well */
+    transform: translate(-10%, -10%);
+    top: -60px;
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 35px; /* Set a fixed width */
+    height: 35px; /* Set height equal to width for a perfect circle */
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 7.5px;
+    font-size: 1.25em;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.arrow.left {
+    left: 5px;
+}
+
+.arrow.right {
+    right: 5px;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .dainty-wrapper-container {
