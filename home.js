@@ -112,6 +112,9 @@ function showCart() {
     document.querySelector("body").classList.toggle("showCart");
 }
 
+const isHomePage = window.location.pathname.includes("home.html");
+let ccfCount = 0;
+
 const addItemsToHTML = () => {
     //subwrapper2HTMLcc.innerHTML = "";
     let name = "";
@@ -194,20 +197,33 @@ const addItemsToHTML = () => {
                     </div>
                 `;
             }
-            switch (element.type) {
-                case 'ccf':
-                    subwrapper2HTMLcc.appendChild(newProduct);
-                    break;
-                case 'cci':
-                    subwrapper2HTMLm.appendChild(newProduct);
-                    break;
-                case 't':
-                    subwrapper2HTMLt.appendChild(newProduct);
-                    break;
-                case 'cc6in':
-                    subwrapper2HTMLcc6in.appendChild(newProduct);
-                    break;
+            if (element.type === "ccf") {
+                if (isHomePage && ccfCount >= 3) return; // Skip extras
+                subwrapper2HTMLcc.appendChild(newProduct);
+                ccfCount++;
+                console.log("ccfCount: " + ccfCount, "isHomePage: " + isHomePage, element.name);
+            } else if (element.type === "cci") {
+                subwrapper2HTMLm.appendChild(newProduct);
+            } else if (element.type === "t") {
+                subwrapper2HTMLt.appendChild(newProduct);
+            } else if (element.type === "cc6in") {
+                subwrapper2HTMLcc6in.appendChild(newProduct);
             }
+
+            // switch (element.type) {
+            //     case 'ccf':
+            //         subwrapper2HTMLcc.appendChild(newProduct);
+            //         break;
+            //     case 'cci':
+            //         subwrapper2HTMLm.appendChild(newProduct);
+            //         break;
+            //     case 't':
+            //         subwrapper2HTMLt.appendChild(newProduct);
+            //         break;
+            //     case 'cc6in':
+            //         subwrapper2HTMLcc6in.appendChild(newProduct);
+            //         break;
+            // }
         });
     }
 }

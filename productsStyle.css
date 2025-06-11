@@ -253,7 +253,6 @@ body {
     margin-top: 0vw;
     margin-bottom: 0px;
     grid-template-rows: auto;
-    grid-auto-rows: 0px;
     overflow: hidden;
 }
 
@@ -394,7 +393,6 @@ body {
 }
 
 .dainty-subwrapper2 .showcase-item{
-    display: grid;
     background-color: #f3f1d6;
     border-radius: 20px;
     padding-bottom: 15px;
@@ -405,6 +403,16 @@ body {
     font-size: large;
     margin: 1vw
 }
+
+.dainty-subwrapper2 .showcase-item h3{
+    font-weight: 500;
+    font-size: 1em;
+    margin: 1vw;
+    color: #646464;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+}
+
 .dainty-subwrapper2 .showcase-item .price{
     display: flex;
     align-items: center;
