@@ -29,7 +29,14 @@ main {
 
 body {
     font-family: "Montserrat", sans-serif;
-    color: #313131;
+    color: #313131
+}
+
+.titlebar_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
@@ -117,10 +124,6 @@ body {
     cursor: pointer;
 }
 
-.line {
-    background-color: #d5e7b8;
-    height: 0.2vw;
-}
 /* ================================================================= BODY ================================================================= */
 /* ================================================================= BIG PICTURE ================================================================= */
 
@@ -134,10 +137,18 @@ body {
     max-height: 38vw;
     overflow: hidden;
     margin: 0 auto;
-    background-attachment: fixed;
+}
+
+.slider_cover {
+    height: 38vw;
+    width: 100%;
+    background-color: rgba(0, 0, 0,0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    position: absolute;
 }
   
-.slider {
+.slider{
     display: flex;
     aspect-ratio: 16/9;
     overflow-x: auto;
@@ -145,12 +156,12 @@ body {
     scroll-behavior: smooth;
     border-radius: 0.5rem;
 }
-  
+
 .slider::-webkit-scrollbar {
     display: none;
 }
   
-.slider img {
+.slider img{
     flex: 1 0 100%;
     scroll-snap-align: start;
     object-fit: cover;
@@ -234,18 +245,9 @@ body {
     font-size: 2vw;
 }
 
-.dainty-subwrapper2 .showcase-item h3{
-    font-weight: 500;
-    font-size: 1em;
-    margin: 1vw;
-    color: #646464;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
-}
-
 .dainty-subwrapper2 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 2vw;
     text-align: center;
     justify-content: center;
@@ -278,13 +280,13 @@ body {
     overflow: hidden;
     border: 0.3rem solid #fffde7;
     border-right: 0rem;
-    height: 18vw;
-    width: 12vw;
+    height: 21vw;
+    width: 14vw;
 }
 
 .main_item_container img { /* this basically moves the picture within the overflow section*/
-    height: 18vw;
-    width: 12vw;
+    height: 21vw;
+    width: 14vw;
     object-fit: cover;
 }
 
@@ -371,7 +373,7 @@ body {
 .main_item_row img {
     cursor: pointer;
     aspect-ratio: 1/1;
-    width: 6vw;
+    width: 7vw;
     object-fit: cover;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
@@ -400,7 +402,7 @@ body {
 
 .dainty-subwrapper2 .showcase-item h2{
     font-weight: 500;
-    font-size: large;
+    font-size: 1.25em;
     margin: 1vw
 }
 
@@ -420,14 +422,6 @@ body {
     gap: 10px;
 }
 
-.dainty-subwrapper2 .showcase-item button{
-    background-color: #353432;
-    color: #eee;
-    border: none;
-    padding: 10px 15px;
-    margin-top: 10px;
-    border-radius: 20px;
-}
 
 .cc_option {
     appearance: none;
@@ -477,10 +471,13 @@ body {
     background-color: #d5e7b8;
 }
 
-.cartbtn_container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.addCart{
+    background-color: #353432;
+    color: #eee;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 20px;
 }
 /* The expanding image container (positioning is needed to position the close button and the text) */
 
@@ -503,6 +500,21 @@ body {
     cursor: pointer;
 }
 
+.morebtn {
+    align-self: center;
+    font-size: large;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;
+    height: fit-content;
+    background-color: #d5e7b8;
+    text-decoration: none;
+    color: #000000;
+}
+
+.morebtn:hover {
+    opacity: 70%;
+}
 /* ===============================Cart tab==================================*/
 
 .cart-tab{
@@ -528,7 +540,6 @@ body {
 .cart-tab button{
     background-color: #f3f1d6;
     border: none;
-    font-family: Poppins;
     font-weight: 500;
     cursor: pointer;
 }
@@ -611,6 +622,97 @@ body.showCart header{
     }
 }
 
+/* =================================Footer================================= */
+
+footer {
+    background-color: #fdfbd6
+}
+
+footer a {
+    color: #d8d6c5;
+    text-decoration: none;
+    opacity: 70%;
+}
+
+footer h1 {
+    color: #a3a293;
+}
+
+.contact_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh;
+}
+
+.social_icons img{
+    margin: 5px;
+    width: 50px;
+}
+
+@media screen and (max-width: 500px) {
+
+    .logo-title {
+        font-size:1em;
+    }
+
+    .nav_links li {
+        padding: 0px 15px;
+    }
+
+    .slider-wrapper{
+        max-height: 40vh;
+    }
+
+    .slider_cover{
+        height: 40vh;
+    }
+
+    .slider_cover img{
+        height: 40vw !important;
+        margin-top: 3vh !important;
+    }
+
+    /* main body */
+
+    .cheesecake-title h2 {
+        font-size: 3.5vh;
+        padding: 2rem;
+        padding-bottom: 0%;
+        padding-top: 1vh;
+    }
+
+    .dainty-item-name {
+        font-size: 1em;
+    }
+
+    .dainty-main-item {
+        width: 35vw;
+        height: 30vw;
+    }
+
+    .dainty-item-name-wrapper {
+        font-size: 2vh;
+    }
+
+    .title-wrapper {
+        padding-bottom: 0.8vw;
+    }
+
+    #top_seller_1{
+        display: none;
+    }
+
+    .dainty-subwrapper2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-bottom: 2vh;
+    }
+
+}
+
 /*==============================================CHECKOUT PAGE==================================================
 
 /* Container */
@@ -644,8 +746,15 @@ body.showCart header{
 .checkout_title {
     text-align: center; 
     color: #353432;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 1.5em;
+}
+
+.checkout_subtitle {
+    text-align: center; 
+    color: #555452;
+    margin-bottom: 20px;
+    font-size: 1.25em;
 }
 
 /* Form */
@@ -665,6 +774,7 @@ body.showCart header{
 
 form .checkout_row {
     display: flex;
+    flex: 1;
     justify-content: space-between;
     gap: 10px;
 }
@@ -749,9 +859,6 @@ form .checkout_row {
     cursor: pointer;
 }
 
-#PrefRow {
-    gap: 50px;
-}
 
 .keep-shopping {
     font-size: 1em;
@@ -765,6 +872,17 @@ form .checkout_row {
 }
 
 /* Responsive Design */
+@media (max-width: 1500px){
+    .checkout_container {
+        max-height: 90%;
+        padding-top: 1.5%;
+    }
+
+    #customerMessage {
+        height: 4rem;
+        flex: none;
+    }
+}
 @media (max-width: 768px) {
     .checkout_row {
         display: flex;
@@ -774,34 +892,4 @@ form .checkout_row {
     .checkout_input {
         width: 100%;
     }
-}
-
-/* =================================Footer================================= */
-
-footer {
-    background-color: #fdfadcd8
-}
-
-footer a {
-    color: #d8d6c5;
-    text-decoration: none;
-    opacity: 70%;
-}
-
-footer h1 {
-    color: #a3a293;
-}
-
-.contact_info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    padding: 2vh;
-}
-
-.social_icons img{
-    margin: 5px;
-    width: 50px;
 }
