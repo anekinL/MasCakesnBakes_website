@@ -272,8 +272,14 @@ body {
     height: fit-content;
     width: fit-content;
     padding: 1.8vw;
-    margin: 2vw;
     margin-bottom: 0;
+    margin: 2vw;
+}
+
+.multi-item-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* crop/scale nicely */
 }
 
 .main_item_container {
@@ -608,20 +614,10 @@ body.showCart header{
     transform: translateX(-45vh);
 }
 
-@media screen and (max-width:1300px) {
-    .cart-tab {
-        width: 70vh;
-        inset:0 -70vh 0 auto;
-    }
-
-    body.showCart main{
-        transform: translateX(-70vh);
-    }
-    
-    body.showCart header{
-        transform: translateX(-70vh);
-    }
+.removebtn {
+    margin-top: 10px;
 }
+
 
 /* =================================Footer================================= */
 
@@ -871,8 +867,9 @@ form .checkout_row {
 .keep-shopping:hover {
     color: #0088a9;
 }
-
+/*=============================================================================================================================================================*/
 /* Responsive Design */
+/*=============================================================================================================================================================*/
 @media (max-width: 1500px){
     .checkout_container {
         max-height: 90%;
@@ -893,4 +890,183 @@ form .checkout_row {
     .checkout_input {
         width: 100%;
     }
+}
+
+@media screen and (max-width:1300px) {
+    .cart-tab {
+        width: 70vh;
+        inset:0 -70vh 0 auto;
+    }
+
+    body.showCart main{
+        transform: translateX(-70vh);
+    }
+    
+    body.showCart header{
+        transform: translateX(-70vh);
+    }
+}
+
+/* --------------------------------------
+   TABLET & SMALL LAPTOPS (≤1024px)
+   -------------------------------------- */
+@media (max-width: 1024px) {
+  /* header/nav */
+  header {
+    grid-template-columns: 1fr 1fr 40px;
+    padding: 2vh 1vh;
+  }
+  .nav_links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Top Sellers row */
+  .dainty-subwrapper1 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 1rem;
+  }
+  .dainty-main-item {
+    width: 30vw;
+    height: 30vw;
+  }
+
+  /* 3-column grids → 2 columns */
+  .dainty-subwrapper2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vw;
+    margin: 3vw 1.5vw;
+  }
+  .cheesecake-title h2 {
+    font-size: 1.75rem;
+    padding: 1.5rem;
+  }
+
+  /* full-cc & mini-item containers */
+
+  .multi-item-container{
+    margin: 2vw auto;
+  }
+  .main_item_container{
+    height: 42vh;
+    width: 28vh;
+  }
+  .main_item_container img {
+    height: 42vh;
+    width: 28vh;
+    object-fit: cover;
+  }
+  .main_item_row img {
+    aspect-ratio: 1/1;
+    width: 14vh;
+  }
+
+  /* Shoopping cart tab */
+  .cart-tab {
+    width: 50vh;
+    inset: 0 -50vh 0 auto;
+  }
+
+  body.showCart main{
+        transform: translateX(-50vh);
+    }
+    
+    body.showCart header{
+        transform: translateX(-50vh);
+    }
+  
+  /* Full-cc slider resizing */
+  .full_cc_slider-container {
+    width: 40vw;
+    height: 40vw;
+  }
+  .full_cc_slider {
+    width: calc(40vw * 3);
+  }
+  .full_cc_slider img {
+    width: 40vw;
+    height: 40vw;
+    transform: none;
+    top: 0;
+  }
+  
+  
+}
+
+/* --------------------------------------
+   MOBILE PHONES (≤600px)
+   -------------------------------------- */
+@media (max-width: 600px) {
+  /* stack header/nav vertically */
+  header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1.5vh 1vh;
+  }
+  .nav_links {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .logo-title {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  .icon-cart {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  /* Top Sellers → column */
+  .dainty-subwrapper1 {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+  }
+  .dainty-main-item {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  /* 3-column grids → 1 column */
+  .dainty-subwrapper2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2vw 1vw;
+  }
+  .cheesecake-title h2 {
+    font-size: 1.25rem;
+    padding: 1rem 0;
+  }
+
+  /* full-cc & mini-item containers */
+  .full_cc_outer_container,
+  .multi-item-container {
+    width: 80vw;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  .full_cc_slider-container {
+    width: 80vw;
+    height: 80vw;
+  }
+  .full_cc_slider {
+    width: calc(80vw * 3);
+  }
+  .full_cc_slider img {
+    width: 80vw;
+    height: 80vw;
+    transform: none;
+    top: 0;
+  }
+
+  /* “Show More” button */
+  .morebtn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
 }
