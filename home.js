@@ -366,6 +366,34 @@ function redirectToPage(url) {
     window.location.href = url;
 }
 
+// ===== Mobile drawer menu =====
+function toggleMenu(){
+  document.body.classList.toggle('showMenu');
+  const btn = document.getElementById('menuToggle');
+  if (btn) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', (!expanded).toString());
+  }
+}
+
+const menuToggle = document.getElementById('menuToggle');
+const menuClose  = document.getElementById('menuClose');
+
+if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+if (menuClose)  menuClose.addEventListener('click', toggleMenu);
+
+// Close the drawer after a nav tap (nice on mobile)
+document.querySelectorAll('nav#mobileNav a').forEach(a => {
+  a.addEventListener('click', () => {
+    if (document.body.classList.contains('showMenu')) toggleMenu();
+  });
+});
+
+// Optional: close on ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.body.classList.contains('showMenu')) toggleMenu();
+});
+
 function send_customer_datatest(email,phone) {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://your-server.com/api/submit_data', true);
@@ -377,6 +405,8 @@ function send_customer_datatest(email,phone) {
     };
     xhr.send(JSON.stringify({ email: email, phone: phone }));
 }
+
+// ==========
 
 function send_customer_data(email,phone) {
     console.log(email);
