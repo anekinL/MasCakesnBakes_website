@@ -1045,15 +1045,8 @@ form .checkout_row {
   .full_cc_outer_container,
   .multi-item-container {
     width: 80vw;
-    height: 80vw;
     margin: 1rem auto;
     padding: 1rem;
-    aspect-ratio: 1/1;
-  }
-  .full_cc_container {
-    width: 80vw;
-    height: 80vw;
-  }
   }
   .full_cc_slider-container {
     width: 80vw;
@@ -1074,20 +1067,6 @@ form .checkout_row {
     padding: 8px 12px;
     font-size: 0.9rem;
   }
-
-  /* Shopping cart tab */
-    .cart-tab {
-        width: 100vw;
-        inset: 0 -100vw 0 auto;
-    }
-
-  body.showCart main{
-        transform: translateX(-10vh);
-    }
-    
-    body.showCart header{
-        transform: translateX(-10vh);
-    }
 }
 
 /* ===== Mobile hamburger & slide-in drawer ===== */
