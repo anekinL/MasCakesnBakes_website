@@ -649,27 +649,6 @@ footer h1 {
 
 @media screen and (max-width: 500px) {
 
-    .logo-title {
-        font-size:1em;
-    }
-
-    .nav_links li {
-        padding: 0px 15px;
-    }
-
-    .slider-wrapper{
-        max-height: 40vh;
-    }
-
-    .slider_cover{
-        height: 40vh;
-    }
-
-    .slider_cover img{
-        height: 40vw !important;
-        margin-top: 3vh !important;
-    }
-
     /* main body */
 
     .cheesecake-title h2 {
@@ -994,7 +973,7 @@ form .checkout_row {
 }
 
 /* --------------------------------------
-   MOBILE PHONES (≤600px)
+   MOBILE PHONES (≤900px)
    -------------------------------------- */
 @media (max-width: 900px) {
   /* stack header/nav vertically */
@@ -1002,6 +981,7 @@ form .checkout_row {
     grid-template-columns: 1fr;
     text-align: center;
     padding: 1.5vh 1vh;
+    height: 7.5vh;
   }
   .nav_links {
     flex-direction: column;
@@ -1011,11 +991,41 @@ form .checkout_row {
   .logo-title {
     font-size: 1.5rem;
     margin: 1rem 0;
+    display: none;
   }
   .icon-cart {
     position: absolute;
     top: 1rem;
     right: 1rem;
+  }
+
+  /* logo and landing image carosel */
+  .slider-wrapper { 
+    max-height: 150vw;      /* was 38vw; make it nice and tall */
+  }
+
+  .slider {
+    aspect-ratio: auto;    /* stop forcing 16:9 */
+    height: 150vw;          /* explicit height for the carousel track */
+  }
+  .slider img {
+    height: 150vw;          /* ensure each slide matches the new height */
+    object-fit: cover;     /* keep images neatly cropped */
+  }
+
+  .slider_cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vw;
+  }
+
+  .slider_cover img {
+    display: block;
+    height: auto !important;   /* override inline height if present */
+    margin: 0vh !important;       /* override inline margin if present */
+    max-height: 50%;          
+    object-fit: contain;
   }
 
   /* Top Sellers → column */
@@ -1049,14 +1059,14 @@ form .checkout_row {
     padding: 1rem;
   }
   .full_cc_slider-container {
-    width: 80vw;
+    width: 70vw;
     height: 80vw;
   }
   .full_cc_slider {
     width: calc(80vw * 3);
   }
   .full_cc_slider img {
-    width: 80vw;
+    width: 70vw;
     height: 80vw;
     transform: none;
     top: 0;
