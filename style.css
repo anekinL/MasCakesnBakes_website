@@ -947,12 +947,12 @@ form .checkout_row {
   }
 
   body.showCart main{
-        transform: translateX(-49.9vh);
-    }
+    transform: translateX(-49.9vh);
+  }
     
     body.showCart header{
-        transform: translateX(-49.9vh);
-    }
+    transform: translateX(-49.9vh);
+  }
   
   /* Full-cc slider resizing */
   .full_cc_slider-container {
@@ -973,9 +973,9 @@ form .checkout_row {
 }
 
 /* --------------------------------------
-   MOBILE PHONES (≤900px)
+   MOBILE PHONES (≤800px)
    -------------------------------------- */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   /* stack header/nav vertically */
   header {
     grid-template-columns: 1fr;
@@ -1058,6 +1058,10 @@ form .checkout_row {
     margin: 1rem auto;
     padding: 1rem;
   }
+  .full_cc_container{
+    width: 70xw
+  }
+
   .full_cc_slider-container {
     width: 70vw;
     height: 80vw;
@@ -1076,6 +1080,20 @@ form .checkout_row {
   .morebtn {
     padding: 8px 12px;
     font-size: 0.9rem;
+  }
+  
+  /*===== Cart tab =====*/
+  body.showCart main{
+    transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
+  }
+    
+  body.showCart header{
+    transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
+  }
+
+  .cart-tab{
+    width: 100%;
+    inset: 0 -100% 0 auto;
   }
 }
 
@@ -1099,9 +1117,9 @@ body.showMenu .hamburger span:nth-child(3){ transform:translateY(-7px) rotate(-4
 
 .menu-close { display: none; }
 
-/* Drawer styles (mobile only) */
-@media (max-width: 900px){
-  /* show the hamburger on phones */
+/* this media needs to be AFTER the css of the hamburder menu or else it wont show */
+@media (max-width: 800px) {
+    /* show the hamburger on phones */
   .hamburger{ display:block; }
 
   header nav#mobileNav{
