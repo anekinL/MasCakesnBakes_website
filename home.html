@@ -203,14 +203,14 @@
             <div class="checkout_container">
                 <a class="keep-shopping" onclick="document.querySelector('.checkout_body_container').style.display='none';">&larr; Continue Shopping</a>
                 <h1 class="checkout_title" id="TotalPriceText"></h1>
-                <h1 class="checkout_title">Almost done, we just need some contact information</h1>
+                <h1 class="checkout_title" id="checkout_subtitle">Almost done, we just need some contact information</h1>
                 <h3 class="checkout_subtitle">Once we review your order we will contact you again, all orders are paid by Cash or E-Transfers</h3>
                 <form class="checkout_form">
                     <div class="checkout_row">
                         <input type="text" class="checkout_input" id="customerName" placeholder="Full Name" required>
                         <input type="email" class="checkout_input" id="customerEmail" placeholder="Email Address" required>
                     </div>
-                    <div class="checkout_row">
+                    <div class="checkout_row" id="errorRow">
                         <div class="error_txt" id="customerName">Full Name can't be blank</div>
                         <div class="error_txt email" id="customerEmail">Email can't be blank</div>
                     </div>
@@ -219,13 +219,13 @@
                         <div class="pref_contact">
                             <label for="preferredContact">Preferred Contact Method:</label>
                             <select id="preferredContact" name="preferredContact">
-                                <option value="Phone">Phone</option>
+                                <option value="Phone">Mobile</option>
                                 <option value="Email">Email</option>
                                 <option value="Both">Both</option>
                             </select>
                         </div>
                     </div>
-                    <div class="checkout_row">
+                    <div class="checkout_row" id="errorRow2">
                         <div class="error_txt" id="customerNumber">Phone Number can't be blank</div>
                         <div class="error_txt"></div>
                     </div>

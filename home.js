@@ -11,6 +11,8 @@ let subwrapper = document.querySelector(".dainty-wrapper");
 let cartListHTML = document.querySelector(".cart-list");
 let iconCartCount = document.querySelector(".icon-cart span");
 
+const mqMobile = window.matchMedia('(max-width: 900px)');
+
 
 // Array of images for the product
 
@@ -118,13 +120,14 @@ let ccfCount = 0;
 const addItemsToHTML = () => {
     //subwrapper2HTMLcc.innerHTML = "";
     let name = "";
+    const isMobile = mqMobile.matches;
     if (products.length > 0) {
         products.forEach(element => { 
             let newProduct = document.createElement("div");
             newProduct.dataset.id = element.id;
             newProduct.classList.add("showcase-item");
 
-            if (element.type == "cc6in") {
+            if (element.type == "cc6in" || isMobile) {
                 newProduct.innerHTML = `
                     <div class="full_cc_outer_container" id="${element.id}">
                             <div class="full_cc_container">
@@ -202,7 +205,7 @@ const addItemsToHTML = () => {
                 subwrapper2HTMLcc.appendChild(newProduct);
                 ccfCount++;
                 console.log("ccfCount: " + ccfCount, "isHomePage: " + isHomePage, element.name);
-            } else if (element.type === "cci") {
+            } else if (element.type === "cci" || element.type === "cci_mobile") {
                 subwrapper2HTMLm.appendChild(newProduct);
             } else if (element.type === "t") {
                 subwrapper2HTMLt.appendChild(newProduct);
@@ -406,6 +409,56 @@ function send_customer_datatest(email,phone) {
     xhr.send(JSON.stringify({ email: email, phone: phone }));
 }
 
+
+function attachSwipeHandlers() {
+  const containers = document.querySelectorAll('.full_cc_slider-container');
+  containers.forEach((cont) => {
+    let startX = 0, curX = 0, tracking = false;
+
+    // Let vertical page scroll work normally; only track horizontal swipes
+    cont.style.touchAction = 'pan-y';
+
+    const getIDs = () => {
+      const sliderID = cont.parentElement.parentElement.id;           // full_cc_outer_container id (your product id)
+      const track = document.getElementById('slider' + sliderID);     // the sliding <div>
+      return { sliderID, track };
+    };
+
+    cont.addEventListener('touchstart', (e) => {
+      tracking = true;
+      startX = e.touches[0].clientX;
+      curX = startX;
+    }, { passive: true });
+
+    cont.addEventListener('touchmove', (e) => {
+      if (!tracking) return;
+      curX = e.touches[0].clientX;
+    }, { passive: true });
+
+    cont.addEventListener('touchend', () => {
+      if (!tracking) return;
+      tracking = false;
+
+      const dx = curX - startX;
+      const threshold = 40; // pixels: adjust if you want gentler/harder swipe
+
+      if (Math.abs(dx) < threshold) return; // ignore tiny moves
+
+      const { sliderID, track } = getIDs();
+      if (!sliderDict.hasOwnProperty(sliderID)) sliderDict[sliderID] = 0;
+
+      const images = track.querySelectorAll('img');
+      if (dx < 0) {
+        // swipe left -> next
+        sliderDict[sliderID] = (sliderDict[sliderID] + 1) % images.length;
+      } else {
+        // swipe right -> previous
+        sliderDict[sliderID] = (sliderDict[sliderID] - 1 + images.length) % images.length;
+      }
+      updateSlider(track, sliderID);
+    });
+  });
+}
 // ==========
 
 function send_customer_data(email,phone) {
@@ -449,7 +502,7 @@ const occasion = document.getElementById("customerOccasion");
 const message = document.getElementById("customerMessage");
 function sendEmail() {
 
-    const bodyMessage = `Full Name: ${fullName.value}<br> Email: ${email.value}<br> Phone Number: ${phoneNumber.value}<br> Occasion: ${occasion.value}<br> Message: ${message.value}<br>`;
+    const bodyMessage = `Full Name: ${fullName.value}<br> Email: ${email.value}<br> Phone Number: ${phoneNumber.value}<br> Message: ${message.value}<br>`;
     let finalMessage = getEachItem(bodyMessage);
     checkInputs();
 
@@ -566,6 +619,7 @@ const initApp = () => {
     .then(data => {
         products = data;
         addItemsToHTML();
+        attachSwipeHandlers(); 
 
         //get cart from memory JSON file
         if (localStorage.getItem('cart')) {
