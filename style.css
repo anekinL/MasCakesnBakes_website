@@ -4,11 +4,6 @@
     padding: 0px;
 }
 
-html {
-    max-width: 100%;
-    max-height: 100%;
-}
-
 header {
     display: grid;
     grid-template-columns: 0.85fr 1fr 30px;
@@ -26,7 +21,7 @@ main {
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     color: #313131
 }
 
@@ -927,6 +922,10 @@ form .checkout_row {
    MOBILE PHONES (≤800px)
    -------------------------------------- */
 @media (max-width: 800px) {
+
+  /* .dainty-wrapper{
+    display: none;
+  } */
   /* stack header/nav vertically */
   header {
     grid-template-columns: 1fr;
@@ -981,6 +980,7 @@ form .checkout_row {
 
   /* Top Sellers → column */
   .dainty-subwrapper1 {
+    /* display: none; */
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
@@ -991,15 +991,20 @@ form .checkout_row {
     height: 80vw;
   }
 
-  /* 3-column grids → 1 column */
+  /* topsellers/titles */
   .dainty-subwrapper2 {
     grid-template-columns: 1fr;
     gap: 0.8vw;
     margin: 2vw 1vw;
   }
   .cheesecake-title h2 {
-    font-size: 1.25rem;
-    padding: 1rem 0;
+    font-size: 1.5rem;
+    padding: 0.5rem 2rem;
+  }
+
+  .title-wrapper {
+    margin-bottom: 2vh;
+    padding-bottom: 0.5vw;
   }
 
   /* full-cc & mini-item containers */
@@ -1045,11 +1050,12 @@ form .checkout_row {
   }
   
   /*===== Cart tab =====*/
-  body.showCart main{
+  body.showCart main , body.showCart header, body.showCart footer, body.showCart .contact_info{
     transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
   }
     
-  body.showCart header{
+  
+  body.showCart footer{
     transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
   }
 
@@ -1071,7 +1077,6 @@ form .checkout_row {
   }
 
   .checkout_container{
-    padding-left:;
   }
 
   .checkout_subtitle{

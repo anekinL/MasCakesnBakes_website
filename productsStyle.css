@@ -6,11 +6,6 @@
     padding: 0px;
 }
 
-html {
-    max-width: 100%;
-    max-height: 100%;
-}
-
 header {
     display: grid;
     grid-template-columns: 0.85fr 1fr 30px;
@@ -28,7 +23,7 @@ main {
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     color: #313131
 }
 
@@ -883,13 +878,238 @@ form .checkout_row {
         flex: none;
     }
 }
-@media (max-width: 768px) {
-    .checkout_row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .checkout_input {
-        width: 100%;
-    }
+
+/* --------------------------------------
+   MOBILE PHONES (≤800px)
+   -------------------------------------- */
+@media (max-width: 800px) {
+  /* stack header/nav vertically */
+  header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1.5vh 1vh;
+    height: 7.5vh;
+  }
+  .nav_links {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .logo-title {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    display: none;
+  }
+  .icon-cart {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  /* logo and landing image carosel */
+  .slider-wrapper { 
+    max-height: 150vw;      /* was 38vw; make it nice and tall */
+  }
+
+  .slider {
+    aspect-ratio: auto;    /* stop forcing 16:9 */
+    height: 150vw;          /* explicit height for the carousel track */
+  }
+  .slider img {
+    height: 150vw;          /* ensure each slide matches the new height */
+    object-fit: cover;     /* keep images neatly cropped */
+  }
+
+  .slider_cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vw;
+  }
+
+  .slider_cover img {
+    display: block;
+    height: auto !important;   /* override inline height if present */
+    margin: 0vh !important;       /* override inline margin if present */
+    max-height: 50%;          
+    object-fit: contain;
+  }
+
+  /* Top Sellers → column */
+  .dainty-subwrapper1 {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+  }
+  .dainty-main-item {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  /* 3-column grids → 1 column */
+  .dainty-subwrapper2 {
+    grid-template-columns: 1fr;
+    gap: 0.8vw;
+    margin: 2vw 1vw;
+  }
+  .cheesecake-title h2 {
+    font-size: 1.25rem;
+    padding: 1rem 0;
+  }
+
+  /* full-cc & mini-item containers */
+  .full_cc_outer_container {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .multi-item-container {
+    width: 80vw;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  .full_cc_container{
+  }
+
+  .full_cc_slider-container {
+    width: 80vw;
+    height: 80vw;
+  }
+  .full_cc_slider {
+    width: calc(80vw * 3);
+  }
+  .full_cc_slider img {
+    width: 80vw;
+    height: 80vw;
+    transform: none;
+    top: 0;
+  }
+
+   .dainty-subwrapper2 .showcase-item{
+    padding-bottom: 0px;
+  }
+
+  .addCart{
+    margin-bottom: 15px;
+  }
+
+  /* “Show More” button */
+  .morebtn {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+  
+  /*===== Cart tab =====*/
+  body.showCart main{
+    transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
+  }
+    
+  body.showCart header{
+    transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
+  }
+
+  .cart-tab{
+    width: 100%;
+    inset: 0 -100% 0 auto;
+  }
+
+  .checkout_row {
+    flex-direction: column;
+  }
+
+  .checkout_input {
+    width: 100%;
+  }
+
+  #errorRow, #errorRow2 {
+    display:none;
+  }
+
+  .checkout_container{
+  }
+
+  .checkout_subtitle{
+    font-size:1rem;
+  }
+
+  #checkout_subtitle{
+    font-size:1.25rem;
+  }
+
+  #TotalPriceText{
+    margin-top: 15px;
+  }
+
+  #customerMessage {
+    margin-top: 4vw;
+    height: 15vh;
+    padding: 10px 12px;
+  }
+
+  .checkout_button {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+}
+
+
+/* ===== Mobile hamburger & slide-in drawer ===== */
+.hamburger{ 
+  display:none; background:none; border:0; width:40px; height:40px; position:absolute; 
+  top:12px; left:12px; cursor:pointer; z-index:1100;
+}
+.hamburger span{
+  position:absolute; left:8px; right:8px; height:2px; background:#313131;
+  transition:transform .25s, opacity .2s, top .25s;
+}
+.hamburger span:nth-child(1){ top:12px; }
+.hamburger span:nth-child(2){ top:19px; }
+.hamburger span:nth-child(3){ top:26px; }
+
+/* turn hamburger into an "X" when open */
+body.showMenu .hamburger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+body.showMenu .hamburger span:nth-child(2){ opacity:0; }
+body.showMenu .hamburger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+.menu-close { display: none; }
+
+/* Improve touch behavior on mobile carousels */
+.full_cc_slider-container { touch-action: pan-y; }
+.full_cc_slider img { user-select: none; -webkit-user-drag: none; pointer-events: none; }
+
+/* this media needs to be AFTER the css of the hamburder menu or else it wont show */
+@media (max-width: 800px) {
+    /* show the hamburger on phones */
+  .hamburger{ display:block; }
+
+  header nav#mobileNav{
+    position:fixed; top:0; left:0; height:100vh; width:78vw; max-width:320px;
+    background:#fdfbd6; /* matches title bar */
+    padding:16px 18px;
+    transform:translateX(-100%);
+    transition:transform .35s ease;
+    box-shadow:2px 0 12px rgba(0,0,0,.15);
+    z-index:1090;
+  }
+  body.showMenu header nav#mobileNav{ transform:translateX(0); }
+
+  /* vertical list with comfy tap targets */
+  header nav#mobileNav .nav_links{
+    flex-direction:column; gap:14px;
+  }
+  header nav#mobileNav .nav_links li a{
+    padding:12px 8px; font-size:1.05rem; color:#000; text-decoration:none;
+  }
+  header nav#mobileNav .nav_links li a:hover{ color:#0088a9; }
+
+  /* Close button inside drawer */
+  .menu-close{
+    display:block; background:none; border:0; font-size:28px; line-height:1;
+    cursor:pointer; color:#313131; margin-bottom:12px;
+  }
+
+  /* stop body scroll when menu is open */
+  body.showMenu{ overflow:hidden; }
 }

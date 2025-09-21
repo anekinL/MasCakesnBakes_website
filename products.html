@@ -14,7 +14,11 @@
         <div class="titlebar_container">
 
             <header>
-                <nav>
+                <button class="hamburger" id="menuToggle" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav id="mobileNav" class="mobile_nav" aria-hidden="true">
+                    <button class="menu-close" id="menuClose" aria-label="Close menu"></button>
                     <ul class="nav_links">
                         <li><a href="home.html">Home</a></li>
                         <li><a href="products.html">Cakes</a></li>
