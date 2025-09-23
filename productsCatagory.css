@@ -1,0 +1,15 @@
+
+/* MAIN*/
+.category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5vw 0;
+}
+
+.title-wrapper h2 {
+    background-color: #fffde7;
+    padding: 8vw;
+    padding-bottom: 1vw;
+    padding-top: 0%;
+}

@@ -135,7 +135,7 @@ body {
 .slider_cover {
     height: 38vw;
     width: 100%;
-    background-color: rgba(0, 0, 0,0.5);
+    background-color: rgba(0, 0, 0,0.55);
     backdrop-filter: blur(5px);
     z-index: 1;
     position: absolute;
@@ -177,6 +177,10 @@ body {
     background-color: white;
     opacity: 75%;
     transition: opacity ease 250ms;
+}
+
+.explore_button {
+    display: none;
 }
 
 /* ================================================================= MAIN ================================================================= */
@@ -923,9 +927,10 @@ form .checkout_row {
    -------------------------------------- */
 @media (max-width: 800px) {
 
-  /* .dainty-wrapper{
+  .dainty-wrapper{
     display: none;
-  } */
+  }
+
   /* stack header/nav vertically */
   header {
     grid-template-columns: 1fr;
@@ -951,15 +956,18 @@ form .checkout_row {
 
   /* logo and landing image carosel */
   .slider-wrapper { 
-    max-height: 150vw;      /* was 38vw; make it nice and tall */
+    max-height: 160vw;      /* was 38vw; make it nice and tall */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .slider {
     aspect-ratio: auto;    /* stop forcing 16:9 */
-    height: 150vw;          /* explicit height for the carousel track */
+    height: 160vw;          /* explicit height for the carousel track */
   }
   .slider img {
-    height: 150vw;          /* ensure each slide matches the new height */
+    height: 160vw;          /* ensure each slide matches the new height */
     object-fit: cover;     /* keep images neatly cropped */
   }
 
@@ -967,7 +975,7 @@ form .checkout_row {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150vw;
+    height: 160vw;
   }
 
   .slider_cover img {
@@ -976,6 +984,19 @@ form .checkout_row {
     margin: 0vh !important;       /* override inline margin if present */
     max-height: 50%;          
     object-fit: contain;
+  }
+
+  .explore_button {
+    display: block;
+    position: absolute;
+    bottom: 10%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: #eee;
+    background-color: #d5e7b800;
+    border: 2px solid #eee;
+    z-index: 1;
   }
 
   /* Top Sellers → column */
