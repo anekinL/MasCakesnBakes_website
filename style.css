@@ -25,6 +25,12 @@ body {
     color: #313131
 }
 
+footer {
+    background-color: #fdfbd6;
+    text-align: center;
+    transition: .5s;
+}
+
 .titlebar_container {
     display: grid;
     grid-template-columns: 1fr;
@@ -139,6 +145,13 @@ body {
     backdrop-filter: blur(5px);
     z-index: 1;
     position: absolute;
+}
+
+.slider_cover img {
+    height: 32vw;
+    display: block;
+    margin: 2.5vh auto 0 auto;         
+    object-fit: contain;
 }
   
 .slider{
@@ -611,6 +624,10 @@ body.showCart header{
     transform: translateX(-45vh);
 }
 
+body.showCart footer{
+    transform: translateX(-45vh);
+}
+
 .removebtn {
     margin-top: 10px;
 }
@@ -832,6 +849,10 @@ form .checkout_row {
     body.showCart header{
         transform: translateX(-70vh);
     }
+
+    body.showCart footer{
+        transform: translateX(-70vh);
+    }
 }
 
 /* --------------------------------------
@@ -846,6 +867,35 @@ form .checkout_row {
   .nav_links {
     gap: 1rem;
     font-size: 0.9rem;
+  }
+
+  .slider-wrapper { 
+    max-height: 60vw;     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slider {
+    height: 60vw;          /* explicit height for the carousel track */
+  }
+  .slider img {
+    height: 60vw;          /* ensure each slide matches the new height */
+    object-fit: cover;     /* keep images neatly cropped */
+  }
+
+  .slider_cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vw;
+  }
+
+  .slider_cover img {
+    height: 42vw;
+    display: block;
+    margin: 0vh !important;       /* override inline margin if present */         
+    object-fit: contain;
   }
 
   /* Top Sellers row */
@@ -900,7 +950,11 @@ form .checkout_row {
     transform: translateX(-49.9vh);
   }
     
-    body.showCart header{
+  body.showCart header{
+    transform: translateX(-49.9vh);
+  }
+
+  body.showCart footer{
     transform: translateX(-49.9vh);
   }
   
@@ -929,6 +983,7 @@ form .checkout_row {
 
   .dainty-wrapper{
     display: none;
+  
   }
 
   /* stack header/nav vertically */
@@ -936,7 +991,7 @@ form .checkout_row {
     grid-template-columns: 1fr;
     text-align: center;
     padding: 1.5vh 1vh;
-    height: 7.5vh;
+    height: 8vh;
   }
   .nav_links {
     flex-direction: column;
@@ -990,8 +1045,8 @@ form .checkout_row {
     display: block;
     position: absolute;
     bottom: 10%;
-    padding: 10px 15px;
-    font-size: 1rem;
+    padding: 4vw 4.5vw;
+    font-size: 1em;
     border-radius: 5px;
     color: #eee;
     background-color: #d5e7b800;
@@ -1071,13 +1126,12 @@ form .checkout_row {
   }
   
   /*===== Cart tab =====*/
-  body.showCart main , body.showCart header, body.showCart footer, body.showCart .contact_info{
+  body.showCart main , body.showCart header, body.showCart .contact_info{
     transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
   }
-    
-  
+
   body.showCart footer{
-    transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
+    transform: translateX(-60vh);
   }
 
   .cart-tab{

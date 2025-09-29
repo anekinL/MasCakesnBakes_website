@@ -8,10 +8,20 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
         <title>Ma's Bakes'n Cakes</title>
         <link rel="stylesheet" href="productsCatagory.css">
-        <link rel="stylesheet" href="productsStyle.css">
+        <link rel="stylesheet" href="style.css">
     </head>
 
-    <body class="">
+    <style>
+        main{
+            text-align: unset;
+        }
+
+        .dainty-wrapper{
+            display: flex;
+        }
+    </style>
+
+    <body>
         <div class="titlebar_container">
 
             <header>
@@ -44,17 +54,22 @@
         </div>
 
         <main>
-            <section class="dainty-wrapper">
-                <article class="category">
-                    <div class="title-wrapper" style="display: block;">
+            <section class="dainty-wrapper" style="display: flex;">
+                <div class="cheesecake-title">
+                    <div class="title-wrapper">
                         <h2>Products</h2>
                     </div>
+                </div>
+                
+                <article class="category">
                     <div class="category-container">
                         <div class="category-item">
-                            <img src="images/mango_6in_cc_1.jpg" alt="cheesecake">
+                            <div class="category-item-image">
+                                <img src="images/mango_6in_cc_1.jpg" alt="cheesecake">
+                            </div>
                             <div class="category-item-info">
                                 <h3>6" Cheesecakes</h3>
-                                <p>Delicious and creamy 6-inch cheesecakes available in various flavors.</p>
+                                
                                 <button onclick="window.location.href='products.html#cc_6in_wrapper'">View Products</button>
                             </div>
                         </div>
