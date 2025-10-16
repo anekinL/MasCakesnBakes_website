@@ -1,18 +1,22 @@
-This is a website for a baking buisness called MasCakesnBakes. The website is not currently active as of currently so if you wish to view it, please use a live server extension on your IDE. 
+This is a website for a baking business called MasCakesnBakes. The website is not currently active as of currently so if you wish to view it, please use a live server extension on your IDE. 
 
-The website is created by vanilla **HTML, CSS and Javascript** with no frameworks. The website includes A Home page, Product page, Cart window, and an About us page each with a Header/Footer.
+The website is created by vanilla **HTML, CSS, and JavaScript** with no frameworks. The website includes A Home page, Product page, and Cart window, each with a Header/Footer.
 
-The header includes links to each page, the bakery name and the cart window button with an active item counter. The footer includes general contact information about the bakery and its owner.
+The header includes links to each page, the bakery name, and the cart window button with an active item counter. The footer includes general contact information about the bakery and its owner.
 
-The Cart window is implemented with *smooth sliding animations, browser memory* (so you dont lose the contents of the cart after a page refresh), a visual item counter, price totals and is available to be seen and modifeid on every page. 
+The Cart window is implemented with *smooth sliding animations, retaining browser memory*, a visual item counter, price totals, available to be seen and modified on any page. 
 
-The Home Page consists of an image carosel, top sellers and a few items on display, each with radio/add to cart buttons indicating selected price/quantity, as well as a selection of iimages to view the product. Each section contains a showmore button that will elad you to the products page where all the products will be on display.
+The Home Page consists of an image carosel, top sellers, and a few items on display, each with radio/add to cart buttons indicating selected price/quantity, as well as a selection of images to view the product. Each section allows for easy and intuitive access to the products page, where all the products available will be on display.
 
-All product information is managed via **JSON library** where the information is converted an used into the HTML.
+All product information is managed via **JSON library** where the information is converted and used into the HTML.
 
-Responsive web design has also been implemented so the website looks visually clean and user friendly on all platforms/devices. Use of grid and flexbox were responsible for all layout design. As for the colour palette we chose a soft colour combination for a more delicate and user friendly experience, aiming towards a less aggressive approach. 
+When products are added to the cart, a simple feedback alert showing that the item has successfully been added appears for a good user experience.
 
-The website will be launched with the addition and help of shopify.
+When orders are finalized, the order is sent the the business owner's email via SMTP protocol (as per request). In the future, when/if the business grows larger, I plan to change the orders pipeline into a CSV of sorts and use a small Database (such as MongoDB) to keep track of orders.
+
+Responsive web design has also been implemented so the website looks visually clean and user friendly on all platforms/devices. The use of grid and flexbox was responsible for all layout design. As for the colour palette, we chose a soft colour combination for a more delicate and user-friendly experience, aiming towards a less aggressive approach. 
+
+The website will be launched on a dedicated domain when the business owner is ready.
 
 QA:
 
