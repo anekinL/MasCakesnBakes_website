@@ -1,9 +1,20 @@
 /* MAIN*/
 .category{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 5vw 0;
+    gap: 5vh;
+    margin: 5vw 2.5vw
+}
+
+.category-container {
+    align-self: flex-start;
+    display: flex;
+}
+
+.category-item.right {
+    gap: 6vw;
 }
 
 .category-item{
@@ -16,14 +27,31 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.4);
-    transform-origin: 50% 70%;
+    transform: translate(10%, 0%) scale(1.6);
+    transform-origin: 50% 60%;
 }
 
 .category-item-image{
     aspect-ratio: 1/1;
-    width: 25vh;
+    width: 45vw;
     height: auto;
     position: relative;
     overflow: hidden;
+    border-radius: 5px;
 }
+
+.category-item-info {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start ;
+    justify-content: center;
+}
+
+.category-item-info h3 {
+    font-size: 1.75em;
+}
+
+.category-item-info :last-child {
+    margin-top: 1vh;
+}
+
