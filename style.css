@@ -4,6 +4,10 @@
     padding: 0px;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 header {
     display: grid;
     grid-template-columns: 0.85fr 1fr 30px;
@@ -22,7 +26,8 @@ main {
 
 body {
     font-family: "Arial", sans-serif;
-    color: #313131
+    color: #313131;
+    scrollbar-gutter: stable;
 }
 
 footer {
@@ -36,6 +41,9 @@ footer {
     grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -983,7 +991,6 @@ form .checkout_row {
 
   .dainty-wrapper{
     display: none;
-  
   }
 
   /* stack header/nav vertically */
@@ -1007,6 +1014,11 @@ form .checkout_row {
     position: absolute;
     top: 1rem;
     right: 1rem;
+  }
+
+  /* padding above title */
+  .cheesecake-title {
+    padding-top: 2.5vh;
   }
 
   /* logo and landing image carosel */
@@ -1083,6 +1095,10 @@ form .checkout_row {
     padding-bottom: 0.5vw;
   }
 
+  .title-wrapper h2 {
+    font-size: 1.75rem;
+  }
+
   /* full-cc & mini-item containers */
   .full_cc_outer_container {
     margin: 1rem auto;
@@ -1111,7 +1127,7 @@ form .checkout_row {
     top: 0;
   }
 
-   .dainty-subwrapper2 .showcase-item{
+  .dainty-subwrapper2 .showcase-item{
     padding-bottom: 0px;
   }
 
@@ -1126,15 +1142,12 @@ form .checkout_row {
   }
   
   /*===== Cart tab =====*/
-  body.showCart main , body.showCart header, body.showCart .contact_info{
-    transform: translateX(-35vh); /* This controls the amount of pixels the main screen slides */
-  }
-
-  body.showCart footer{
-    transform: translateX(-60vh);
+  body.showCart main, body.showCart .contact_info, body.showCart footer, .body.showCart header{
+    transform: translateX(-100vw); /* This controls the amount of pixels the main screen slides */
   }
 
   .cart-tab{
+    height: 100vh;
     width: 100%;
     inset: 0 -100% 0 auto;
   }

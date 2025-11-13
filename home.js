@@ -116,13 +116,29 @@ function showCart() {
 
 const isHomePage = window.location.pathname.includes("home.html");
 let ccfCount = 0;
+const fallbackContainer = document.querySelector(".dainty-wrapper");
 
 const addItemsToHTML = () => {
-    //subwrapper2HTMLcc.innerHTML = "";
-    let name = "";
+    // build a map of only the category targets that exist on this page
+    const targets = {};
+    if (subwrapper2HTMLcc6in) targets.cc6in = subwrapper2HTMLcc6in;
+    if (subwrapper2HTMLcc)   targets.ccf   = subwrapper2HTMLcc;   // ccf -> cc_wrapper
+    if (subwrapper2HTMLm)    targets.cci   = subwrapper2HTMLm;    // cci / cci_mobile -> m_wrapper
+    if (subwrapper2HTMLt)    targets.t     = subwrapper2HTMLt;
+
+    // if no category containers found on the page, bail out
+    if (Object.keys(targets).length === 0) return;
+
     const isMobile = mqMobile.matches;
+
     if (products.length > 0) {
-        products.forEach(element => { 
+        products.forEach(element => {
+            // normalize product type keys (treat cci_mobile as cci)
+            const typeKey = element.type === 'cci_mobile' ? 'cci' : element.type;
+
+            // if this page doesn't have a target for that type, skip this product
+            if (!targets.hasOwnProperty(typeKey)) return;
+
             let newProduct = document.createElement("div");
             newProduct.dataset.id = element.id;
             newProduct.classList.add("showcase-item");
@@ -200,33 +216,20 @@ const addItemsToHTML = () => {
                     </div>
                 `;
             }
-            if (element.type === "ccf") {
-                if (isHomePage && ccfCount >= 3) return; // Skip extras
-                subwrapper2HTMLcc.appendChild(newProduct);
-                ccfCount++;
-                console.log("ccfCount: " + ccfCount, "isHomePage: " + isHomePage, element.name);
-            } else if (element.type === "cci" || element.type === "cci_mobile") {
-                subwrapper2HTMLm.appendChild(newProduct);
-            } else if (element.type === "t") {
-                subwrapper2HTMLt.appendChild(newProduct);
-            } else if (element.type === "cc6in") {
-                subwrapper2HTMLcc6in.appendChild(newProduct);
-            }
 
-            // switch (element.type) {
-            //     case 'ccf':
-            //         subwrapper2HTMLcc.appendChild(newProduct);
-            //         break;
-            //     case 'cci':
-            //         subwrapper2HTMLm.appendChild(newProduct);
-            //         break;
-            //     case 't':
-            //         subwrapper2HTMLt.appendChild(newProduct);
-            //         break;
-            //     case 'cc6in':
-            //         subwrapper2HTMLcc6in.appendChild(newProduct);
-            //         break;
-            // }
+            // append to the correct existing target
+            if (typeKey === "ccf") {
+                // if there is no cc_wrapper on this page this won't run due to the earlier check
+                if (isHomePage && ccfCount >= 3) return; // Skip extras on home page
+                targets.ccf.appendChild(newProduct);
+                ccfCount++;
+            } else if (typeKey === "cci") {
+                targets.cci.appendChild(newProduct);
+            } else if (typeKey === "t") {
+                targets.t.appendChild(newProduct);
+            } else if (typeKey === "cc6in") {
+                targets.cc6in.appendChild(newProduct);
+            }
         });
     }
 }

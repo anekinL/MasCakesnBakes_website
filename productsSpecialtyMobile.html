@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
         <title>Ma's Bakes'n Cakes</title>
-        <link rel="stylesheet" href="productsCatagory.css">
         <link rel="stylesheet" href="style.css">
     </head>
 
@@ -18,6 +17,50 @@
 
         .dainty-wrapper{
             display: flex;
+        }
+
+        .dainty-subwrapper2 {
+            grid-auto-rows: auto;
+            gap: 4vh;
+        }
+        
+        .showcase-item {
+            margin: 8px;
+        }
+
+        .back-button button{
+            display: block;
+            padding: 3vw 3.5vw;
+            font-size: 1.1em;
+            border-radius: 20%;
+            border: none;
+            background-color: #fffde7;
+        }
+
+        .back-button button span {
+            font-size: 1.25em;
+        }
+
+        .back-button {
+            margin-top:2vh;
+            margin-left: 2vw;
+        }
+
+        .cheesecake-title {
+            padding-top: 2vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cheesecake-title h2 {
+            font-size: 1.75rem;
+            padding-bottom: 0%;
+        }
+
+        .title-wrapper h2{
+            padding-top: 0.2vh;
         }
     </style>
 
@@ -55,64 +98,19 @@
 
         <main>
             <section class="dainty-wrapper" style="display: flex;">
+
+                <span class="back-button">
+                    <button onclick="window.location.href='productsCatagory.html'"> <span>←</span> Products</button>
+                </span>
+
                 <div class="cheesecake-title">
+                    <h2> Specialty</h2>
                     <div class="title-wrapper">
-                        <h2>Products</h2>
+                        <h2>Cheesecake Mini's</h2>
                     </div>
                 </div>
-                
-                <article class="category">
-                    <div class="category-container">
-                        <div class="category-item">
-                            <div class="category-item-image">
-                                <img src="images/mango_6in_cc_3.jpg" alt="cheesecake">
-                            </div>
-                            <div class="category-item-info">
-                                <h3>6 Inch</h3>
-                                <h3>Cheesecakes</h3>
-                                <a onclick="window.location.href='products6inMobile.html'"> Learn More →</a>
-                                <!--<button onclick="window.location.href='products.html#cc_6in_wrapper'">View Products</button> -->
-                            </div>
-                        </div>
-                        <div style ="width: 10vw;">
-                        </div>
-                    </div>
 
-                    <div class="category-container">
-                        <div style ="width: 6.5vw;"></div>
-                        <div class="category-item right">
-                            <div class="category-item-info">
-                                <h3>Fruit</h3>
-                                <h3>Cheesecake</h3>
-                                <h3>Minis</h3>
-                                <a onclick="window.location.href='productsFruitMobile.html'"> Learn More →</a>
-                                <!--<button onclick="window.location.href='products.html#cc_6in_wrapper'">View Products</button> -->
-                            </div>
-                            <div class="category-item-image">
-                                <img src="images/strawberry_cc_1_trio.jpg" alt="cheesecake" style="object-position:0% 100%; transform:scale(1.4);">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="category-container">
-                        <div class="category-item">
-                            <div class="category-item-image">
-                                <img src="images/biscoff_cc_2_duo.jpg" alt="cheesecake" style="object-position:0% 90%; transform:scale(1.3);">
-                            </div>
-                            <div class="category-item-info">
-                                <h3>Specialty</h3>
-                                <h3>Cheesecakes</h3>
-                                <h3>Mini's</h3>
-                                <a onclick="window.location.href='productsSpecialtyMobile.html'"> Learn More →</a>
-                                <!--<button onclick="window.location.href='products.html#cc_6in_wrapper'">View Products</button> -->
-                            </div>
-                        </div>
-                        <div style ="width: 10vw;">
-                        </div>
-                    </div>
-                </article>
-
-
+                <section class="dainty-subwrapper2" id="m_wrapper"></section>
                 
             </section>
         </main>
