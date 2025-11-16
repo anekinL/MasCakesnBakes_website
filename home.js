@@ -305,9 +305,11 @@ const addCartToHTML = () => {
                     ${getPriceValue(cartItem.selectedPrice) * cartItem.quantity}$
                 </div>
                 <div class="item-quantity">
-                    <span class="minus"><</span>
-                    <span>${cartItem.quantity}</span>
-                    <span class="plus">></span>
+                    <span>
+                        <span class="minus"><</span>
+                        <span>${cartItem.quantity}</span>
+                        <span class="plus">></span>
+                    </span>
                     <button class="removebtn">Remove</button>
                 </div>
             `;

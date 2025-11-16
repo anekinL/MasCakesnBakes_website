@@ -586,11 +586,18 @@ footer {
     gap: 10px;
     text-align: center;
     align-items: center;
-    margin: 5px;
+    margin: 5px; 
     margin-left: 10px;
 }
 
-.cart-list span{
+.item-quantity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-quantity span span{
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -600,7 +607,12 @@ footer {
     cursor: pointer;
 }
 
-.cart-list .item-quantity span:nth-child(2){
+.item-quantity span {
+  display: flex;
+  flex-direction: row;
+}
+
+.item-quantity span span:nth-child(2){
     background-color: transparent;
     color: #eee;
     cursor: auto;
@@ -831,9 +843,26 @@ form .checkout_row {
 /*=============================================================================================================================================================*/
 /* Responsive Design */
 /*=============================================================================================================================================================*/
-@media (max-width: 1500px){
+@media screen and (max-width:1600px) {
+    .cart-tab {
+        width: 35vw;
+        inset:0 -35vw 0 auto;
+    }
+
+    body.showCart main{
+        transform: translateX(-35vw);
+    }
+    
+    body.showCart header{
+        transform: translateX(-35vw);
+    }
+
+    body.showCart footer{
+        transform: translateX(-35vw);
+    }
+    
     .checkout_container {
-        max-height: 90%;
+        max-height: 95%;
         padding-top: 1.5%;
     }
 
@@ -841,25 +870,13 @@ form .checkout_row {
         height: 4rem;
         flex: none;
     }
-}
 
-
-@media screen and (max-width:1300px) {
-    .cart-tab {
-        width: 70vh;
-        inset:0 -70vh 0 auto;
+    .checkout_button {
+      margin-top: 0%;
     }
 
-    body.showCart main{
-        transform: translateX(-70vh);
-    }
-    
-    body.showCart header{
-        transform: translateX(-70vh);
-    }
-
-    body.showCart footer{
-        transform: translateX(-70vh);
+    .checkout_subtitle, #checkout_subtitle {
+      font-size: 1.25rem;
     }
 }
 
@@ -955,15 +972,19 @@ form .checkout_row {
   }
 
   body.showCart main{
-    transform: translateX(-49.9vh);
+    transform: translateX(-50vh);
   }
     
   body.showCart header{
-    transform: translateX(-49.9vh);
+    transform: translateX(-50vh);
   }
 
   body.showCart footer{
-    transform: translateX(-49.9vh);
+    transform: translateX(-50vh);
+  }
+
+  .icon-cart span {
+    right:0%;
   }
   
   /* Full-cc slider resizing */
