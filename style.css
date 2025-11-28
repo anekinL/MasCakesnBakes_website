@@ -976,15 +976,15 @@ form .checkout_row {
   }
 
   body.showCart main{
-    transform: translateX(-50vh);
+    transform: translateX(-100vw);
   }
     
   body.showCart header{
-    transform: translateX(-50vh);
+    transform: translateX(-100vw);
   }
 
   body.showCart footer{
-    transform: translateX(-50vh);
+    transform: translateX(-100vw);
   }
 
   .icon-cart span {
