@@ -115,6 +115,10 @@ footer {
     display: none;
 }
 
+.menu-products-mobile{
+  display: none;
+}
+
 .icon-cart{
     position: relative;
     cursor: pointer;
@@ -1031,6 +1035,14 @@ form .checkout_row {
 
   .dainty-wrapper{
     display: none;
+  }
+
+  .menu-products{
+    display: none;
+  }
+
+  .menu-products-mobile{
+    display: block;
   }
 
   /* stack header/nav vertically */
