@@ -17,6 +17,20 @@ module.exports = async function (context, req) {
         const sender = process.env.ACS_EMAIL_SENDER;        // verified sender
         const recipient = process.env.ORDER_NOTIFY_EMAIL;   // your inbox
 
+        const missing = [];
+        if (!connectionString) missing.push("ACS_EMAIL_CONNECTION_STRING");
+        if (!sender)          missing.push("ACS_EMAIL_SENDER");
+        if (!recipient)       missing.push("ORDER_NOTIFY_EMAIL");
+
+        if (missing.length) {
+            context.log.error("Missing env vars:", missing.join(", "));
+            context.res = {
+                status: 500,
+                body: { error: `Email not configured. Missing: ${missing.join(", ")}` }
+            };
+            return;
+        }
+
         const emailClient = new EmailClient(connectionString);
 
         const subject = `New order from ${order.customer.name}`;
