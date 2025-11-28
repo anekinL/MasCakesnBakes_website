@@ -54,16 +54,22 @@ module.exports = async function (context, req) {
             <p><strong>Total:</strong> $${order.total}</p>
         `;
 
-        await emailClient.send({
+        const message = {
             senderAddress: sender,
-            recipients: {
-                to: [{ address: recipient }]
-            },
             content: {
                 subject: subject,
                 html: htmlBody
+            },
+            recipients: {
+                to: [
+                    { address: recipient }
+                ]
             }
-        });
+        };
+
+        const poller = await emailClient.beginSend(message);
+        const result = await poller.pollUntilDone();
+        context.log("Email send status:", result.status);
 
         context.res = {
             status: 200,
