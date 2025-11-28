@@ -506,44 +506,102 @@ const phoneNumber = document.getElementById("customerNumber");
 const occasion = document.getElementById("customerOccasion");
 const message = document.getElementById("customerMessage");
 function sendEmail() {
-
-    const bodyMessage = `Full Name: ${fullName.value}<br> Email: ${email.value}<br> Phone Number: ${phoneNumber.value}<br> Message: ${message.value}<br>`;
-    let finalMessage = getEachItem(bodyMessage);
+    // run validation first
     checkInputs();
 
-    if (!fullName.classList.contains("error") && !email.classList.contains("error") && !phoneNumber.classList.contains("error")) {
-        if (cart.length == 0) {
-            Swal.fire({
-                    title: "Shopping cart is empty!",
-                    text: "The order did not send as your cart is empty",
-                    icon: "error"
-                });
-        } else {
-            Email.send({
-                Host : "smtp25.elasticemail.com",
-                Username : "mascakenbakes@gmail.com",
-                Password : "6ADFC03843F0B3BC8CA46ED380E063DED071",
-                To : 'mascakenbakes@gmail.com',
-                From : "mascakenbakes@gmail.com",
-                Subject : `${fullName.value} Order Information`,
-                Body : finalMessage
-            }).then(
-                message => {
-                    if (message == "OK") {
-                        Swal.fire({
-                            title: "Order Placed",
-                            text: "Thank you for your order!",
-                            icon: "success"
-                        });
-                    }
-                }
-            );
-        }
+    // bail out if any of the main fields still have error classes
+    if (
+        fullName.classList.contains("error") ||
+        email.classList.contains("error") ||
+        phoneNumber.classList.contains("error")
+    ) {
+        return;
     }
+
+    // no point submitting an empty cart
+    if (cart.length === 0) {
+        Swal.fire({
+            title: "Shopping cart is empty!",
+            text: "Please add at least one item before placing an order.",
+            icon: "warning"
+        });
+        return;
+    }
+
+    const preferredContactSelect = document.getElementById("preferredContact");
+
+    const orderPayload = {
+        customer: {
+            name: fullName.value,
+            email: email.value,
+            phone: phoneNumber.value,
+            preferredContact: preferredContactSelect ? preferredContactSelect.value : null,
+            occasion: occasion ? occasion.value : null,
+            message: message.value
+        },
+        items: cart.map(item => {
+            const product = products.find(p => p.id == item.productId);
+            return {
+                productId: item.productId,
+                name: product ? product.name : "",
+                priceLabel: item.selectedPrice,               // e.g. "$24/half a dozen"
+                unitPrice: getPriceValue(item.selectedPrice), // numeric
+                quantity: item.quantity
+            };
+        }),
+        total: getTotalPrice()
+    };
+
+    fetch("/api/newOrder", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderPayload)
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Server error placing order");
+        }
+        // in case your function returns JSON; if not, this will just fail silently
+        return res.json().catch(() => ({}));
+    })
+    .then(() => {
+        Swal.fire({
+            title: "Order Placed",
+            text: "Thank you for your order! We'll contact you soon to confirm.",
+            icon: "success"
+        });
+
+        // clear cart + UI
+        cart = [];
+        addCartToHTML();
+        addCartToMemory();
+        updateCartPrice();
+
+        // reset the form fields
+        const formEl = document.querySelector(".checkout_form");
+        if (formEl) {
+            formEl.reset();
+        }
+
+        // optionally hide the checkout popup
+        const checkoutContainer = document.querySelector(".checkout_body_container");
+        if (checkoutContainer) {
+            checkoutContainer.style.display = "none";
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        Swal.fire({
+            title: "Error",
+            text: "We couldn't place your order. Please try again or contact us directly.",
+            icon: "error"
+        });
+    });
 }
 
 form.addEventListener("submit", (event) => { 
     event.preventDefault();
+    sendEmail();
 });
 
 function checkInputs() {
