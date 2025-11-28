@@ -1,85 +1,98 @@
 const { EmailClient } = require("@azure/communication-email");
 
-// This is the classic Azure Functions export
 module.exports = async function (context, req) {
     try {
-        const order = req.body;
+        const order = req.body || {};
 
-        if (!order || !order.customer) {
+        // ---- sanity check on payload ----
+        if (!order.customer) {
             context.res = {
                 status: 400,
-                body: { error: "Invalid order payload" }
+                body: { error: "Invalid order payload: missing customer" }
             };
             return;
         }
 
+        // ---- environment variables ----
         const connectionString = process.env.ACS_EMAIL_CONNECTION_STRING;
-        const sender = process.env.ACS_EMAIL_SENDER;        // verified sender
-        const recipient = process.env.ORDER_NOTIFY_EMAIL;   // your inbox
+        const sender = process.env.ACS_EMAIL_SENDER;
+        const recipient = process.env.ORDER_NOTIFY_EMAIL;
 
         const missing = [];
         if (!connectionString) missing.push("ACS_EMAIL_CONNECTION_STRING");
-        if (!sender)          missing.push("ACS_EMAIL_SENDER");
-        if (!recipient)       missing.push("ORDER_NOTIFY_EMAIL");
+        if (!sender) missing.push("ACS_EMAIL_SENDER");
+        if (!recipient) missing.push("ORDER_NOTIFY_EMAIL");
 
-        if (missing.length) {
+        if (missing.length > 0) {
             context.log.error("Missing env vars:", missing.join(", "));
             context.res = {
                 status: 500,
-                body: { error: `Email not configured. Missing: ${missing.join(", ")}` }
+                body: {
+                    error: "Email not configured",
+                    missing
+                }
             };
             return;
         }
 
+        // ---- build email client ----
         const emailClient = new EmailClient(connectionString);
 
-        const subject = `New order from ${order.customer.name}`;
+        // ---- build email content ----
+        const customer = order.customer;
+        const items = Array.isArray(order.items) ? order.items : [];
+
+        const subject = `New order from ${customer.name || "Unknown customer"}`;
+
+        const itemsHtml = items.map(i =>
+            `<li>${i.quantity} × ${i.name || ""} (${i.priceLabel || ""})</li>`
+        ).join("");
 
         const htmlBody = `
             <h1>New Order</h1>
-            <p><strong>Name:</strong> ${order.customer.name}</p>
-            <p><strong>Email:</strong> ${order.customer.email}</p>
-            <p><strong>Phone:</strong> ${order.customer.phone}</p>
-            <p><strong>Preferred contact:</strong> ${order.customer.preferredContact || "N/A"}</p>
-            <p><strong>Occasion:</strong> ${order.customer.occasion || "N/A"}</p>
-            <p><strong>Message:</strong> ${order.customer.message || "N/A"}</p>
+            <p><strong>Name:</strong> ${customer.name || ""}</p>
+            <p><strong>Email:</strong> ${customer.email || ""}</p>
+            <p><strong>Phone:</strong> ${customer.phone || ""}</p>
+            <p><strong>Preferred contact:</strong> ${customer.preferredContact || "N/A"}</p>
+            <p><strong>Occasion:</strong> ${customer.occasion || "N/A"}</p>
+            <p><strong>Message:</strong> ${customer.message || "N/A"}</p>
             <h2>Items</h2>
-            <ul>
-              ${
-                (order.items || []).map(i =>
-                  `<li>${i.quantity} × ${i.name} (${i.priceLabel})</li>`
-                ).join("")
-              }
-            </ul>
+            <ul>${itemsHtml}</ul>
             <p><strong>Total:</strong> $${order.total}</p>
         `;
 
         const message = {
             senderAddress: sender,
             content: {
-                subject: subject,
+                subject,
                 html: htmlBody
             },
             recipients: {
-                to: [
-                    { address: recipient }
-                ]
+                to: [{ address: recipient }]
             }
         };
 
+        // ---- send email via ACS (correct pattern) ----
         const poller = await emailClient.beginSend(message);
         const result = await poller.pollUntilDone();
         context.log("Email send status:", result.status);
+        if (result.error) {
+            context.log("Email send error details:", result.error);
+        }
 
         context.res = {
             status: 200,
-            body: { ok: true }
+            body: { ok: true, status: result.status }
         };
     } catch (err) {
         context.log.error("Error in newOrder function:", err);
         context.res = {
             status: 500,
-            body: { error: "Failed to process order" }
+            body: {
+                error: "Failed to process order",
+                message: err.message || null,
+                code: err.code || null
+            }
         };
     }
 };

@@ -114,7 +114,7 @@ function showCart() {
     document.querySelector("body").classList.toggle("showCart");
 }
 
-const isHomePage = window.location.pathname.includes("home.html");
+const isHomePage = window.location.pathname.includes("index.html");
 let ccfCount = 0;
 const fallbackContainer = document.querySelector(".dainty-wrapper");
 
