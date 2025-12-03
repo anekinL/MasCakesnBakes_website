@@ -4,7 +4,6 @@
     padding: 0px;
     font-family: "Work Sans", sans-serif, generic-family;
     font-optical-sizing: auto;
-    font-weight: 500;
     font-style: normal;
 }
 
@@ -55,6 +54,7 @@ footer {
 }
 
 .logo-title-wrapper {
+    display: none; /* this dont look good no more*/
     align-self: center;
     max-width: fit-content;
 }
@@ -269,6 +269,7 @@ footer {
     padding-bottom: 0%;
     padding-top: 0%;
     font-size: 2vw;
+    font-weight: 500;
 }
 
 .dainty-subwrapper2 {
@@ -554,11 +555,11 @@ footer {
 /* ===============================Cart tab==================================*/
 
 .cart-tab{
-    width: 45vh;
+    width: 25vw;
     background-color: #353432;
     color: #eee;
     position: fixed;
-    inset:0 -45vh 0 auto;
+    inset:0 -25vw 0 auto;
     display: grid;
     grid-template-rows: 70px 1fr 70px 70px;
     transition: .5s;
@@ -588,19 +589,46 @@ footer {
 }
 
 .cart-list .item{
+    /* makes a glass tint card for each img */
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+
+    /* cart item css */
     display: grid;
-    grid-template-columns: 70px 150px 50px 1fr;
+    grid-template-columns: 20px 200px 50px 1fr;
     gap: 10px;
     text-align: center;
     align-items: center;
     margin: 5px; 
     margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.05em;
+    font-weight: 500;
+}
+
+/* frosted glass */
+.cart-list .item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.10); /* milky tint */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1; /* sits above the image, below the text/buttons */
 }
 
 .cart-list .item img{
-    width: 18vw;
+    z-index: 0;
+    width: calc(25vw - 20px);
     height: 12vh;
     object-fit: cover;
+    object-position: center 60%;
+    filter: brightness(55%) blur(1.5px);
+}
+
+.item-name, .item-quantity, .item-price {
+  z-index: 2;
 }
 
 .cart-list .item .item-name{
@@ -656,15 +684,15 @@ body.showCart .cart-tab{
 }
 
 body.showCart main{
-    transform: translateX(-45vh);
+    transform: translateX(-25vw);
 }
 
 body.showCart header{
-    transform: translateX(-45vh);
+    transform: translateX(-25vw);
 }
 
 body.showCart footer{
-    transform: translateX(-45vh);
+    transform: translateX(-25vw);
 }
 
 .removebtn {
@@ -870,6 +898,10 @@ form .checkout_row {
     .cart-tab {
         width: 35vw;
         inset:0 -35vw 0 auto;
+    }
+
+    .cart-list .item img{
+      width: calc(35vw - 20px);
     }
 
     body.showCart main{
