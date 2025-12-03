@@ -572,6 +572,7 @@ footer {
 .cart-tab .btn{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    color: #000;
 }
 .cart-tab button{
     background-color: #f3f1d6;
