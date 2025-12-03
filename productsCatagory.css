@@ -49,6 +49,7 @@
 
 .category-item-info h3 {
     font-size: 1.75em;
+    font-weight: 500;
 }
 
 .category-item-info :last-child {
