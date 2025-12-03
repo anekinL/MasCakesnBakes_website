@@ -71,7 +71,6 @@ footer {
 }
 
 .nav_links li a {
-    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     color: black;
     text-decoration: none;
@@ -1201,9 +1200,11 @@ form .checkout_row {
     width: 80vw;
     height: 80vw;
   }
+
   .full_cc_slider {
     width: calc(80vw * 3);
   }
+
   .full_cc_slider img {
     width: 80vw;
     height: 80vw;
@@ -1238,6 +1239,14 @@ form .checkout_row {
     height: 100vh;
     width: 100%;
     inset: 0 -100% 0 auto;
+  }
+
+  .cart-list .item{
+    grid-template-columns: 1px 150px 50px 1fr;
+  }
+
+  .cart-list .item img{
+    width:98vw ;
   }
 
   .checkout_row {
@@ -1335,15 +1344,17 @@ body.showMenu .hamburger span:nth-child(3){ transform:translateY(-7px) rotate(-4
 
   /* vertical list with comfy tap targets */
   header nav#mobileNav .nav_links{
-    flex-direction:column; gap:30px;
+    flex-direction:column; gap:35px;
   }
 
   header nav#mobileNav .nav_links li a{
     padding:12px 8px;
-    font-size:1.25rem; 
+    font-size:1.5rem; 
     color:#000; 
     text-decoration:none;
+    font-weight: 500;
   }
+
   header nav#mobileNav .nav_links li a:hover{ color:#0088a9; }
 
   /* Close button inside drawer */
