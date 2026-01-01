@@ -17,9 +17,9 @@
         "description": "Our blueberry compote from juicy blueberries is full of flavor and vibrant colors",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
-        "a_image": "images/blueberry_cc_1_single.jpg",
-        "b_image": "images/blueberry_cc_2_single.jpg",
-        "c_image": "images/blueberry_cc_3_single.jpg"
+        "a_image": "images/minis/fruit/blueberry/bb_mini_1.webp",
+        "b_image": "images/minis/fruit/blueberry/bb_mini_4.webp",
+        "c_image": "images/minis/fruit/blueberry/bb_mini_3.webp"
     },
     {
         "type": "ccf",
@@ -50,9 +50,9 @@
         "description": "Featuring a Biscoff butter infused in our silky smooth cream cheese filling on top a buttery Biscoff crust.",
         "price1": "$26.50/half a dozen",
         "price2": "$50.50/dozen",
-        "a_image": "images/Lotus1.jpg",
-        "b_image": "images/biscoff_cc_1_single.jpg",
-        "c_image": "images/biscoff_cc_2_duo.jpg"
+        "a_image": "images/minis/specialty/biscoff/biscoff_mini_1.webp",
+        "b_image": "images/minis/specialty/biscoff/biscoff_mini_2.webp",
+        "c_image": "images/minis/specialty/biscoff/biscoff_mini_3.webp"
     },
     {
         "type": "cci",
@@ -83,9 +83,9 @@
         "description": "Mango :].",
         "price1": "$26.50/half a dozen",
         "price2": "$50.50/dozen",
-        "a_image": "images/mango_6in_cc_3.jpg",
-        "b_image": "images/mango_6in_cc_2.jpg",
-        "c_image": "images/mango_6in_cc_4.jpg"
+        "a_image": "images/6in/mango/mango_6in_cc_3.jpg",
+        "b_image": "images/6in/mango/mango_6in_cc_2.jpg",
+        "c_image": "images/6in/mango/mango_6in_cc_6.webp"
     },
 
 
@@ -99,8 +99,8 @@
         "description": "Featuring a Biscoff butter infused in our silky smooth cream cheese filling on top a buttery Biscoff crust.",
         "price1": "$26.50/half a dozen",
         "price2": "$50.50/dozen",
-        "a_image": "images/Lotus1.jpg",
-        "b_image": "images/biscoff_cc_1_single.jpg",
-        "c_image": "images/biscoff_cc_2_duo.jpg"
+        "a_image": "images/minis/specialty/biscoff/biscoff_mini_1.webp",
+        "b_image": "images/minis/specialty/biscoff/biscoff_mini_2.webp",
+        "c_image": "images/minis/specialty/biscoff/biscoff_mini_3.webp"
     }
 ]

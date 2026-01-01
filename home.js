@@ -321,24 +321,36 @@ const addCartToHTML = () => {
 };
 
 cartListHTML.addEventListener('click', (event) => {
-    let positionClick = event.target;
-    if(positionClick.classList.contains('minus') || positionClick.classList.contains('plus')){
-        let productId = positionClick.parentElement.parentElement.dataset.productId;
-        let type = 'minus';
-        if(positionClick.classList.contains('plus')){
-            type = 'plus';
-        }
-        changeQuantityCart(productId, type);
-    } else if(positionClick.classList.contains('removebtn')) {
-        let productId = positionClick.parentElement.parentElement.dataset.productId;
-        let positionItemInCart = cart.findIndex((value) => value.productId == productId);
-        cart.splice(positionItemInCart, 1);
+    // find the nearest button/control the user meant to click
+    //so when we look through control we look for .plus .minus .removebtn
+    const control = event.target.closest('.minus, .plus, .removebtn');
+    if (!control) return;
 
-        addCartToMemory();
-        addCartToHTML();
-        updateCartPrice()
+    // find the cart item row that owns that control
+    const itemEl = control.closest('.item');
+
+    // if product id doesnt exist, then projectid = null instead of an error
+    const productId = itemEl?.dataset.productId;
+    if (!productId) return;
+
+    if (control.classList.contains('minus')) {
+    changeQuantityCart(productId, 'minus');
+    return;
     }
-})
+
+    if (control.classList.contains('plus')) {
+    changeQuantityCart(productId, 'plus');
+    return;
+    }
+
+    // remove button
+    const positionItemInCart = cart.findIndex(v => v.productId == productId);
+    if (positionItemInCart >= 0) cart.splice(positionItemInCart, 1);
+
+    addCartToMemory();
+    addCartToHTML();
+    updateCartPrice();
+});
 
 const getPriceValue = (priceString) => {
     return parseFloat(priceString.split('/')[0].replace(/[^0-9.]/g, '')); //so this takes the string and replaces all non ints with ""
