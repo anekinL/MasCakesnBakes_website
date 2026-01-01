@@ -1138,6 +1138,10 @@ form .checkout_row {
     object-fit: contain;
   }
 
+  .slider-nav {
+    display: none;
+  }
+
   .explore_button {
     display: block;
     position: absolute;
