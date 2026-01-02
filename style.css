@@ -781,7 +781,7 @@ footer h1 {
     padding-bottom: 2.5%;
     border-radius: 10px;
     max-width: 95vw;
-    width: 90%;
+    width: 60%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -948,7 +948,7 @@ form .checkout_row {
     }
 
     #customerMessage {
-        height: 4rem;
+        height: 8rem;
         flex: none;
     }
 
@@ -1299,6 +1299,7 @@ form .checkout_row {
     align-items:center;
     justify-content: center;
     height: 85vh;
+    width: 95%;
   }
 
   .keep-shopping {
