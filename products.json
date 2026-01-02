@@ -28,9 +28,9 @@
         "description": "Our luscious mango compote is made from ripe mangos, complements the creamy cream cheese filling.",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
-        "a_image": "images/mango_cc_1_single.jpg",
-        "b_image": "images/mango_cc_2_single.jpg",
-        "c_image": "images/mango_cc_3_single.jpg"
+        "a_image": "images/minis/fruit/mango/mango_cc_1_single.jpg",
+        "b_image": "images/minis/fruit/mango/mango_cc_2_single.jpg",
+        "c_image": "images/minis/fruit/mango/mango_cc_3_single.jpg"
     },
     {
         "type": "ccf",
@@ -86,21 +86,5 @@
         "a_image": "images/6in/mango/mango_6in_cc_3.jpg",
         "b_image": "images/6in/mango/mango_6in_cc_2.jpg",
         "c_image": "images/6in/mango/mango_6in_cc_6.webp"
-    },
-
-
-
-
-
-    {
-        "type": "cci_mobile",
-        "id": 100000101000,
-        "name": "Biscoff Cheesecake",
-        "description": "Featuring a Biscoff butter infused in our silky smooth cream cheese filling on top a buttery Biscoff crust.",
-        "price1": "$26.50/half a dozen",
-        "price2": "$50.50/dozen",
-        "a_image": "images/minis/specialty/biscoff/biscoff_mini_1.webp",
-        "b_image": "images/minis/specialty/biscoff/biscoff_mini_2.webp",
-        "c_image": "images/minis/specialty/biscoff/biscoff_mini_3.webp"
     }
 ]
