@@ -48,14 +48,14 @@ function previousImage(button) {
     updateSlider(slider, sliderID);
 }
 
-function updateSlider(slider,sliderID) {
+function updateSlider(slider, sliderID) {
+  const imgs = slider.querySelectorAll('img');
+  const index = sliderDict[sliderID] ?? 0;
 
-    const sliderWidth = slider.querySelector('img').offsetWidth;
-    console.log("sliderWidth:" + sliderWidth);
+  const targetImg = imgs[index];
+  const x = targetImg ? targetImg.offsetLeft : 0;
 
-    slider.style.transform = `translateX(-${sliderDict[sliderID] * sliderWidth}px)`; // Slide to the correct image
-
-    console.log("sliderWidth and index:" + sliderDict[sliderID] * sliderWidth);
+  slider.style.transform = `translateX(-${x}px)`;
 }
 
 function getItemNumber(id) {
