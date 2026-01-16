@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    font-family: "Work Sans", sans-serif, generic-family;
+    font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
@@ -308,8 +308,6 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2vw;
-    text-align: center;
-    justify-content: center;
     margin: 4vw;
     margin-top: 0vw;
     margin-bottom: 0px;
@@ -329,7 +327,6 @@ footer {
     background-color: #6b4a51;
     aspect-ratio: 1/1;
     height: fit-content;
-    width: fit-content;
     padding: 1.2vw;
     margin-bottom: 0;
     margin: 2vw;
@@ -346,13 +343,9 @@ footer {
     overflow: hidden;
     border: 0.3rem solid #f7e9df;
     border-right: 0rem;
-    height: 21vw;
-    width: 14vw;
 }
 
 .main_item_container img { /* this basically moves the picture within the overflow section*/
-    height: 21vw;
-    width: 14vw;
     object-fit: cover;
 }
 
@@ -427,7 +420,6 @@ footer {
 
 .dainty-wrapper-container {
     display: flex;
-    flex-direction: column;
     background-color: #f7e9df;
 }
 
@@ -439,7 +431,7 @@ footer {
 .main_item_row img {
     cursor: pointer;
     aspect-ratio: 1/1;
-    width: 7vw;
+    width: 7.5vw;
     object-fit: cover;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
@@ -462,7 +454,7 @@ footer {
 
 .dainty-subwrapper2 .showcase-item{
     background-color: #f7e9df;
-    padding-bottom: 15px;;
+    padding-bottom: 30px;
 }
 
 .dainty-subwrapper2 .showcase-item h2{
@@ -534,13 +526,14 @@ footer {
 }
 
 .cc_option:has( > input[type="radio"]:checked){
-    background-color: #d5e7b8;
-    border-color: #d5e7b8;
+    background-color: #6b4a51;
+    border-color: #6b4a51;
+    color: #fff;
 }
 
 .cc_option:has( > input[type="radio"]:checked)::before {
     border: 4px solid #fff;
-    background-color: #d5e7b8;
+    background-color: #6b4a51;
 }
 
 .addCart{
@@ -736,21 +729,98 @@ body.showCart footer{
     margin-top: 10px;
 }
 
+/* =================================Sub-Footer================================= */
+
+.subfooter {
+    background-color: #f7e9df;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+}
+
+.meet-ma-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.meet-ma-photo-container {
+    padding: 0 0 0 10vw;
+}
+
+.meet-ma-photo {
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.meet-ma-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    max-width: 20vw;
+    text-align: left;
+    color: #6b4a51;
+}
+
 
 /* =================================Footer================================= */
 
 footer {
-    background-color: #fdfbd6
+    padding: 6vh 6vw 4vh 6vw;
+    background-color: #6b4a51;
 }
 
 footer a {
-    color: #d8d6c5;
+    color: #ffffff;
     text-decoration: none;
     opacity: 70%;
 }
 
-footer h1 {
-    color: #a3a293;
+footer h4, footer p {
+    color: #ffffff;
+}
+
+.footer-content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15vw;
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.footer-content img {
+    width: 180px;
+    height: 180px;
+}
+
+.footer-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.footer-title h4 {
+    font-family: "Alex Brush", cursive;
+    font-size: 4em;
+    font-weight: 100;
+    font-style: normal;
+    font-variant: normal;
+}
+
+.footer-title p {
+    font-family: "Quicksand", sans-serif;
 }
 
 .contact_info {
@@ -758,13 +828,23 @@ footer h1 {
     flex-direction: column;
     gap: 10px;
     justify-content: center;
-    align-items: center;
-    padding: 2vh;
+    align-items: flex-end;
+    padding-top: 2vh;
+}
+
+.social_icons {
+  margin-top: 10px;
 }
 
 .social_icons img{
     margin: 5px;
     width: 50px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    color: #ffffff;
+    opacity: 70%;
 }
 
 
