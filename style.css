@@ -13,10 +13,10 @@ html {
 
 header {
     display: grid;
-    grid-template-columns: 0.85fr 1fr 30px;
+    grid-template-columns: 0.675fr 1fr 30px;
     align-items: center;
     background-color: #6b4a51;
-    padding: 2vh;
+    padding: 1vh 2vw 1vh 0;
     transition: .5s;
 }
 
@@ -54,20 +54,23 @@ footer {
 }
 
 .logo-title-wrapper {
-    display: none; /* this dont look good no more*/
     align-self: center;
     max-width: fit-content;
 }
 
 .logo-title{
-    border-style: solid;
-    border-left: 0px;
-    border-right: 0px;
+  color: whitesmoke;
+  font-family: "Alex Brush", cursive;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 3.5em;
 }
 
 .nav_links {
     list-style: none;
     display: flex;
+    gap: 20px;
+    padding-left: 20px;
 }
 
 .nav_links li a {
@@ -149,24 +152,28 @@ footer {
 .slider-wrapper {
     position: relative;
     max-width: 100%;
-    max-height: 38vw;
+    max-height: 45vw;
     overflow: hidden;
     margin: 0 auto;
 }
 
 .slider_cover {
-    height: 38vw;
+    display: flex;
+    height: 45vw;
     width: 100%;
     background-color: rgba(0, 0, 0,0.55);
     backdrop-filter: blur(5px);
     z-index: 1;
     position: absolute;
+    align-items: center;
+    justify-content: center;
 }
 
 .slider_cover img {
-    height: 32vw;
+    height: 25vw;
     display: block;
-    margin: 2.5vh auto 0 auto;         
+    justify-self: center;
+    align-self: center;        
     object-fit: contain;
 }
   
@@ -582,79 +589,86 @@ footer {
 }
 /* ===============================Cart tab==================================*/
 
+#TotalPriceCart {
+    color: #6b4a51;
+}
+
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .cart-tab{
     width: 25vw;
-    background-color: #353432;
+    background-color: whitesmoke;
     color: #eee;
     position: fixed;
     inset:0 -25vw 0 auto;
     display: grid;
-    grid-template-rows: 70px 1fr 70px 70px;
+    grid-template-rows: 90px 1fr 60px 80px;
     transition: .5s;
+    z-index: 101;
 }
 
 .cart-tab h1{
     padding: 20px;
-    margin: 0;
-    font-weight: 300;
 }
+
 .cart-tab .btn{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.cart-tab button{
-    background-color: #f3f1d6;
+
+.checkOut{
+    width: 20vw;
+    height: 50px;
+    background-color: #6b4a51;
     border: none;
     font-weight: 500;
     cursor: pointer;
-    color: #000;
+    color: whitesmoke;
+    border-radius: 80px;
 }
+
 .cart-tab .close{
-  color: #000;
-    background-color: #d5e7b8
+    color: whitesmoke;
+    background-color: #6b4a51
 }
 
 .cart-list {
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .cart-list .item{
     /* makes a glass tint card for each img */
-    position: relative;
+    /* position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 10px; */
 
     /* cart item css */
-    display: grid;
-    grid-template-columns: 20px 200px 50px 1fr;
-    gap: 10px;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    margin: 5px; 
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 1.05em;
-    font-weight: 500;
-}
-
-/* frosted glass */
-.cart-list .item::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.10); /* milky tint */
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    z-index: 1; /* sits above the image, below the text/buttons */
+    gap: 15px;
+    width: 20vw;
+    height: 10vw;
+    background-color: #f7e9df;
+    color: #6b4a51;
 }
 
 .cart-list .item img{
-    z-index: 0;
-    width: calc(25vw - 20px);
-    height: 12vh;
+    width: 8vw;
+    aspect-ratio: 1/1;
     object-fit: cover;
-    object-position: center 60%;
-    filter: brightness(55%) blur(1.5px);
+    margin-left: 1vw; /* its (width of .item - width of img)/2 */
 }
 
 .item-name, .item-quantity, .item-price {
@@ -662,9 +676,14 @@ footer {
 }
 
 .cart-list .item .item-name{
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding: 5px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
 }
 
 .item-quantity {
@@ -674,35 +693,42 @@ footer {
   align-items: center;
 }
 
-.item-quantity span span{
-    display: inline-block;
+.item-quantity span button{
     width: 22px;
     height: 22px;
-    background-color: #eee;
+    background-color: #6b4a51;
     border-radius: 50%;
-    color: #555;
+    color: #fff;
     cursor: pointer;
+    border: none;
 }
 
 .item-quantity span {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 22px 1fr 22px;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
 }
 
-.item-quantity span span:nth-child(2){
+.item-quantity span #item-number{
     background-color: transparent;
-    color: #eee;
+    color: #6b4a51;
     cursor: auto;
+    text-align: center;
+    justify-self: center;
 }
 
-.cart-list .item-quantity button{
-    background-color: transparent;
+.removebtn{
+    background-color: #6b4a51;
     color: white;
-    padding-top: 5px;
-}
-
-.cart-list .item:nth-child(even){
-    background-color: #42413f;
+    border: none;
+    padding: 5px 3vw;
+    border-radius: 15px;
+    font-size: 1em;
 }
 
 .cart-list::-webkit-scrollbar{

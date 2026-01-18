@@ -30,7 +30,7 @@
                 </nav>
                 <div>
                     <div class="logo-title-wrapper">
-                        <h1 class="logo-title">Ma's Cakes</h1>
+                        <h1 class="logo-title">Ma's Cakes 'n Bakes</h1>
                     </div>
                 </div>
                 <div class="container">
@@ -172,38 +172,61 @@
                 <div style="height: 5vh;"></div> -->
                 
             </section>
+
+            <section class="subfooter">
+                <div class="meet-ma-container">
+                    <div class="meet-ma-photo-container">
+                        <img src="images/blueberry_cc_1_single.jpg" alt="Ma Photo" class="meet-ma-photo">
+                    </div>
+                    <div class="meet-ma-text">
+                        <h1>Meet Ma</h1>
+                        <p style="font-weight: 500;">Lovely Woman</p>
+                    </div>
+                </div>
+            </section>
+
+
+
+
         </main>
         
         <div class="cart-tab">
+            <div class="cart-header">
+                <h1 style="color: #6b4a51; font-weight: 500;">Shopping Cart</h1>
+                <h1 style="color: #6b4a51; font-weight: 700; font-size: 2.5rem; cursor: pointer;" onclick="showCart()">X</h1>
+            </div>
             
-            <h1>Shopping Cart</h1>
 
             <div class="cart-list">
-                <!-- <div class="item">
+                <div class="item">
                     <div class="item-image">
                         <img src="images/Tiramisu1.jpg" alt="itemPic1">
                     </div>
-                    <div class="item-name">
-                        item 1
+                    <div class="item-details">
+                        <div class="item-category">
+                            <strong>Category</strong>
+                        </div>
+                        <div class="item-name">
+                            item 1
+                        </div>
+                        <div class="item-price">
+                            $20.00
+                        </div>
+                        <div class="item-quantity">
+                            <span>
+                                <button class="minus"><</button>
+                                <h4 id="item-number">1</h4>
+                                <button class="plus">></button>
+                            </span>
+                            <button class="removebtn">Remove</button>
+                        </div>
                     </div>
-                    <div class="item-price">
-                        $20.00
-                    </div>
-                    <div class="item-quantity">
-                        <span>
-                            <span class="minus"><</span>
-                            <span id="item-number">1</span>
-                            <span class="plus">></span>
-                        </span>
-                        <button class="removebtn">Remove</button>
-                    </div>
-                </div> -->
+                </div>
             </div>
 
-            <h1 id="TotalPriceCart">Total Price: 0$</h1>
+            <h1 id="TotalPriceCart">Subtotal: 0$</h1>
             
             <div class="btn">
-                <button class="close" onclick="showCart()">Close</button>
                 <button class="checkOut" onclick="showCheckoutPopup()">Check Out</button>
             </div>
         </div>
@@ -248,18 +271,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="home.js"></script>
     </body>
-    
-    <section class="subfooter">
-        <div class="meet-ma-container">
-            <div class="meet-ma-photo-container">
-                <img src="images/blueberry_cc_1_single.jpg" alt="Ma Photo" class="meet-ma-photo">
-            </div>
-            <div class="meet-ma-text">
-                <h1>Meet Ma</h1>
-                <p style="font-weight: 500;">Lovely Woman</p>
-            </div>
-        </div>
-    </section>
+
 
     <footer id="footer">
         <div class="footer-content-container">
@@ -273,7 +285,7 @@
             <div class="contact_info">
                 <p><strong>Contacts</strong></p>
                 <p><strong>Phone</strong>: +1 403-401-9293</p>
-                <p><strong>Email</strong>: masbakesncakes@gmail.com</p>
+                <p><strong>Email</strong>: mascakesnbakes@gmail.com</p>
                 <div class="social_icons">
                     <a href="#"><img src="images/facebook.png" alt="facebook"></a>
                     <a href="#"><img src="images/instagram.png" alt="instagram"></a>

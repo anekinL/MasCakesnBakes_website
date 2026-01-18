@@ -78,7 +78,7 @@ function updateCartPrice() {
     if (changedPrice) {
         changedPrice = false;
         console.log("price:" + getTotalPrice());
-        document.getElementById("TotalPriceCart").textContent = "Total Price: " + getTotalPrice() + "$"
+        document.getElementById("TotalPriceCart").textContent = "Subtotal: " + getTotalPrice() + "$"
         console.log("price again:" + getTotalPrice());
         changedPrice = true;
     }
@@ -111,6 +111,7 @@ function deleteDefault(idNumber) {
 }
 
 function showCart() {
+    console.log("toggling cart");
     document.querySelector("body").classList.toggle("showCart");
 }
 
@@ -252,8 +253,18 @@ subwrapper.addEventListener('click', (event) => {
     }
 });
 
+const clearCart = () => {
+    cart = [];
+    addCartToHTML();
+    addCartToMemory();
+    updateCartPrice()
+}
+
 const addToCart = (productId, selectedPriceOption) => {
+    // console.log("cart before:", cart);
+    // console.log("Adding to cart:", productId, selectedPriceOption);
     let cartPos = cart.findIndex(item => item.productId === productId && item.selectedPrice === selectedPriceOption);
+    // console.log("Cart position:", cartPos);
     
     if (cart.length <= 0) {
         cart = [{
@@ -270,6 +281,8 @@ const addToCart = (productId, selectedPriceOption) => {
     } else {
         cart[cartPos].quantity++;
     }
+
+    // console.log("cart:", cart);
     
     addCartToHTML();
     addCartToMemory();
@@ -281,7 +294,7 @@ const addCartToMemory = () => {
 }
 
 const addCartToHTML = () => {
-    cartListHTML.innerHTML = '';
+    // cartListHTML.innerHTML = '';
     let totalProducts = 0;
 
     if (cart.length > 0) {
@@ -290,28 +303,37 @@ const addCartToHTML = () => {
             let newCartItem = document.createElement("div");
             newCartItem.classList.add('item');
             newCartItem.dataset.productId = cartItem.productId;
+            newCartItem.dataset.selectedPrice = cartItem.selectedPrice;
 
             let positionProduct = products.findIndex(value => value.id == cartItem.productId);
             let info = products[positionProduct];
+            console.log(products);
+            console.log(positionProduct);
 
             newCartItem.innerHTML = `
                 <div class="item-image">
                     <img src="${info.a_image}" alt="itemPic1">
                 </div>
-                <div class="item-name">
-                    ${info.name}
+                <div class="item-details">
+                    <div class="item-category">
+                        <strong>Category</strong>
+                    </div>
+                    <div class="item-name">
+                        ${info.name}
+                    </div>
+                    <div class="item-price">
+                        ${getPriceValue(cartItem.selectedPrice) * cartItem.quantity}$
+                    </div>
+                    <div class="item-quantity">
+                        <span>
+                            <button class="minus"><</button>
+                            <h4 id="item-number">${cartItem.quantity}</h4>
+                            <button class="plus">></button>
+                        </span>
+                        <button class="removebtn">Remove</button>
+                    </div>
                 </div>
-                <div class="item-price">
-                    ${getPriceValue(cartItem.selectedPrice) * cartItem.quantity}$
-                </div>
-                <div class="item-quantity">
-                    <span>
-                        <span class="minus"><</span>
-                        <span>${cartItem.quantity}</span>
-                        <span class="plus">></span>
-                    </span>
-                    <button class="removebtn">Remove</button>
-                </div>
+
             `;
             cartListHTML.appendChild(newCartItem);
         });
@@ -321,44 +343,43 @@ const addCartToHTML = () => {
 };
 
 cartListHTML.addEventListener('click', (event) => {
+    const positionClick = event.target;
     // find the nearest button/control the user meant to click
     //so when we look through control we look for .plus .minus .removebtn
-    const control = event.target.closest('.minus, .plus, .removebtn');
-    if (!control) return;
 
     // find the cart item row that owns that control
-    const itemEl = control.closest('.item');
+    const itemEl = positionClick.closest('.item');
+    if (!itemEl) return;
 
     // if product id doesnt exist, then projectid = null instead of an error
     const productId = itemEl?.dataset.productId;
-    if (!productId) return;
+    const selectedPrice = itemEl.dataset.selectedPrice;
 
-    if (control.classList.contains('minus')) {
-    changeQuantityCart(productId, 'minus');
+    if (positionClick.classList.contains('minus')) {
+    changeQuantityCart(productId, selectedPrice, 'minus');
     return;
-    }
-
-    if (control.classList.contains('plus')) {
-    changeQuantityCart(productId, 'plus');
+    } else if (positionClick.classList.contains('plus')) {
+    changeQuantityCart(productId, selectedPrice, 'plus');
     return;
-    }
+    } else if (positionClick.classList.contains('removebtn')) {
+        const positionItemInCart = cart.findIndex(
+        (value) => value.productId == productId && value.selectedPrice === selectedPrice);
 
-    // remove button
-    const positionItemInCart = cart.findIndex(v => v.productId == productId);
     if (positionItemInCart >= 0) cart.splice(positionItemInCart, 1);
 
     addCartToMemory();
     addCartToHTML();
     updateCartPrice();
+    }
 });
 
 const getPriceValue = (priceString) => {
     return parseFloat(priceString.split('/')[0].replace(/[^0-9.]/g, '')); //so this takes the string and replaces all non ints with ""
 };
 
-const changeQuantityCart = (productId, type) => {
+const changeQuantityCart = (productId, selectedPrice, type) => {
     console.log(productId);
-    let positionItemInCart = cart.findIndex((value) => value.productId == productId);
+    let positionItemInCart = cart.findIndex((value) => value.productId == productId && value.selectedPrice === selectedPrice);
     if(positionItemInCart >= 0){
         let info = cart[positionItemInCart];
         switch (type) {
@@ -699,6 +720,7 @@ const initApp = () => {
         //get cart from memory JSON file
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'));
+            //clearCart();
             addCartToHTML();
             updateCartPrice()
         }
