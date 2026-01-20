@@ -5,13 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
         <title>Ma's Bakes'n Cakes</title>
-        <link rel="stylesheet" href="productsStyle.css">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="productsNEW.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Quicksand:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
 
     <body class="">
@@ -25,14 +25,15 @@
                     <button class="menu-close" id="menuClose" aria-label="Close menu"></button>
                     <ul class="nav_links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Cakes</a></li>
+                        <li class="menu-products"><a href="products.html">Cakes</a></li>
+                        <li class="menu-products-mobile"><a href="productsCatagory.html">Cakes</a></li>
                         <li><a href="#">About Us</a></li>
                     </ul>
                 </nav>
                 <div>
-                <div class="logo-title-wrapper">
-                    <h1 class="logo-title">Ma's Cakes</h1>
-                </div>
+                    <div class="logo-title-wrapper">
+                        <h1 class="logo-title">Ma's Cakes 'n Bakes</h1>
+                    </div>
                 </div>
                 <div class="container">
                     <div class="icon-cart" id="yeye" onclick="showCart();">
@@ -76,48 +77,62 @@
                 <section class="dainty-subwrapper2" id="m_wrapper">
 
                 </section>
-
-                <div class="cheesecake-title">
-                    <div class="title-wrapper">
-                        <h2>Tiramisu</h2>
-                    </div>
-                </div>
-
-                <section class="dainty-subwrapper2" id="t_wrapper">
-                    <h2>Coming Soon</h2>
-                </section>
                 
             </section>
+
+            <div style="height: 5vh;"></div>
+
+            <section class="subfooter">
+                <div class="meet-ma-container">
+                    <div class="meet-ma-photo-container">
+                        <img src="images/blueberry_cc_1_single.jpg" alt="Ma Photo" class="meet-ma-photo">
+                    </div>
+                    <div class="meet-ma-text">
+                        <h1>Meet Ma</h1>
+                        <p style="font-weight: 500;">Lovely Woman</p>
+                    </div>
+                </div>
+            </section>
+
         </main>
         
         <div class="cart-tab">
+            <div class="cart-header">
+                <h1 style="color: #6b4a51; font-weight: 500;">Shopping Cart</h1>
+                <h1 style="color: #6b4a51; font-weight: 700; font-size: 2.5rem; cursor: pointer;" onclick="showCart()">X</h1>
+            </div>
             
-            <h1>Shopping Cart</h1>
 
             <div class="cart-list">
                 <div class="item">
                     <div class="item-image">
                         <img src="images/Tiramisu1.jpg" alt="itemPic1">
                     </div>
-                    <div class="item-name">
-                        item 1
-                    </div>
-                    <div class="item-price">
-                        $20.00
-                    </div>
-                    <div class="item-quantity">
-                        <span class="minus"><</span>
-                        <span>1</span>
-                        <span class="plus">></span>
-                        <button class="removebtn">Remove</button>
+                    <div class="item-details">
+                        <div class="item-category">
+                            <strong>Category</strong>
+                        </div>
+                        <div class="item-name">
+                            item 1
+                        </div>
+                        <div class="item-price">
+                            $20.00
+                        </div>
+                        <div class="item-quantity">
+                            <span>
+                                <button class="minus"><</button>
+                                <h4 id="item-number">1</h4>
+                                <button class="plus">></button>
+                            </span>
+                            <button class="removebtn">Remove</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <h1 id="TotalPriceCart">Total Price: 0$</h1>
+            <h2 id="TotalPriceCart">Subtotal: 0$</h2>
             
             <div class="btn">
-                <button class="close" onclick="showCart()">Close</button>
                 <button class="checkOut" onclick="showCheckoutPopup()">Check Out</button>
             </div>
         </div>
@@ -158,22 +173,32 @@
         </div>
 
         <!--<span class="fileType" id="home"></span>-->
-        <div style="height:6vw; background-color: #fffde7;"></div>
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="home.js"></script>
     </body>
+
     <footer id="footer">
-        <div class="contact_info">
-            <h1>Contact Information</h1>
-            <p>Phone: 123-123-1234</p>
-            <p>Email: info@example.com</p>
-            <div class="social_icons">
-                <a href="#"><img src="images/facebook.png" alt="facebook"></a>
-                <a href="#"><img src="images/instagram.png" alt="instagram"></a>
-                <a href="#"><img src="images/messenger.png" alt="messenger"></a>
+        <div class="footer-content-container">
+            <div class="footer-content">
+                <img src="images/masLogo2_fixed.png" alt="Logo" class="footer-logo">
+                <div class="footer-title">
+                    <h4>Ma's Cakes 'n Bakes</h4>
+                    <p>Fresh & Delicious Cakes made with Familial Love</p>
+                </div>
+            </div>
+            <div class="contact_info">
+                <p><strong>Contacts</strong></p>
+                <p><strong>Phone</strong>: +1 403-401-9293</p>
+                <p><strong>Email</strong>: mascakesnbakes@gmail.com</p>
+                <div class="social_icons">
+                    <a href="#"><img src="images/facebook.png" alt="facebook"></a>
+                    <a href="#"><img src="images/instagram.png" alt="instagram"></a>
+                    <a href="#"><img src="images/messenger.png" alt="messenger"></a>
+                </div>
             </div>
         </div>
-        <a href="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons">Instagram logo icons created by riajulislam - Flaticon</a>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ma's Cakes 'n Bakes. All rights reserved.</p>
     </footer>
 </html>

@@ -294,7 +294,7 @@ const addCartToMemory = () => {
 }
 
 const addCartToHTML = () => {
-    // cartListHTML.innerHTML = '';
+    cartListHTML.innerHTML = '';
     let totalProducts = 0;
 
     if (cart.length > 0) {
@@ -316,13 +316,13 @@ const addCartToHTML = () => {
                 </div>
                 <div class="item-details">
                     <div class="item-category">
-                        <strong>Category</strong>
+                        <strong>${info.category}</strong>
                     </div>
                     <div class="item-name">
-                        ${info.name}
+                        Flavour: ${info.name}
                     </div>
                     <div class="item-price">
-                        ${getPriceValue(cartItem.selectedPrice) * cartItem.quantity}$
+                        Cost: ${getPriceValue(cartItem.selectedPrice) * cartItem.quantity}$
                     </div>
                     <div class="item-quantity">
                         <span>
@@ -330,7 +330,6 @@ const addCartToHTML = () => {
                             <h4 id="item-number">${cartItem.quantity}</h4>
                             <button class="plus">></button>
                         </span>
-                        <button class="removebtn">Remove</button>
                     </div>
                 </div>
 
@@ -513,7 +512,7 @@ function send_customer_data(email,phone) {
 function showCheckoutPopup() {
     // Select the checkout form container
     const checkoutPopup = document.querySelector(".checkout_body_container");
-    document.getElementById("TotalPriceText").textContent = "Total Price: " + getTotalPrice() + "$";
+    document.getElementById("TotalPriceText").textContent = "Subtotal: " + getTotalPrice() + "$";
     
     if (checkoutPopup) {
         // Make the form visible

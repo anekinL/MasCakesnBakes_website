@@ -2,7 +2,8 @@
     {
         "type": "ccf",
         "id": 100000,
-        "name": "Strawberry Cheesecake",
+        "category": "Cheesecake Minis",
+        "name": "Strawberry",
         "description": "Our strawberry compote is the perfect balance of sweetness and tartness.",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
@@ -13,7 +14,8 @@
     {
         "type": "ccf",
         "id": 200000,
-        "name": "Blueberry Cheesecake",
+        "category": "Cheesecake Minis",
+        "name": "Blueberry",
         "description": "Our blueberry compote from juicy blueberries is full of flavor and vibrant colors",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
@@ -24,7 +26,8 @@
     {
         "type": "ccf",
         "id": 300000,
-        "name": "Mango Cheesecake",
+        "category": "Cheesecake Minis",
+        "name": "Mango",
         "description": "Our luscious mango compote is made from ripe mangos, complements the creamy cream cheese filling.",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
@@ -35,7 +38,8 @@
     {
         "type": "ccf",
         "id": 400000,
-        "name": "Cherry Cheesecake",
+        "category": "Cheesecake Minis",
+        "name": "Cherry",
         "description": "The combination of our cherry compote and creamy cream cheese filling reminiscent the classic New York cheesecake.",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
@@ -46,7 +50,8 @@
     {
         "type": "cci",
         "id": 101000,
-        "name": "Biscoff Cheesecake",
+        "category": "Cheesecake Minis",
+        "name": "Biscoff",
         "description": "Featuring a Biscoff butter infused in our silky smooth cream cheese filling on top a buttery Biscoff crust.",
         "price1": "$26.50/half a dozen",
         "price2": "$50.50/dozen",
@@ -57,7 +62,8 @@
     {
         "type": "cci",
         "id": 102000,
-        "name": "Oreo Cheesecake",
+        "category": "Cheesecake Minis",
+        "name": "Oreo",
         "description": "Featuring crushed Oreo cookies blended in our silky-smooth cream cheese filling on top a buttery Oreo crust.",
         "price1": "$26.50/half a dozen",
         "price2": "$50.50/dozen",
@@ -68,7 +74,8 @@
     {
         "type": "cc6in",
         "id": 100010,
-        "name": "Oreo Cheesecake",
+        "category": "Cheesecake 6-inch",
+        "name": "Oreo",
         "description": "Featuring crushed Oreo cookies blended in our silky-smooth cream cheese filling on top a buttery Oreo crust.",
         "price1": "$26.50/half a dozen",
         "price2": "$50.50/dozen",
@@ -79,7 +86,8 @@
     {
         "type": "cc6in",
         "id": 100020,
-        "name": "Mango Cheesecake",
+        "category": "Cheesecake 6-inch",
+        "name": "Mango",
         "description": "Mango :].",
         "price1": "$26.50/half a dozen",
         "price2": "$50.50/dozen",
