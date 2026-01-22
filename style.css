@@ -1087,8 +1087,13 @@ form .checkout_row {
         inset:0 -35vw 0 auto;
     }
 
+    .cart-list .item{
+        width: 25vw;
+        height: 12vw;
+    }
+
     .cart-list .item img{
-      width: calc(35vw - 20px);
+        width: 10vw;
     }
 
     body.showCart main{
@@ -1117,8 +1122,18 @@ form .checkout_row {
       margin-top: 0%;
     }
 
+    .checkOut {
+      width: 28vw;
+    }
+
     .checkout_subtitle, #checkout_subtitle {
       font-size: 1.25rem;
+    }
+
+    /* Footer */
+
+    .footer-content-container {
+        gap: 10vw;
     }
 }
 
