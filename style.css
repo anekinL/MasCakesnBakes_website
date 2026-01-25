@@ -1284,7 +1284,7 @@ form .checkout_row {
     grid-template-columns: 1fr;
     text-align: center;
     padding: 1.5vh 1vh;
-    height: 10vh;
+    height: 8vh;
   }
   .nav_links {
     flex-direction: column;
@@ -1425,10 +1425,20 @@ form .checkout_row {
 
   .dainty-subwrapper2 .showcase-item h3{
     padding: 15px;
+    width:auto;
   }
 
   .addCart{
     margin-bottom: 15px;
+  }
+
+  .cartbtn_container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cc_option {
+    padding: 14px 20px;
   }
 
   /* “Show More” button */
@@ -1448,12 +1458,27 @@ form .checkout_row {
     inset: 0 -100% 0 auto;
   }
 
+  .cart-list {
+    justify-content: flex-start;
+    margin-left: 2.5vw;
+  }
+
   .cart-list .item{
-    grid-template-columns: 1px 150px 50px 1fr;
+    height: 45vw;
+    width: 90vw;
   }
 
   .cart-list .item img{
-    width:98vw ;
+    width: 40vw;
+  }
+
+  .item-image {
+    padding: 1vw;
+    padding-bottom: 0%;
+  }
+
+  .checkOut {
+    width: 80vw;
   }
 
   .checkout_row {
@@ -1506,6 +1531,54 @@ form .checkout_row {
   .checkout_button {
     width: 90%;
     margin-bottom: 10px;
+  }
+
+  /* ===== Footer ===== */
+
+  .meet-ma-container {
+    gap: 10vw;
+  }
+
+  .meet-ma-photo-container {
+    padding: 0%;
+  }
+
+  .meet-ma-photo-container img {
+    width: 35vw;
+    height: 35vw;
+  }
+
+  .meet-ma-text {
+    max-width: 70vw;
+  }
+
+  .footer-title {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-title p {
+    margin: 0 6vw;
+  }
+
+  .footer-title h4 {
+    font-size: 2em;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-content-container {
+    flex-direction: column;
+    gap: 5vw;
+    text-align: center;
+  }
+
+  .contact_info {
+    align-items: flex-start;
   }
 
 }
