@@ -54,6 +54,7 @@ module.exports = async function (context, req) {
             <p><strong>Email:</strong> ${customer.email || ""}</p>
             <p><strong>Phone:</strong> ${customer.phone || ""}</p>
             <p><strong>Preferred contact:</strong> ${customer.preferredContact || "N/A"}</p>
+            <p><strong>Preferred payment:</strong> ${customer.preferredPayment || "N/A"}</p>
             <p><strong>Occasion:</strong> ${customer.occasion || "N/A"}</p>
             <p><strong>Message:</strong> ${customer.message || "N/A"}</p>
             <h2>Items</h2>

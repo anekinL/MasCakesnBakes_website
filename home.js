@@ -530,6 +530,13 @@ function showCheckoutPopup() {
     }
 }
 
+function hideCheckoutPopup() {
+    const checkoutPopup = document.querySelector(".checkout_body_container");
+    if (checkoutPopup) {
+        checkoutPopup.style.display = "none";
+    }
+}
+
 const form = document.querySelector("form");
 const fullName = document.getElementById("customerName");
 const email = document.getElementById("customerEmail");
@@ -561,6 +568,7 @@ function sendEmail() {
     }
 
     const preferredContactSelect = document.getElementById("preferredContact");
+    const preferredPaymentSelect = document.getElementById("preferredPayment");
 
     const orderPayload = {
         customer: {
@@ -568,6 +576,7 @@ function sendEmail() {
             email: email.value,
             phone: phoneNumber.value,
             preferredContact: preferredContactSelect ? preferredContactSelect.value : null,
+            preferredPayment: preferredPaymentSelect ? preferredPaymentSelect.value : null,
             occasion: occasion ? occasion.value : null,
             message: message.value
         },
@@ -584,6 +593,16 @@ function sendEmail() {
         total: getTotalPrice()
     };
 
+    Swal.fire({
+        title: "Placing your order...",
+        text: "Sending, please wait.",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
     fetch("/api/newOrder", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -593,7 +612,7 @@ function sendEmail() {
         if (!res.ok) {
             throw new Error("Server error placing order");
         }
-        // in case your function returns JSON; if not, this will just fail silently
+        // in case function returns JSON
         return res.json().catch(() => ({}));
     })
     .then(() => {
