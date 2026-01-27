@@ -593,28 +593,30 @@ function sendEmail() {
         total: getTotalPrice()
     };
 
+    Swal.fire({
+        title: "Placing your order...",
+        text: "Sending, please wait.",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => Swal.showLoading()
+    });
+
     fetch("/api/newOrder", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderPayload),
     })
-    .then(() => { 
-        Swal.fire({
-            title: "Placing your order...",
-            text: "Sending, please wait.",
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        }); 
-    })
-    .then(res => {
+    .then(async (res) => {
+        // try to parse JSON if the function returns it
+        let data = {};
+        try { data = await res.json(); } catch {}
+
         if (!res.ok) {
-            throw new Error("Server error placing order");
+            throw new Error(data?.error?.message || data?.error || "Server error placing order");
         }
-        // in case function returns JSON
-        return res.json().catch(() => ({}));
+
+        Swal.close(); // close loading
+        return data;
     })
     .then(() => {
         Swal.fire({
@@ -643,6 +645,8 @@ function sendEmail() {
     })
     .catch(err => {
         console.error(err);
+        Swal.close(); // ensure loading closes on error
+        
         Swal.fire({
             title: "Error",
             text: "We couldn't place your order. Please try again or contact us directly.",
