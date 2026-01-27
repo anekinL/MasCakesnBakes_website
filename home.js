@@ -593,20 +593,21 @@ function sendEmail() {
         total: getTotalPrice()
     };
 
-    Swal.fire({
-        title: "Placing your order...",
-        text: "Sending, please wait.",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        didOpen: () => {
-            Swal.showLoading();
-        }
-    });
-
     fetch("/api/newOrder", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(orderPayload)
+        body: JSON.stringify(orderPayload),
+    })
+    .then(() => { 
+        Swal.fire({
+            title: "Placing your order...",
+            text: "Sending, please wait.",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        }); 
     })
     .then(res => {
         if (!res.ok) {

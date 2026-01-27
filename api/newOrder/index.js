@@ -18,6 +18,10 @@ module.exports = async function (context, req) {
         const sender = process.env.ACS_EMAIL_SENDER;
         const recipient = process.env.ORDER_NOTIFY_EMAIL;
 
+        context.log("ORDER_NOTIFY_EMAIL:", process.env.ORDER_NOTIFY_EMAIL);
+        context.log("ACS_EMAIL_SENDER:", process.env.ACS_EMAIL_SENDER ? "configured" : "NOT CONFIGURED");
+        context.log("ACS_EMAIL_CONNECTION_STRING:", process.env.ACS_EMAIL_CONNECTION_STRING ? "configured" : "NOT CONFIGURED");
+
         const missing = [];
         if (!connectionString) missing.push("ACS_EMAIL_CONNECTION_STRING");
         if (!sender) missing.push("ACS_EMAIL_SENDER");
