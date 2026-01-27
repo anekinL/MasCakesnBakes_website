@@ -655,11 +655,11 @@ form.addEventListener("submit", (event) => {
 function checkInputs() {
     const items  = document.querySelectorAll(".checkout_input");
 
-    console.log(items);
-    console.log(items[1].value);
+    // console.log(items);
+    // console.log(items[1].value);
     for (const item of items) {
         if (item.value == "") {
-            const itemids = document.querySelectorAll(`#${item.id}`);
+            const itemids = document.querySelectorAll(`#${item.id}Check`);
             for (const itemid of itemids) {
                 itemid.classList.add("error");
                 itemid.parentElement.classList.add("error");
@@ -702,6 +702,7 @@ function checkEmail() {
     const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
     const errorTxtEmail = document.querySelector(".error_txt.email");
 
+    // console.log(email.value);
     if (!email.value.match(emailRegex)) {
         for (const e of emailList) {
             e.classList.add("error");

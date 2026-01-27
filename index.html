@@ -250,8 +250,8 @@
                         <input type="text" class="checkout_input" id="customerLastName" placeholder="Last Name">
                     </div>
                     <div class="checkout_row" id="errorRow">
-                        <div class="error_txt" id="customerName">Full Name can't be blank</div>
-                        <div class="error_txt email" id="customerEmail"></div>
+                        <div class="error_txt" id="customerNameCheck">Full Name can't be blank</div>
+                        <div class="error_txt email" id="customerEmailCheck"></div>
                     </div>
                     <div class="checkout_row" id="emailRow">
                         <h2>Email Address</h2>
@@ -260,15 +260,15 @@
                         <input type="tel" class="checkout_input" id="customerNumber" placeholder="Phone Number">
                     </div>
                     <div class="checkout_row" id="errorRow">
-                        <div class="error_txt email" id="customerEmail">Email can't be blank</div>
-                        <div class="error_txt" id="customerNumber">Phone Number can't be blank</div>
+                        <div class="error_txt email" id="customerEmailCheck">Email can't be blank</div>
+                        <div class="error_txt" id="customerNumberCheck">Phone Number can't be blank</div>
                     </div>
                     <div class="checkout_row" id="PrefRow">
                         <div class="pref_item">
                             <label for="preferredContact">Preferred Contact Method:</label>
                             <select id="preferredContact" name="preferredContact">
-                                <option value="Phone">Mobile</option>
                                 <option value="Email">Email</option>
+                                <option value="Phone">Mobile</option>
                                 <option value="Both">Both</option>
                             </select>
                         </div>
