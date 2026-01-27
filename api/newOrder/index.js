@@ -80,15 +80,25 @@ module.exports = async function (context, req) {
         // ---- send email via ACS (correct pattern) ----
         const poller = await emailClient.beginSend(message);
         const result = await poller.pollUntilDone();
+
         context.log("Email send status:", result.status);
         if (result.error) {
             context.log("Email send error details:", result.error);
+        }
+
+        if (result.status !== "Succeeded") {
+            context.res = {
+                status: 500,
+                body: { ok: false, status: result.status, error: result.error || null }
+            };
+        return;
         }
 
         context.res = {
             status: 200,
             body: { ok: true, status: result.status }
         };
+
     } catch (err) {
         context.log.error("Error in newOrder function:", err);
         context.res = {
