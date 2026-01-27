@@ -496,19 +496,7 @@ function attachSwipeHandlers() {
     });
   });
 }
-// ==========
-
-function send_customer_data(email,phone) {
-    console.log(email);
-    const recipient = email;
-    const subject = 'Hello';
-    const body = 'This is the body of the email.';
-
-    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailtoLink;
-}
-
+// ========== Checkout popup ==========
 function showCheckoutPopup() {
     // Select the checkout form container
     const checkoutPopup = document.querySelector(".checkout_body_container");
@@ -537,8 +525,11 @@ function hideCheckoutPopup() {
     }
 }
 
+
+
 const form = document.querySelector("form");
 const fullName = document.getElementById("customerName");
+const lastName = document.getElementById("customerLastName");
 const email = document.getElementById("customerEmail");
 const emailList = document.querySelectorAll("#customerEmail");
 const phoneNumber = document.getElementById("customerNumber");
@@ -573,6 +564,7 @@ function sendEmail() {
     const orderPayload = {
         customer: {
             name: fullName.value,
+            lastName: lastName.value,
             email: email.value,
             phone: phoneNumber.value,
             preferredContact: preferredContactSelect ? preferredContactSelect.value : null,
@@ -646,7 +638,7 @@ function sendEmail() {
     .catch(err => {
         console.error(err);
         Swal.close(); // ensure loading closes on error
-        
+
         Swal.fire({
             title: "Error",
             text: "We couldn't place your order. Please try again or contact us directly.",
@@ -663,6 +655,8 @@ form.addEventListener("submit", (event) => {
 function checkInputs() {
     const items  = document.querySelectorAll(".checkout_input");
 
+    console.log(items);
+    console.log(items[1].value);
     for (const item of items) {
         if (item.value == "") {
             const itemids = document.querySelectorAll(`#${item.id}`);
@@ -673,11 +667,16 @@ function checkInputs() {
             
         }
 
-        if (items[1].value != "") {
+        // !Important!!!
+        // Need to change this part in the future as this is hardcoding the email index which is BAD practice ye
+        // This is how the items array looks interms of indices and info
+        // items[] = [input#customerName.checkout_input, input#customerLastName.checkout_input, 
+        // input#customerEmail.checkout_input, input#customerNumber.checkout_input, textarea#customerMessage.checkout_input]
+        if (items[2].value != "") {
             checkEmail();
         }
 
-        items[1].addEventListener("keyup", () => {
+        items[2].addEventListener("keyup", () => {
             checkEmail();
         });
 

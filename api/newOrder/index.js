@@ -55,6 +55,7 @@ module.exports = async function (context, req) {
         const htmlBody = `
             <h1>New Order</h1>
             <p><strong>Name:</strong> ${customer.name || ""}</p>
+            <p><strong>Last Name:</strong> ${customer.lastName || ""}</p>
             <p><strong>Email:</strong> ${customer.email || ""}</p>
             <p><strong>Phone:</strong> ${customer.phone || ""}</p>
             <p><strong>Preferred contact:</strong> ${customer.preferredContact || "N/A"}</p>
