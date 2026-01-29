@@ -5,12 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
         <title>Ma's Bakes'n Cakes</title>
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Quicksand:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
 
     <style>
@@ -105,89 +105,133 @@
         </main>
         
         <div class="cart-tab">
+            <div class="cart-header">
+                <h1 style="color: #6b4a51; font-weight: 500;">Shopping Cart</h1>
+                <h1 style="color: #6b4a51; font-weight: 700; font-size: 2.5rem; cursor: pointer;" onclick="showCart()">X</h1>
+            </div>
             
-            <h1>Shopping Cart</h1>
 
             <div class="cart-list">
                 <div class="item">
                     <div class="item-image">
                         <img src="images/Tiramisu1.jpg" alt="itemPic1">
                     </div>
-                    <div class="item-name">
-                        item 1
-                    </div>
-                    <div class="item-price">
-                        $20.00
-                    </div>
-                    <div class="item-quantity">
-                        <span class="minus"><</span>
-                        <span>1</span>
-                        <span class="plus">></span>
-                        <button class="removebtn">Remove</button>
+                    <div class="item-details">
+                        <div class="item-category">
+                            <strong>Category</strong>
+                        </div>
+                        <div class="item-name">
+                            item 1
+                        </div>
+                        <div class="item-price">
+                            $20.00
+                        </div>
+                        <div class="item-quantity">
+                            <span>
+                                <button class="minus"><</button>
+                                <h4 id="item-number">1</h4>
+                                <button class="plus">></button>
+                            </span>
+                            <button class="removebtn">Remove</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <h1 id="TotalPriceCart">Total Price: 0$</h1>
-            
+            <div class="total-price-container">
+                <h2 id="TotalPriceCart">Subtotal: 0$</h2>
+            </div>
+
             <div class="btn">
-                <button class="close" onclick="showCart()">Close</button>
                 <button class="checkOut" onclick="showCheckoutPopup()">Check Out</button>
             </div>
         </div>
 
         <div class="checkout_body_container">
             <div class="checkout_container">
-                <a class="keep-shopping" onclick="document.querySelector('.checkout_body_container').style.display='none';">&larr; Continue Shopping</a>
-                <h1 class="checkout_title" id="TotalPriceText"></h1>
-                <h1 class="checkout_title">Almost done, we just need some contact information</h1>
-                <h3 class="checkout_subtitle">Once we review your order we will contact you again, all orders are paid by Cash or E-Transfers</h3>
+                <div class="checkout-header">
+                    <img src="images/masLogo2_fixed.png" alt="Logo" class="checkout-logo">
+                    <h1 style="font-family: 'Alex Brush', cursive; font-weight: 300; font-size: 3rem;">Payment Menu</h1>
+                    <h1 style="font-weight: 700; font-size: 2.5rem; cursor: pointer;">X</h1>
+                </div>
+                <!-- <a class="keep-shopping" onclick="document.querySelector('.checkout_body_container').style.display='none';">&larr; Continue Shopping</a> -->
                 <form class="checkout_form">
-                    <div class="checkout_row">
-                        <input type="text" class="checkout_input" id="customerName" placeholder="Full Name" required>
-                        <input type="email" class="checkout_input" id="customerEmail" placeholder="Email Address" required>
+                    <!-- <h1>Customer Information</h1> -->
+                    <div class="checkout_row" id="nameRow">
+                        <h2>Name</h2>
+                        <h2></h2>
+                        <input type="text" class="checkout_input" id="customerName" placeholder="First Name" required>
+                        <input type="text" class="checkout_input" id="customerLastName" placeholder="Last Name">
                     </div>
-                    <div class="checkout_row">
+                    <div class="checkout_row" id="errorRow">
                         <div class="error_txt" id="customerName">Full Name can't be blank</div>
+                        <div class="error_txt email" id="customerEmail"></div>
+                    </div>
+                    <div class="checkout_row" id="emailRow">
+                        <h2>Email Address</h2>
+                        <h2>Phone Number</h2>
+                        <input type="email" class="checkout_input" id="customerEmail" placeholder="Email Address" required>
+                        <input type="tel" class="checkout_input" id="customerNumber" placeholder="Phone Number">
+                    </div>
+                    <div class="checkout_row" id="errorRow">
                         <div class="error_txt email" id="customerEmail">Email can't be blank</div>
+                        <div class="error_txt" id="customerNumber">Phone Number can't be blank</div>
                     </div>
                     <div class="checkout_row" id="PrefRow">
-                        <input type="tel" class="checkout_input" id="customerNumber" placeholder="Phone Number">
-                        <div class="pref_contact">
-                            <label for="preferredContact">Preferred Contact:</label>
+                        <div class="pref_item">
+                            <label for="preferredContact">Preferred Contact Method:</label>
                             <select id="preferredContact" name="preferredContact">
-                                <option value="Phone">Phone</option>
+                                <option value="Phone">Mobile</option>
                                 <option value="Email">Email</option>
+                                <option value="Both">Both</option>
+                            </select>
+                        </div>
+                        <div class="pref_item">
+                            <label for="preferredPayment">Preferred Payment Method:</label>
+                            <select id="preferredPayment" name="preferredPayment">
+                                <option value="Phone">Etransfer</option>
+                                <option value="Email">Cash</option>
                             </select>
                         </div>
                     </div>
-                    <div class="checkout_row">
-                        <div class="error_txt" id="customerNumber">Phone Number can't be blank</div>
-                        <div class="error_txt"></div>
-                    </div>
-                    <textarea class="checkout_input" id="customerMessage" placeholder="Special Request or Message"></textarea>
-                    <button type="submit" class="checkout_button" onclick="sendEmail()">Order</button>
+                    <h2 style="margin: 0px;">Special Request or Message</h2>
+                    <textarea class="checkout_input" id="customerMessage" placeholder="Let us know of any Allergies!"></textarea>
                 </form>
+                <div class="checkout_finish">
+                    <h2 class="checkout_total" id="TotalPriceText"></h2>
+                    <button type="submit" class="checkout_button" onclick="sendEmail()">Place Order</button>
+                </div>
             </div>
         </div>
 
         <!--<span class="fileType" id="home"></span>-->
-        <div style="height:6vw; background-color: #fffde7;"></div>
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="home.js"></script>
     </body>
+
+
     <footer id="footer">
-        <div class="contact_info">
-            <h1>Contact Information</h1>
-            <p>Phone: 123-123-1234</p>
-            <p>Email: info@example.com</p>
-            <div class="social_icons">
-                <a href="#"><img src="images/facebook.png" alt="facebook"></a>
-                <a href="#"><img src="images/instagram.png" alt="instagram"></a>
-                <a href="#"><img src="images/messenger.png" alt="messenger"></a>
+        <div class="footer-content-container">
+            <div class="footer-content">
+                <img src="images/masLogo2_fixed.png" alt="Logo" class="footer-logo">
+                <div class="footer-title">
+                    <h4>Ma's Cakes 'n Bakes</h4>
+                    <p>Fresh & Delicious Cakes made with Familial Love</p>
+                </div>
+            </div>
+            <div class="contact_info">
+                <p><strong>Contacts</strong></p>
+                <p><strong>Phone</strong>: +1 403-401-9293</p>
+                <p><strong>Email</strong>: mascakesnbakes@gmail.com</p>
+                <div class="social_icons">
+                    <a href="#"><img src="images/facebook.png" alt="facebook"></a>
+                    <a href="#"><img src="images/instagram.png" alt="instagram"></a>
+                    <a href="#"><img src="images/messenger.png" alt="messenger"></a>
+                </div>
             </div>
         </div>
-        <a href="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons">Instagram logo icons created by riajulislam - Flaticon</a>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ma's Cakes 'n Bakes. All rights reserved.</p>
     </footer>
 </html>
