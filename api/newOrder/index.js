@@ -18,6 +18,10 @@ module.exports = async function (context, req) {
         const sender = process.env.ACS_EMAIL_SENDER;
         const recipient = process.env.ORDER_NOTIFY_EMAIL;
 
+        context.log("ORDER_NOTIFY_EMAIL:", process.env.ORDER_NOTIFY_EMAIL);
+        context.log("ACS_EMAIL_SENDER:", process.env.ACS_EMAIL_SENDER ? "configured" : "NOT CONFIGURED");
+        context.log("ACS_EMAIL_CONNECTION_STRING:", process.env.ACS_EMAIL_CONNECTION_STRING ? "configured" : "NOT CONFIGURED");
+
         const missing = [];
         if (!connectionString) missing.push("ACS_EMAIL_CONNECTION_STRING");
         if (!sender) missing.push("ACS_EMAIL_SENDER");
@@ -51,9 +55,11 @@ module.exports = async function (context, req) {
         const htmlBody = `
             <h1>New Order</h1>
             <p><strong>Name:</strong> ${customer.name || ""}</p>
+            <p><strong>Last Name:</strong> ${customer.lastName || ""}</p>
             <p><strong>Email:</strong> ${customer.email || ""}</p>
             <p><strong>Phone:</strong> ${customer.phone || ""}</p>
             <p><strong>Preferred contact:</strong> ${customer.preferredContact || "N/A"}</p>
+            <p><strong>Preferred payment:</strong> ${customer.preferredPayment || "N/A"}</p>
             <p><strong>Occasion:</strong> ${customer.occasion || "N/A"}</p>
             <p><strong>Message:</strong> ${customer.message || "N/A"}</p>
             <h2>Items</h2>
@@ -75,15 +81,25 @@ module.exports = async function (context, req) {
         // ---- send email via ACS (correct pattern) ----
         const poller = await emailClient.beginSend(message);
         const result = await poller.pollUntilDone();
+
         context.log("Email send status:", result.status);
         if (result.error) {
             context.log("Email send error details:", result.error);
+        }
+
+        if (result.status !== "Succeeded") {
+            context.res = {
+                status: 500,
+                body: { ok: false, status: result.status, error: result.error || null }
+            };
+        return;
         }
 
         context.res = {
             status: 200,
             body: { ok: true, status: result.status }
         };
+
     } catch (err) {
         context.log.error("Error in newOrder function:", err);
         context.res = {

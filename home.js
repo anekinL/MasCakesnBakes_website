@@ -496,19 +496,7 @@ function attachSwipeHandlers() {
     });
   });
 }
-// ==========
-
-function send_customer_data(email,phone) {
-    console.log(email);
-    const recipient = email;
-    const subject = 'Hello';
-    const body = 'This is the body of the email.';
-
-    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailtoLink;
-}
-
+// ========== Checkout popup ==========
 function showCheckoutPopup() {
     // Select the checkout form container
     const checkoutPopup = document.querySelector(".checkout_body_container");
@@ -530,8 +518,18 @@ function showCheckoutPopup() {
     }
 }
 
+function hideCheckoutPopup() {
+    const checkoutPopup = document.querySelector(".checkout_body_container");
+    if (checkoutPopup) {
+        checkoutPopup.style.display = "none";
+    }
+}
+
+
+
 const form = document.querySelector("form");
 const fullName = document.getElementById("customerName");
+const lastName = document.getElementById("customerLastName");
 const email = document.getElementById("customerEmail");
 const emailList = document.querySelectorAll("#customerEmail");
 const phoneNumber = document.getElementById("customerNumber");
@@ -561,13 +559,16 @@ function sendEmail() {
     }
 
     const preferredContactSelect = document.getElementById("preferredContact");
+    const preferredPaymentSelect = document.getElementById("preferredPayment");
 
     const orderPayload = {
         customer: {
             name: fullName.value,
+            lastName: lastName.value,
             email: email.value,
             phone: phoneNumber.value,
             preferredContact: preferredContactSelect ? preferredContactSelect.value : null,
+            preferredPayment: preferredPaymentSelect ? preferredPaymentSelect.value : null,
             occasion: occasion ? occasion.value : null,
             message: message.value
         },
@@ -584,17 +585,30 @@ function sendEmail() {
         total: getTotalPrice()
     };
 
+    Swal.fire({
+        title: "Placing your order...",
+        text: "Sending, please wait.",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => Swal.showLoading()
+    });
+
     fetch("/api/newOrder", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(orderPayload)
+        body: JSON.stringify(orderPayload),
     })
-    .then(res => {
+    .then(async (res) => {
+        // try to parse JSON if the function returns it
+        let data = {};
+        try { data = await res.json(); } catch {}
+
         if (!res.ok) {
-            throw new Error("Server error placing order");
+            throw new Error(data?.error?.message || data?.error || "Server error placing order");
         }
-        // in case your function returns JSON; if not, this will just fail silently
-        return res.json().catch(() => ({}));
+
+        Swal.close(); // close loading
+        return data;
     })
     .then(() => {
         Swal.fire({
@@ -623,6 +637,8 @@ function sendEmail() {
     })
     .catch(err => {
         console.error(err);
+        Swal.close(); // ensure loading closes on error
+
         Swal.fire({
             title: "Error",
             text: "We couldn't place your order. Please try again or contact us directly.",
@@ -639,9 +655,11 @@ form.addEventListener("submit", (event) => {
 function checkInputs() {
     const items  = document.querySelectorAll(".checkout_input");
 
+    console.log(items);
+    console.log(items[1].value);
     for (const item of items) {
         if (item.value == "") {
-            const itemids = document.querySelectorAll(`#${item.id}`);
+            const itemids = document.querySelectorAll(`#${item.id}Check`);
             for (const itemid of itemids) {
                 itemid.classList.add("error");
                 itemid.parentElement.classList.add("error");
@@ -649,11 +667,16 @@ function checkInputs() {
             
         }
 
-        if (items[1].value != "") {
+        // !Important!!!
+        // Need to change this part in the future as this is hardcoding the email index which is BAD practice ye
+        // This is how the items array looks interms of indices and info
+        // items[] = [input#customerName.checkout_input, input#customerLastName.checkout_input, 
+        // input#customerEmail.checkout_input, input#customerNumber.checkout_input, textarea#customerMessage.checkout_input]
+        if (items[2].value != "") {
             checkEmail();
         }
 
-        items[1].addEventListener("keyup", () => {
+        items[2].addEventListener("keyup", () => {
             checkEmail();
         });
 
@@ -679,6 +702,7 @@ function checkEmail() {
     const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
     const errorTxtEmail = document.querySelector(".error_txt.email");
 
+    console.log(email.value);
     if (!email.value.match(emailRegex)) {
         for (const e of emailList) {
             e.classList.add("error");

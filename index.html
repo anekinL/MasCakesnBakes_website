@@ -238,7 +238,7 @@
                 <div class="checkout-header">
                     <img src="images/masLogo2_fixed.png" alt="Logo" class="checkout-logo">
                     <h1 style="font-family: 'Alex Brush', cursive; font-weight: 300; font-size: 3rem;">Payment Menu</h1>
-                    <h1 style="font-weight: 700; font-size: 2.5rem; cursor: pointer;">X</h1>
+                    <h1 style="font-weight: 700; font-size: 2.5rem; cursor: pointer;" onclick="hideCheckoutPopup()">X</h1>
                 </div>
                 <!-- <a class="keep-shopping" onclick="document.querySelector('.checkout_body_container').style.display='none';">&larr; Continue Shopping</a> -->
                 <form class="checkout_form">
@@ -250,8 +250,8 @@
                         <input type="text" class="checkout_input" id="customerLastName" placeholder="Last Name">
                     </div>
                     <div class="checkout_row" id="errorRow">
-                        <div class="error_txt" id="customerName">Full Name can't be blank</div>
-                        <div class="error_txt email" id="customerEmail"></div>
+                        <div class="error_txt" id="customerNameCheck">Full Name can't be blank</div>
+                        <div class="error_txt email" id="customerEmailCheck"></div>
                     </div>
                     <div class="checkout_row" id="emailRow">
                         <h2>Email Address</h2>
@@ -260,23 +260,23 @@
                         <input type="tel" class="checkout_input" id="customerNumber" placeholder="Phone Number">
                     </div>
                     <div class="checkout_row" id="errorRow">
-                        <div class="error_txt email" id="customerEmail">Email can't be blank</div>
-                        <div class="error_txt" id="customerNumber">Phone Number can't be blank</div>
+                        <div class="error_txt email" id="customerEmailCheck">Email can't be blank</div>
+                        <div class="error_txt" id="customerNumberCheck">Phone Number can't be blank</div>
                     </div>
                     <div class="checkout_row" id="PrefRow">
                         <div class="pref_item">
                             <label for="preferredContact">Preferred Contact Method:</label>
                             <select id="preferredContact" name="preferredContact">
-                                <option value="Phone">Mobile</option>
                                 <option value="Email">Email</option>
+                                <option value="Phone">Mobile</option>
                                 <option value="Both">Both</option>
                             </select>
                         </div>
                         <div class="pref_item">
                             <label for="preferredPayment">Preferred Payment Method:</label>
                             <select id="preferredPayment" name="preferredPayment">
-                                <option value="Phone">Etransfer</option>
-                                <option value="Email">Cash</option>
+                                <option value="Etransfer">Etransfer</option>
+                                <option value="Cash">Cash</option>
                             </select>
                         </div>
                     </div>
