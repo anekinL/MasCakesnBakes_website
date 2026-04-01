@@ -7,9 +7,9 @@
         "description": "Our strawberry compote is the perfect balance of sweetness and tartness.",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
-        "a_image": "images/strawberry_cc_1_trio.jpg",
-        "b_image": "images/strawberry_cc_2_round.jpg",
-        "c_image": "images/strawberry_cc_1.jpg"
+        "a_image": "images/minis/fruit/strawberry/sb_mini_2.jpg",
+        "b_image": "images/minis/fruit/strawberry/sb_mini_1.jpg",
+        "c_image": "images/minis/fruit/strawberry/sb_mini_3.jpg"
     },
     {
         "type": "ccf",
@@ -19,9 +19,9 @@
         "description": "Our blueberry compote from juicy blueberries is full of flavor and vibrant colors",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
-        "a_image": "images/minis/fruit/blueberry/bb_mini_1.webp",
-        "b_image": "images/minis/fruit/blueberry/bb_mini_4.webp",
-        "c_image": "images/minis/fruit/blueberry/bb_mini_3.webp"
+        "a_image": "images/minis/fruit/blueberry/bb_mini_5.jpg",
+        "b_image": "images/minis/fruit/blueberry/bb_mini_6.jpg",
+        "c_image": "images/minis/fruit/blueberry/bb_mini_7.jpg"
     },
     {
         "type": "ccf",
@@ -31,9 +31,9 @@
         "description": "Our luscious mango compote is made from ripe mangos, complements the creamy cream cheese filling.",
         "price1": "$24/half a dozen",
         "price2": "$45/dozen",
-        "a_image": "images/minis/fruit/mango/mango_cc_1_single.jpg",
-        "b_image": "images/minis/fruit/mango/mango_cc_2_single.jpg",
-        "c_image": "images/minis/fruit/mango/mango_cc_3_single.jpg"
+        "a_image": "images/minis/fruit/mango/mango_mini_1.jpg",
+        "b_image": "images/minis/fruit/mango/mango_mini_3.jpg",
+        "c_image": "images/minis/fruit/mango/mango_mini_4.jpg"
     },
     {
         "type": "ccf",
